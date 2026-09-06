@@ -1,0 +1,26 @@
+/* Paste into: BigCommerce Admin > Storefront > Script Manager
+   > Create a Script > Location: Head > Script category: Essential
+   > Script type: Script (wrap in <style> tags) — or add via theme's custom CSS file.
+
+   Hides the Sign In / Register header links and the cart coupon/redeem form.
+   Guest checkout must ALSO be enabled separately in
+   Store Setup > Checkout Settings > "Enable guest checkout" —
+   this CSS only hides the UI, it doesn't change checkout rules. */
+
+/* --- Sign In / Register (desktop dropdown + mobile menu) --- */
+a.navUser-action[href*="login.php"],
+a.navPages-action[href*="login.php"] {
+    display: none !important;
+}
+
+/* --- Cart page: coupon / gift certificate redemption form ---
+   Confirm these selectors once you can view the live cart page
+   (right-click the coupon box > Inspect) — Cornerstone theme
+   commonly uses one of these; keep whichever actually matches. */
+.coupon-code,
+.form-coupon,
+#cart-redemption-form,
+[data-cart-redemption],
+.cart-additional-entry-form {
+    display: none !important;
+}
