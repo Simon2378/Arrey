@@ -428,6 +428,15 @@
     });
   }
 
+  // Small public API for other scripts on the site (product-display.js, for
+  // admin-added products that have no scraped <form data-cart-item-add> to
+  // hook into) to add items to the same cart through the same logic.
+  window.TxccCart = {
+    addToCart: addToCart,
+    minQtyForPrice: minQtyForPrice,
+    money: money,
+  };
+
   document.addEventListener("submit", handleAddToCartSubmit, true);
   document.addEventListener("click", handleCartActionClick);
 

@@ -298,6 +298,58 @@
   white-space: nowrap;
 }
 
+/* Admin-added product detail page (/p/?id=...) */
+.txcc-product-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.txcc-product-detail-img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex: 1 1 280px;
+}
+
+.txcc-product-detail-body {
+  flex: 1 1 320px;
+  min-width: 240px;
+}
+
+.txcc-product-detail-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0.5rem 0 1rem;
+}
+
+.txcc-product-detail-desc {
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.txcc-product-detail-qty {
+  margin-bottom: 1rem;
+}
+
+.txcc-product-detail-qty label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  margin-bottom: 0.375rem;
+}
+
+.txcc-product-detail-qty input {
+  width: 100px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
 .footer-payment-badge--bitcoin { background: #f7931a; }
 .footer-payment-badge--cashapp { background: #00d632; }
 .footer-payment-badge--chime { background: #1ee0ac; color: #063; }

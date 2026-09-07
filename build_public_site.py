@@ -35,7 +35,15 @@ SRC_DIR = os.path.join(ROOT, "site-backup")
 MANIFEST_PATH = os.path.join(SRC_DIR, "manifest.json")
 OUT_DIR = os.path.join(ROOT, "public-site")
 CUSTOM_ASSETS_DIR = os.path.join(ROOT, "custom-assets")
-CUSTOM_ASSET_FILES = ["cart.js", "cart.css", "payment-config.js"]
+CUSTOM_ASSET_FILES = [
+    "cart.js", "cart.css", "payment-config.js",
+    "admin.js", "admin.css", "product-display.js", "placeholder-product.svg",
+]
+# products.json is live application data written by the admin panel via the
+# GitHub API, not a build artifact -- only ever *seeded* if missing, never
+# overwritten on rebuild (that would silently wipe out real admin edits the
+# next time this script runs and gets pushed).
+SEED_ONLY_ASSET_FILES = ["products.json"]
 
 REWRITE_ATTRS = {
     "a": ["href"],
@@ -208,7 +216,7 @@ def inject_custom_assets(soup: BeautifulSoup, new_rel: str):
 
     body = soup.find("body")
     if body:
-        for fname in ("payment-config.js", "cart.js"):
+        for fname in ("payment-config.js", "cart.js", "product-display.js"):
             script = soup.new_tag("script", src=f"{prefix}{fname}")
             body.append(script)
 
@@ -285,43 +293,96 @@ def copy_assets():
 def copy_custom_assets():
     for fname in CUSTOM_ASSET_FILES:
         shutil.copyfile(os.path.join(CUSTOM_ASSETS_DIR, fname), os.path.join(OUT_DIR, fname))
+    for fname in SEED_ONLY_ASSET_FILES:
+        dst = os.path.join(OUT_DIR, fname)
+        if not os.path.exists(dst):
+            shutil.copyfile(os.path.join(CUSTOM_ASSETS_DIR, fname), dst)
 
 
-def build_cart_page():
-    """Builds public-site/cart/index.html -- a dedicated cart page that
-    cart.js renders into (#cart-page-content), replacing the old dropdown
-    panel approach (awkward on mobile). Uses contact-us/index.html as a
-    template purely because it's already-built, has a simple single-column
-    layout, and sits at the same directory depth (one level deep) as
-    cart/index.html will -- so every relative asset/nav link in its
-    header and footer already resolves correctly with no path adjustment."""
+def _build_page_from_template(out_rel_dir: str, title: str, body_html: str, extra_head_tags=None, extra_body_tags=None):
+    """Shared helper for pages that don't exist in the original scrape
+    (cart, admin, product detail): clones contact-us/index.html purely
+    because it's already-built, has a simple single-column layout, and sits
+    one level deep -- same depth as these new one-level-deep pages -- so
+    every relative asset/nav link in its header/footer already resolves
+    with no path adjustment."""
     template_path = os.path.join(OUT_DIR, "contact-us", "index.html")
     with open(template_path, "rb") as f:
         soup = BeautifulSoup(f.read(), "lxml")
 
     title_tag = soup.find("title")
     if title_tag:
-        title_tag.string = "Your Cart - Texas Cannabis Company"
+        title_tag.string = title
 
     main_tag = soup.find("main", class_="page")
     if main_tag is None:
-        raise RuntimeError("build_cart_page: couldn't find <main class=\"page\"> in the template")
+        raise RuntimeError(f"_build_page_from_template({out_rel_dir}): couldn't find <main class=\"page\"> in the template")
 
     main_tag.clear()
     main_tag["class"] = "page"
-    content = BeautifulSoup(
+    content = BeautifulSoup(body_html, "lxml")
+    main_tag.append(content.find("div", class_="page-content"))
+
+    head = soup.find("head")
+    for tag in (extra_head_tags or []):
+        head.append(tag)
+    body = soup.find("body")
+    for tag in (extra_body_tags or []):
+        body.append(tag)
+
+    out_path = os.path.join(OUT_DIR, out_rel_dir, "index.html")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(str(soup))
+
+
+def build_cart_page():
+    """Builds public-site/cart/index.html -- a dedicated cart page that
+    cart.js renders into (#cart-page-content), replacing the old dropdown
+    panel approach (awkward on mobile)."""
+    _build_page_from_template(
+        "cart",
+        "Your Cart - Texas Cannabis Company",
         '<div class="page-content" style="max-width:640px;margin:0 auto;padding:2rem 1rem;width:100%;">'
         '<h1 class="page-heading">Your Cart</h1>'
         '<div id="cart-page-content"></div>'
         "</div>",
-        "lxml",
     )
-    main_tag.append(content.find("div", class_="page-content"))
 
-    out_path = os.path.join(OUT_DIR, "cart", "index.html")
-    os.makedirs(os.path.dirname(out_path), exist_ok=True)
-    with open(out_path, "w", encoding="utf-8") as f:
-        f.write(str(soup))
+
+def build_admin_page():
+    """Builds public-site/admin/index.html -- password-styled (really a
+    GitHub token) login gate + product add/delete dashboard, all driven by
+    admin.js. Not linked from anywhere in the site nav; reach it directly
+    at /admin/."""
+    soup = BeautifulSoup("<div></div>", "lxml")
+    link = soup.new_tag("link", rel="stylesheet", href="../admin.css")
+    script = soup.new_tag("script", src="../admin.js")
+
+    _build_page_from_template(
+        "admin",
+        "Admin - Texas Cannabis Company",
+        '<div class="page-content" style="max-width:640px;margin:0 auto;padding:2rem 1rem;width:100%;">'
+        '<h1 class="page-heading">Admin</h1>'
+        '<div id="admin-root"></div>'
+        "</div>",
+        extra_head_tags=[link],
+        extra_body_tags=[script],
+    )
+
+
+def build_product_detail_page():
+    """Builds public-site/p/index.html -- a generic product page for
+    admin-added products (which have no individually pre-rendered page the
+    way scraped products do). product-display.js renders the actual
+    product, chosen via ?id=, into #product-detail-content on load."""
+    _build_page_from_template(
+        "p",
+        "Product - Texas Cannabis Company",
+        '<div class="page-content" style="max-width:800px;margin:0 auto;padding:2rem 1rem;width:100%;">'
+        '<div id="product-detail-content"></div>'
+        "</div>",
+    )
 
 
 def write_readme(manifest: dict):
@@ -382,6 +443,8 @@ def main():
     copy_assets()
     copy_custom_assets()
     build_cart_page()
+    build_admin_page()
+    build_product_detail_page()
     write_readme(manifest)
 
     # Post-build patches for known-dead source content (confirmed 404 on the
