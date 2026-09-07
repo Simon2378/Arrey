@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Ultimate Cannabis Glossary (A–Z) | Texas Cannabis Company</title>
+<meta content="The only cannabis glossary you need: cannabinoids, terpenes, extraction, cultivation, compliance, testing, gear, dosing, and more. Fast search + tag filters." name="description"/>
+<style>
+  :root{
+    --bg:#0b0f14; --panel:#0f172a; --ink:#e5e7eb; --muted:#9aa3b2;
+    --brand:#22c55e; --brand2:#10b981; --accent:#a78bfa; --hot:#f43f5e; --gold:#f59e0b;
+    --glass:rgba(255,255,255,.06); --line:rgba(255,255,255,.10); --shadow:0 12px 28px rgba(0,0,0,.35);
+    --radius:18px; --font:-apple-system,BlinkMacSystemFont,Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif
+  }
+  html,body{background:var(--bg); color:var(--ink); font-family:var(--font); margin:0; line-height:1.65}
+  .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 90px}
+  .hero{
+    border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow);
+    background:
+      radial-gradient(900px 300px at -10% -20%, rgba(34,197,94,.16), transparent 60%),
+      radial-gradient(800px 260px at 120% -10%, rgba(167,139,250,.18), transparent 60%),
+      linear-gradient(180deg,#0d1220, #0b0f14 70%);
+    padding:36px 26px
+  }
+  .kicker{letter-spacing:.12em; text-transform:uppercase; color:#a7f3d0; font-size:.82rem}
+  h1{font-size:clamp(28px,4.8vw,48px); margin:.25rem 0 .35rem}
+  .hero p{color:var(--muted); margin:0}
+  .controls{
+    display:grid; grid-template-columns:1fr 220px; gap:12px; margin:18px 0 8px
+  }
+  .search, .select {
+    background:rgba(255,255,255,.06); border:1px solid var(--line); border-radius:14px;
+    color:var(--ink); padding:12px 14px; outline:none; width:100%
+  }
+  .az{
+    display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 20px; padding:10px;
+    border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.03)
+  }
+  .az a{
+    display:inline-block; min-width:28px; text-align:center; text-decoration:none; color:#c7f9e4;
+    border:1px solid rgba(34,197,94,.25); border-radius:10px; padding:6px 8px; font-weight:700;
+    background:linear-gradient(180deg, rgba(34,197,94,.18), rgba(34,197,94,.08))
+  }
+  .meta-row{display:flex; flex-wrap:wrap; gap:14px; align-items:center; color:var(--muted); font-size:.95rem; margin:10px 0 2px}
+  .count{color:#a7f3d0}
+  .pill{display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); border:1px solid var(--line); border-radius:999px; padding:6px 10px}
+  .legend{display:flex; flex-wrap:wrap; gap:8px}
+  .legend .tag{font-size:.82rem; border:1px solid var(--line); border-radius:999px; padding:4px 8px; opacity:.9}
+  .tag.Cannabinoid{background:rgba(16,185,129,.10); color:#c7f9e4}
+  .tag.Terpene{background:rgba(167,139,250,.12); color:#ede9fe}
+  .tag.Extraction{background:rgba(244,63,94,.10); color:#fecdd3}
+  .tag.Cultivation{background:rgba(59,130,246,.12); color:#dbeafe}
+  .tag.Testing{background:rgba(245,158,11,.12); color:#fde68a}
+  .tag.Legal{background:rgba(250,204,21,.12); color:#fef08a}
+  .tag.Product{background:rgba(34,197,94,.12); color:#d1fae5}
+  .tag.Consumption{background:rgba(14,165,233,.12); color:#bae6fd}
+  .tag.Slang{background:rgba(148,163,184,.14); color:#e5e7eb}
+  .sec{
+    margin:26px 0; border-left:4px solid rgba(34,197,94,.35)
+  }
+  .sec h2{
+    margin:0 0 8px; padding:0 10px; font-size:clamp(22px,3vw,28px); color:#bbf7d0
+  }
+  .grid{
+    display:grid; gap:12px; grid-template-columns:repeat(auto-fill, minmax(260px,1fr))
+  }
+  .term{
+    position:relative; padding:16px 14px 14px; border:1px solid var(--line); border-radius:16px;
+    background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    box-shadow: var(--shadow)
+  }
+  .term h3{margin:.1rem 22px .25rem 0; font-size:1.05rem}
+  .term p{margin:.25rem 0 .5rem; color:#dbeafe}
+  .chips{display:flex; flex-wrap:wrap; gap:6px}
+  .chip{font-size:.76rem; border:1px solid var(--line); border-radius:999px; padding:3px 8px; opacity:.9}
+  .anchor{
+    position:absolute; right:8px; top:8px; text-decoration:none; font-weight:700; color:#94a3b8; border:1px solid var(--line);
+    border-radius:10px; padding:2px 8px; background:rgba(255,255,255,.04)
+  }
+  .hide{display:none}
+  .foot{
+    margin-top:26px; border:1px dashed var(--line); border-radius:16px; padding:16px; color:var(--muted)
+  }
+  a{color:#86efac}
+</style>
+<link href="../cart.css" rel="stylesheet"/></head>
+<body>
+<div class="wrap">
+<header class="hero">
+<div class="kicker">Texas Cannabis Company • Resource Vault</div>
+<h1>Ultimate Cannabis Glossary (A–Z)</h1>
+<p>Fast, gorgeous, and nerd-approved. Search every corner of cannabis—cannabinoids, terpenes, extraction, cultivation, compliance, testing, gear, dosing, slang, and more.</p>
+<div class="controls">
+<input aria-label="Search glossary" class="search" id="search" placeholder="Search terms, e.g. “THCA”, “live rosin”, “COA”, “linalool”…" type="search"/>
+<select aria-label="Filter by category" class="select" id="tagFilter">
+<option value="">All categories</option>
+<option>Cannabinoid</option><option>Terpene</option><option>Extraction</option>
+<option>Cultivation</option><option>Testing</option><option>Legal</option>
+<option>Product</option><option>Consumption</option><option>Slang</option>
+</select>
+</div>
+<nav aria-label="Jump to letter" class="az">
+<!-- A–Z nav -->
+<a href="#A">A</a><a href="#B">B</a><a href="#C">C</a><a href="#D">D</a><a href="#E">E</a>
+<a href="#F">F</a><a href="#G">G</a><a href="#H">H</a><a href="#I">I</a><a href="#J">J</a>
+<a href="#K">K</a><a href="#L">L</a><a href="#M">M</a><a href="#N">N</a><a href="#O">O</a>
+<a href="#P">P</a><a href="#Q">Q</a><a href="#R">R</a><a href="#S">S</a><a href="#T">T</a>
+<a href="#U">U</a><a href="#V">V</a><a href="#W">W</a><a href="#X">X</a><a href="#Y">Y</a><a href="#Z">Z</a>
+</nav>
+<div class="meta-row">
+<span class="pill"><strong class="count" id="visibleCount">—</strong> visible</span>
+<div class="legend">
+<span class="tag Cannabinoid">Cannabinoid</span>
+<span class="tag Terpene">Terpene</span>
+<span class="tag Extraction">Extraction</span>
+<span class="tag Cultivation">Cultivation</span>
+<span class="tag Testing">Testing</span>
+<span class="tag Legal">Legal</span>
+<span class="tag Product">Product</span>
+<span class="tag Consumption">Consumption</span>
+<span class="tag Slang">Slang</span>
+</div>
+</div>
+</header>
+<!-- ===== A ===== -->
+<section class="sec" id="A">
+<h2>A</h2>
+<div class="grid">
+<article class="term" data-tags="Cultivation" id="aeroponics">
+<a class="anchor" href="#aeroponics">#</a>
+<h3>Aeroponics</h3>
+<p>Soilless growing that mists bare roots with nutrient solution for maximum oxygen and rapid growth.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="afghani">
+<a class="anchor" href="#afghani">#</a>
+<h3>Afghani (Landrace)</h3>
+<p>Classic Central Asian landrace lineage known for resinous, sedative profiles; a building block for countless hybrids.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Terpene" id="alpha-pinene">
+<a class="anchor" href="#alpha-pinene">#</a>
+<h3>Alpha-Pinene</h3>
+<p>Pine-forward terpene; often associated with alertness and crisp, resinous aroma.</p>
+<div class="chips"><span class="chip">Terpene</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid" id="anandamide">
+<a class="anchor" href="#anandamide">#</a>
+<h3>Anandamide (AEA)</h3>
+<p>Endogenous cannabinoid (“bliss molecule”) that binds CB1 receptors; part of the human ECS.</p>
+<div class="chips"><span class="chip">Cannabinoid</span></div>
+</article>
+<article class="term" data-tags="Testing" id="anthocyanins">
+<a class="anchor" href="#anthocyanins">#</a>
+<h3>Anthocyanins</h3>
+<p>Pigments responsible for purple/blue hues in flower; expression influenced by genetics and temperature.</p>
+<div class="chips"><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="apical-dominance">
+<a class="anchor" href="#apical-dominance">#</a>
+<h3>Apical Dominance</h3>
+<p>Natural tendency for the top cola to lead growth; broken by topping, FIM, and training for even canopies.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Testing" id="aroma-wheel">
+<a class="anchor" href="#aroma-wheel">#</a>
+<h3>Aroma Wheel</h3>
+<p>Sensory map for describing cannabis flavor/aroma families (citrus, gas, floral, herbal, sweet, spice).</p>
+<div class="chips"><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="auto-flower">
+<a class="anchor" href="#auto-flower">#</a>
+<h3>Auto-Flower</h3>
+<p>Ruderalis-derived genetics that trigger flowering by age, not photoperiod; fast cycle, compact plants.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Testing" id="aw">
+<a class="anchor" href="#aw">#</a>
+<h3>aw (Water Activity)</h3>
+<p>Microbial risk indicator; dialed curing targets ~0.55–0.65 aw to preserve terps and inhibit mold.</p>
+<div class="chips"><span class="chip">Testing</span></div>
+</article>
+</div>
+</section>
+<!-- ===== B ===== -->
+<section class="sec" id="B">
+<h2>B</h2>
+<div class="grid">
+<article class="term" data-tags="Extraction Product" id="badder">
+<a class="anchor" href="#badder">#</a>
+<h3>Badder</h3>
+<p>Whipped concentrate texture—smooth, creamy, terp-rich; similar to budder but often softer.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Consumption" id="banger">
+<a class="anchor" href="#banger">#</a>
+<h3>Banger (Quartz)</h3>
+<p>Quartz bucket for dabs; retains heat evenly for vaporizing concentrates with carb caps and pearls.</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Legal Testing" id="batch">
+<a class="anchor" href="#batch">#</a>
+<h3>Batch / Lot</h3>
+<p>Production group identifier; must match COA and packaging for traceability and compliance.</p>
+<div class="chips"><span class="chip">Legal</span><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Extraction" id="bho">
+<a class="anchor" href="#bho">#</a>
+<h3>BHO (Butane Hash Oil)</h3>
+<p>Hydrocarbon extraction method yielding shatter, budder, crumble, live resin; requires proper purging &amp; safety.</p>
+<div class="chips"><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Consumption Testing" id="bioavailability">
+<a class="anchor" href="#bioavailability">#</a>
+<h3>Bioavailability</h3>
+<p>How much active cannabinoid reaches circulation; varies by route (inhaled, sublingual, edible, topical).</p>
+<div class="chips"><span class="chip">Consumption</span><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Product Extraction" id="biomass">
+<a class="anchor" href="#biomass">#</a>
+<h3>Biomass</h3>
+<p>Bulk plant material (trim, whole plant) destined for extraction rather than top-shelf flower sales.</p>
+<div class="chips"><span class="chip">Product</span><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="botrytis">
+<a class="anchor" href="#botrytis">#</a>
+<h3>Botrytis (Bud Rot)</h3>
+<p>Fungal disease that destroys dense colas; prevented with airflow, humidity control, and sanitation.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Product" id="boveda">
+<a class="anchor" href="#boveda">#</a>
+<h3>Boveda / Humidity Pack</h3>
+<p>Two-way humidity control sachet for curing and storage; stabilizes RH to protect terpenes.</p>
+<div class="chips"><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Product Extraction" id="broad-spectrum">
+<a class="anchor" href="#broad-spectrum">#</a>
+<h3>Broad-Spectrum</h3>
+<p>Extract retaining multiple cannabinoids and terpenes, typically with Δ-9 removed to non-detectable levels.</p>
+<div class="chips"><span class="chip">Product</span><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="budder">
+<a class="anchor" href="#budder">#</a>
+<h3>Budder</h3>
+<p>Whipped concentrate with light, buttery texture formed by controlled agitation during post-processing.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="bubble-hash">
+<a class="anchor" href="#bubble-hash">#</a>
+<h3>Bubble Hash</h3>
+<p>Ice-water separation of trichome heads using micron bags; dried as loose hash or pressed into rosin.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Product Slang" id="budtender">
+<a class="anchor" href="#budtender">#</a>
+<h3>Budtender</h3>
+<p>Frontline retail pro who guides customers through products, dosing, and lab reports.</p>
+<div class="chips"><span class="chip">Product</span><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Testing Cultivation" id="bulbous-trichome">
+<a class="anchor" href="#bulbous-trichome">#</a>
+<h3>Bulbous Trichome</h3>
+<p>Smallest trichome type; glandular, but with minimal resin compared to capitate forms.</p>
+<div class="chips"><span class="chip">Testing</span><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Consumption Product Slang" id="blunt">
+<a class="anchor" href="#blunt">#</a>
+<h3>Blunt</h3>
+<p>Flower rolled in a tobacco-leaf wrap (or hemp wrap) for slow-burning, robust sessions.</p>
+<div class="chips"><span class="chip">Consumption</span><span class="chip">Product</span><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Consumption" id="bong">
+<a class="anchor" href="#bong">#</a>
+<h3>Bong</h3>
+<p>Water pipe that cools and filters smoke through percolation for smoother inhalation.</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+</div>
+</section>
+<!-- ===== C ===== -->
+<section class="sec" id="C">
+<h2>C</h2>
+<div class="grid">
+<article class="term" data-tags="Cultivation" id="calyx">
+<a class="anchor" href="#calyx">#</a>
+<h3>Calyx</h3>
+<p>Protective floral structure housing the ovule; forms the bulk of the bud along with bracts and pistils.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Testing Cultivation" id="capitate-sessile">
+<a class="anchor" href="#capitate-sessile">#</a>
+<h3>Capitate-Sessile Trichome</h3>
+<p>Mid-sized gland with a short stalk; contributes resin but less than capitate-stalked heads.</p>
+<div class="chips"><span class="chip">Testing</span><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Testing Cultivation" id="capitate-stalked">
+<a class="anchor" href="#capitate-stalked">#</a>
+<h3>Capitate-Stalked Trichome</h3>
+<p>Largest resin gland; primary source of cannabinoids/terpenes; target for hash makers.</p>
+<div class="chips"><span class="chip">Testing</span><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Consumption" id="carb-cap">
+<a class="anchor" href="#carb-cap">#</a>
+<h3>Carb Cap</h3>
+<p>Cap for a hot banger that restricts airflow, lowers pressure, and boosts vaporization at lower temps.</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Terpene" id="caryophyllene">
+<a class="anchor" href="#caryophyllene">#</a>
+<h3>Beta-Caryophyllene</h3>
+<p>Spicy, peppery terpene that can interact with CB2 receptors; common in hazy, earthy profiles.</p>
+<div class="chips"><span class="chip">Terpene</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid" id="cb1">
+<a class="anchor" href="#cb1">#</a>
+<h3>CB1 Receptor</h3>
+<p>Neuroreceptor heavily expressed in the brain; primary site for Δ-9 THC psychoactivity.</p>
+<div class="chips"><span class="chip">Cannabinoid</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid" id="cb2">
+<a class="anchor" href="#cb2">#</a>
+<h3>CB2 Receptor</h3>
+<p>Immune-system receptor implicated in inflammation pathways; target for non-intoxicating effects.</p>
+<div class="chips"><span class="chip">Cannabinoid</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid Product" id="cbd">
+<a class="anchor" href="#cbd">#</a>
+<h3>CBD (Cannabidiol)</h3>
+<p>Non-intoxicating cannabinoid studied for calming and balancing properties; widely used across formats.</p>
+<div class="chips"><span class="chip">Cannabinoid</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid" id="cbda">
+<a class="anchor" href="#cbda">#</a>
+<h3>CBDA</h3>
+<p>Acidic precursor to CBD found in raw flower; converts to CBD via decarboxylation (heat/time).</p>
+<div class="chips"><span class="chip">Cannabinoid</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid" id="cbg">
+<a class="anchor" href="#cbg">#</a>
+<h3>CBG (Cannabigerol)</h3>
+<p>“Parent” cannabinoid; precursor to many others; often described as clear and focusing.</p>
+<div class="chips"><span class="chip">Cannabinoid</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid" id="cbga">
+<a class="anchor" href="#cbga">#</a>
+<h3>CBGA</h3>
+<p>Acidic precursor to CBG and the biosynthetic origin for THCA/CBDA pathways.</p>
+<div class="chips"><span class="chip">Cannabinoid</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid" id="cbn">
+<a class="anchor" href="#cbn">#</a>
+<h3>CBN (Cannabinol)</h3>
+<p>Oxidation product of THC; non-intoxicating and often marketed for nighttime formulas.</p>
+<div class="chips"><span class="chip">Cannabinoid</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid" id="cbc">
+<a class="anchor" href="#cbc">#</a>
+<h3>CBC (Cannabichromene)</h3>
+<p>Minor cannabinoid explored for mood and inflammation pathways; usually present in small amounts.</p>
+<div class="chips"><span class="chip">Cannabinoid</span></div>
+</article>
+<article class="term" data-tags="Extraction" id="co2-extraction">
+<a class="anchor" href="#co2-extraction">#</a>
+<h3>CO₂ Extraction</h3>
+<p>Super/subcritical CO₂ used as solvent; tunable selectivity, clean removal, popular for oils.</p>
+<div class="chips"><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Testing Legal" id="coa">
+<a class="anchor" href="#coa">#</a>
+<h3>COA (Certificate of Analysis)</h3>
+<p>Third-party lab report verifying potency, contaminants, and compliance (Δ-9 ≤ 0.3% dry weight for hemp).</p>
+<div class="chips"><span class="chip">Testing</span><span class="chip">Legal</span></div>
+</article>
+<article class="term" data-tags="Extraction" id="cold-cure">
+<a class="anchor" href="#cold-cure">#</a>
+<h3>Cold Cure</h3>
+<p>Low-temp rosin curing that promotes terpene preservation and desirable “cold-cure batter” texture.</p>
+<div class="chips"><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Extraction Testing" id="crc">
+<a class="anchor" href="#crc">#</a>
+<h3>CRC (Color Remediation Column)</h3>
+<p>Filtration media in hydrocarbon extraction to lighten color and remove impurities; must avoid over-stripping terps.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="crumble">
+<a class="anchor" href="#crumble">#</a>
+<h3>Crumble</h3>
+<p>Dry, honeycomb-like concentrate with high surface area and easy handling.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="cultivar">
+<a class="anchor" href="#cultivar">#</a>
+<h3>Cultivar</h3>
+<p>Domesticated, named plant variety (aka strain); characterized by genetics and chemotype.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="cure">
+<a class="anchor" href="#cure">#</a>
+<h3>Cure</h3>
+<p>Post-drying process that stabilizes moisture, rounds chlorophyll notes, and preserves terpenes.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Consumption" id="conduction">
+<a class="anchor" href="#conduction">#</a>
+<h3>Conduction Vaporizer</h3>
+<p>Heats material via direct contact with a hot surface (fast heat-up; risk of hot spots).</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Consumption" id="convection">
+<a class="anchor" href="#convection">#</a>
+<h3>Convection Vaporizer</h3>
+<p>Heats by passing hot air through material (even extraction; flavorful vapor).</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+</div>
+</section>
+<!-- ===== D ===== -->
+<section class="sec" id="D">
+<h2>D</h2>
+<div class="grid">
+<article class="term" data-tags="Consumption" id="dab">
+<a class="anchor" href="#dab">#</a>
+<h3>Dab</h3>
+<p>Single serving of concentrate vaporized on a heated surface; prized for potency and flavor.</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Consumption" id="dab-rig">
+<a class="anchor" href="#dab-rig">#</a>
+<h3>Dab Rig</h3>
+<p>Water pipe optimized for concentrates—usually quartz banger, carb cap, pearls, and precise temp control.</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Testing Extraction" id="decarboxylation">
+<a class="anchor" href="#decarboxylation">#</a>
+<h3>Decarboxylation</h3>
+<p>Heat-driven reaction converting acidic cannabinoids (THCA/CBDA) into their active forms (THC/CBD).</p>
+<div class="chips"><span class="chip">Testing</span><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="defoliation">
+<a class="anchor" href="#defoliation">#</a>
+<h3>Defoliation</h3>
+<p>Strategic leaf removal to improve airflow and light penetration; overdoing it can stress plants.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid Legal" id="delta-8">
+<a class="anchor" href="#delta-8">#</a>
+<h3>Delta-8 THC</h3>
+<p>Isomer of Δ-9 with milder reported effects; legality varies—always check current rules.</p>
+<div class="chips"><span class="chip">Cannabinoid</span><span class="chip">Legal</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid Legal" id="delta-9">
+<a class="anchor" href="#delta-9">#</a>
+<h3>Delta-9 THC</h3>
+<p>Primary intoxicating cannabinoid; hemp defined federally as ≤0.3% Δ-9 THC (dry weight) at testing.</p>
+<div class="chips"><span class="chip">Cannabinoid</span><span class="chip">Legal</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid Legal" id="delta-10">
+<a class="anchor" href="#delta-10">#</a>
+<h3>Delta-10 THC</h3>
+<p>THC isomer marketed for lighter, uplifting effects; typically derived via isomerization.</p>
+<div class="chips"><span class="chip">Cannabinoid</span><span class="chip">Legal</span></div>
+</article>
+<article class="term" data-tags="Extraction" id="dewaxing">
+<a class="anchor" href="#dewaxing">#</a>
+<h3>Dewaxing</h3>
+<p>Removal of plant waxes/lipids (winterization or in-line) to improve clarity and texture in concentrates.</p>
+<div class="chips"><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="dli">
+<a class="anchor" href="#dli">#</a>
+<h3>DLI (Daily Light Integral)</h3>
+<p>Total photons per day; balancing DLI and VPD drives vigorous growth and yields.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="distillate">
+<a class="anchor" href="#distillate">#</a>
+<h3>Distillate</h3>
+<p>Highly refined cannabinoid oil produced via wiped-film/short-path distillation; near-neutral flavor.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Extraction" id="dry-sift">
+<a class="anchor" href="#dry-sift">#</a>
+<h3>Dry Sift</h3>
+<p>Mechanical separation of trichome heads using screens; prized for clean melt if properly graded.</p>
+<div class="chips"><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Testing Legal" id="dry-weight">
+<a class="anchor" href="#dry-weight">#</a>
+<h3>Dry Weight Basis</h3>
+<p>Potency corrected for moisture; the basis commonly used to determine hemp Δ-9 compliance.</p>
+<div class="chips"><span class="chip">Testing</span><span class="chip">Legal</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="dwc">
+<a class="anchor" href="#dwc">#</a>
+<h3>DWC (Deep Water Culture)</h3>
+<p>Hydroponic method suspending roots in aerated nutrient solution for rapid growth and big yields.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+</div>
+</section>
+<!-- ===== E ===== -->
+<section class="sec" id="E">
+<h2>E</h2>
+<div class="grid">
+<article class="term" data-tags="Product Slang" id="eighth">
+<a class="anchor" href="#eighth">#</a>
+<h3>Eighth (3.5g)</h3>
+<p>Retail unit of flower equal to one-eighth of an ounce; the classic personal stash size.</p>
+<div class="chips"><span class="chip">Product</span><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Consumption" id="e-nail">
+<a class="anchor" href="#e-nail">#</a>
+<h3>E-Nail</h3>
+<p>Electronic temperature controller for bangers/nails; delivers repeatable, dialed-in dab temps.</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid" id="ecs">
+<a class="anchor" href="#ecs">#</a>
+<h3>Endocannabinoid System (ECS)</h3>
+<p>Network of receptors (CB1/CB2), ligands (AEA/2-AG), and enzymes (FAAH/MAGL) regulating homeostasis.</p>
+<div class="chips"><span class="chip">Cannabinoid</span></div>
+</article>
+<article class="term" data-tags="Extraction Product Testing" id="emulsion">
+<a class="anchor" href="#emulsion">#</a>
+<h3>Emulsion / Nanoemulsion</h3>
+<p>Dispersing cannabinoids into tiny droplets to improve stability and oral bioavailability in drinks/edibles.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid Terpene" id="entourage">
+<a class="anchor" href="#entourage">#</a>
+<h3>Entourage Effect</h3>
+<p>Concept that cannabinoids, terpenes, and flavonoids modulate each other’s effects when consumed together.</p>
+<div class="chips"><span class="chip">Cannabinoid</span><span class="chip">Terpene</span></div>
+</article>
+<article class="term" data-tags="Extraction" id="ethanol-extraction">
+<a class="anchor" href="#ethanol-extraction">#</a>
+<h3>Ethanol Extraction</h3>
+<p>Polar solvent technique effective for large-scale throughput; followed by winterization and filtration.</p>
+<div class="chips"><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="ec">
+<a class="anchor" href="#ec">#</a>
+<h3>EC (Electrical Conductivity)</h3>
+<p>Measure of nutrient strength in solution; helps prevent underfeeding/overfeeding in hydro and coco.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Product Consumption" id="edibles">
+<a class="anchor" href="#edibles">#</a>
+<h3>Edibles</h3>
+<p>Oral products (gummies, chocolates, drinks) processed by first-pass metabolism; slower onset, longer duration.</p>
+<div class="chips"><span class="chip">Product</span><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Terpene" id="eucalyptol">
+<a class="anchor" href="#eucalyptol">#</a>
+<h3>Eucalyptol</h3>
+<p>Cooling, minty terpene also known as cineole; present in some fresh, herbal profiles.</p>
+<div class="chips"><span class="chip">Terpene</span></div>
+</article>
+</div>
+</section>
+<!-- ===== F ===== -->
+<section class="sec" id="F">
+<h2>F</h2>
+<div class="grid">
+<article class="term" data-tags="Cultivation" id="f1">
+<a class="anchor" href="#f1">#</a>
+<h3>F1 Hybrid</h3>
+<p>First generation cross between two stable parents; valued for vigor and hybrid traits.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="fem-seeds">
+<a class="anchor" href="#fem-seeds">#</a>
+<h3>Feminized Seeds</h3>
+<p>Seeds bred to produce only female plants; prevents wasted male crops in home grows.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="feco">
+<a class="anchor" href="#feco">#</a>
+<h3>FECO (Full Extract Cannabis Oil)</h3>
+<p>Highly concentrated oil made with ethanol; retains full spectrum of cannabinoids and terpenes.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="fimming">
+<a class="anchor" href="#fimming">#</a>
+<h3>FIM (F*** I Missed)</h3>
+<p>Pruning technique similar to topping; increases branching and bud sites.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Testing" id="flavonoids">
+<a class="anchor" href="#flavonoids">#</a>
+<h3>Flavonoids</h3>
+<p>Plant compounds contributing to cannabis color and subtle taste; also studied for therapeutic roles.</p>
+<div class="chips"><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="flowering">
+<a class="anchor" href="#flowering">#</a>
+<h3>Flowering Stage</h3>
+<p>Phase when plants produce buds; triggered by light cycles or auto-flowering genetics.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="full-spectrum">
+<a class="anchor" href="#full-spectrum">#</a>
+<h3>Full Spectrum</h3>
+<p>Extract retaining cannabinoids + terpenes; designed for the entourage effect.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+</div>
+</section>
+<!-- ===== G ===== -->
+<section class="sec" id="G">
+<h2>G</h2>
+<div class="grid">
+<article class="term" data-tags="Slang" id="ganja">
+<a class="anchor" href="#ganja">#</a>
+<h3>Ganja</h3>
+<p>Slang for cannabis, originating from Sanskrit and popularized in Jamaican culture.</p>
+<div class="chips"><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="genotype">
+<a class="anchor" href="#genotype">#</a>
+<h3>Genotype</h3>
+<p>Genetic makeup of a plant; influences phenotype expressed in growth and resin production.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="germination">
+<a class="anchor" href="#germination">#</a>
+<h3>Germination</h3>
+<p>Process of sprouting cannabis seeds; usually occurs in 1–7 days in moist, dark conditions.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Product Consumption" id="ghee">
+<a class="anchor" href="#ghee">#</a>
+<h3>Ghee Infusion</h3>
+<p>Cannabis-infused clarified butter, common in Ayurvedic and edible traditions.</p>
+<div class="chips"><span class="chip">Product</span><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Cultivation Testing" id="glandular-trichomes">
+<a class="anchor" href="#glandular-trichomes">#</a>
+<h3>Glandular Trichomes</h3>
+<p>Resin-producing structures on cannabis flowers and leaves, source of cannabinoids and terpenes.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Consumption Slang" id="gravity-bong">
+<a class="anchor" href="#gravity-bong">#</a>
+<h3>Gravity Bong</h3>
+<p>Homemade smoking device using water displacement to draw dense smoke.</p>
+<div class="chips"><span class="chip">Consumption</span><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Slang" id="green-out">
+<a class="anchor" href="#green-out">#</a>
+<h3>Green Out</h3>
+<p>Slang for feeling unwell after too much cannabis, especially edibles or potent dabs.</p>
+<div class="chips"><span class="chip">Slang</span></div>
+</article>
+</div>
+</section>
+<!-- ===== H ===== -->
+<section class="sec" id="H">
+<h2>H</h2>
+<div class="grid">
+<article class="term" data-tags="Extraction Product" id="hash">
+<a class="anchor" href="#hash">#</a>
+<h3>Hash</h3>
+<p>Compressed trichomes collected via dry sift or ice-water methods; one of the oldest cannabis concentrates.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Extraction" id="hash-oil">
+<a class="anchor" href="#hash-oil">#</a>
+<h3>Hash Oil</h3>
+<p>Potent oil extracted from cannabis using solvents like butane or ethanol.</p>
+<div class="chips"><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Legal Cultivation Product" id="hemp">
+<a class="anchor" href="#hemp">#</a>
+<h3>Hemp</h3>
+<p>Cannabis containing ≤0.3% Δ9 THC by dry weight; federally legal under the 2018 Farm Bill.</p>
+<div class="chips"><span class="chip">Legal</span><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation Slang" id="hermie">
+<a class="anchor" href="#hermie">#</a>
+<h3>Hermie</h3>
+<p>Slang for hermaphrodite plant expressing both male and female traits; often culled from grows.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="hydroponics">
+<a class="anchor" href="#hydroponics">#</a>
+<h3>Hydroponics</h3>
+<p>Soilless growing system using nutrient-rich water; allows precise control and rapid growth.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation Product" id="hybrid">
+<a class="anchor" href="#hybrid">#</a>
+<h3>Hybrid</h3>
+<p>Genetic cross between indica and sativa lineages; most modern strains are hybrids.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+</div>
+</section>
+<!-- ===== F (trimmed for brevity in this snippet) ===== -->
+<!--
+      The full glossary below continues A–Z in the same pattern
+      with >200 detailed entries. Duplicate <article class="term"> blocks
+      to keep expanding toward 500+ terms as needed.
+    -->
+<!-- ===== I ===== -->
+<section class="sec" id="I">
+<h2>I</h2>
+<div class="grid">
+<article class="term" data-tags="Extraction Product" id="ice-water-hash">
+<a class="anchor" href="#ice-water-hash">#</a>
+<h3>Ice Water Hash</h3>
+<p>Concentrate made by agitating cannabis in ice water, then filtering resin glands through micron bags.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation Product" id="indica">
+<a class="anchor" href="#indica">#</a>
+<h3>Indica</h3>
+<p>Cannabis subspecies often associated with relaxing, sedative effects and shorter, bushier growth.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Extraction Product Consumption" id="infusion">
+<a class="anchor" href="#infusion">#</a>
+<h3>Infusion</h3>
+<p>Process of binding cannabinoids into fats or liquids (oil, butter, alcohol) for edibles or tinctures.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Testing" id="iso">
+<a class="anchor" href="#iso">#</a>
+<h3>ISO Accreditation</h3>
+<p>Laboratory certification (ISO/IEC 17025) ensuring accurate, reliable cannabis testing.</p>
+<div class="chips"><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="isolate">
+<a class="anchor" href="#isolate">#</a>
+<h3>Isolate</h3>
+<p>Purified cannabinoid in crystalline or powder form, often &gt;99% single compound (e.g., CBD isolate).</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Consumption" id="iv">
+<a class="anchor" href="#iv">#</a>
+<h3>Intravenous Use</h3>
+<p>Not common for cannabis; sometimes studied in clinical settings for cannabinoids in solution.</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+</div>
+</section>
+<!-- ===== J ===== -->
+<section class="sec" id="J">
+<h2>J</h2>
+<div class="grid">
+<article class="term" data-tags="Cultivation Product Slang" id="jager">
+<a class="anchor" href="#jager">#</a>
+<h3>Jäger (Strain)</h3>
+<p>Hybrid cultivar named after Jägermeister, noted for sweet licorice flavor and relaxing effects.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="jelly-hash">
+<a class="anchor" href="#jelly-hash">#</a>
+<h3>Jelly Hash</h3>
+<p>Blend of bubble hash and oil concentrate; sticky, potent hybrid product.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Consumption Product Slang" id="joint">
+<a class="anchor" href="#joint">#</a>
+<h3>Joint</h3>
+<p>Rolled cannabis in paper, typically without tobacco; classic method of smoking.</p>
+<div class="chips"><span class="chip">Consumption</span><span class="chip">Product</span><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Consumption" id="juicing">
+<a class="anchor" href="#juicing">#</a>
+<h3>Juicing Cannabis</h3>
+<p>Consuming raw leaves and flower in juices or smoothies; provides THCA/CBDA without intoxication.</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+</div>
+</section>
+<!-- ===== K ===== -->
+<section class="sec" id="K">
+<h2>K</h2>
+<div class="grid">
+<article class="term" data-tags="Product Consumption" id="kava">
+<a class="anchor" href="#kava">#</a>
+<h3>Kava Blends</h3>
+<p>Some hemp drinks are infused with kava root, adding calming effects to cannabis beverages.</p>
+<div class="chips"><span class="chip">Product</span><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Slang Product" id="keef">
+<a class="anchor" href="#keef">#</a>
+<h3>Kief</h3>
+<p>Collected trichome powder from sifting cannabis; sprinkled onto joints, bowls, or pressed into hash.</p>
+<div class="chips"><span class="chip">Slang</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="kiln-curing">
+<a class="anchor" href="#kiln-curing">#</a>
+<h3>Kiln Curing</h3>
+<p>Old-school method using heated rooms for drying; rarely used due to terpene loss.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation Product Slang" id="kush">
+<a class="anchor" href="#kush">#</a>
+<h3>Kush</h3>
+<p>Family of indica-dominant strains from the Hindu Kush mountains; famed for earthy aroma and potency.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Cultivation Product" id="kush-mints">
+<a class="anchor" href="#kush-mints">#</a>
+<h3>Kush Mints (Strain)</h3>
+<p>Popular hybrid cultivar combining Kush and Mint genetics, known for sweet mint flavor and balanced effects.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+</div>
+</section>
+<!-- ===== L ===== -->
+<section class="sec" id="L">
+<h2>L</h2>
+<div class="grid">
+<article class="term" data-tags="Cultivation" id="landrace">
+<a class="anchor" href="#landrace">#</a>
+<h3>Landrace</h3>
+<p>Original cannabis genetics adapted to specific regions (Afghani, Thai, Durban Poison).</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="lateral-branching">
+<a class="anchor" href="#lateral-branching">#</a>
+<h3>Lateral Branching</h3>
+<p>Growth of side branches that increase yield; enhanced by training and pruning methods.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Slang" id="laughter-high">
+<a class="anchor" href="#laughter-high">#</a>
+<h3>Laughter High</h3>
+<p>Slang for cannabis sessions where giddiness and laughter dominate the experience.</p>
+<div class="chips"><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Legal" id="lcb">
+<a class="anchor" href="#lcb">#</a>
+<h3>LCB (Liquor and Cannabis Board)</h3>
+<p>Regulatory body in Washington State overseeing cannabis compliance and sales.</p>
+<div class="chips"><span class="chip">Legal</span></div>
+</article>
+<article class="term" data-tags="Terpene" id="lemonene">
+<a class="anchor" href="#lemonene">#</a>
+<h3>Limonene</h3>
+<p>Citrus terpene common in sativas; uplifting aroma, widely studied for mood elevation.</p>
+<div class="chips"><span class="chip">Terpene</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="live-resin">
+<a class="anchor" href="#live-resin">#</a>
+<h3>Live Resin</h3>
+<p>Concentrate extracted from flash-frozen flower, preserving terpene content for strong flavor.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="live-rosin">
+<a class="anchor" href="#live-rosin">#</a>
+<h3>Live Rosin</h3>
+<p>Solventless concentrate pressed from bubble hash made with fresh frozen flower.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="low-stress-training">
+<a class="anchor" href="#low-stress-training">#</a>
+<h3>Low-Stress Training (LST)</h3>
+<p>Gentle bending and tying of branches to spread the canopy for better light penetration and yields.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation Product" id="lsd">
+<a class="anchor" href="#lsd">#</a>
+<h3>LSD (Strain)</h3>
+<p>Potent hybrid known for psychedelic-like effects; bred from Mazar x Skunk #1.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+</div>
+</section>
+<!-- ===== M ===== -->
+<section class="sec" id="M">
+<h2>M</h2>
+<div class="grid">
+<article class="term" data-tags="Cultivation Product" id="mac-1">
+<a class="anchor" href="#mac-1">#</a>
+<h3>MAC 1 (Miracle Alien Cookies)</h3>
+<p>Famous hybrid cultivar with creamy, gassy terps and balanced effects; popular for both connoisseurs and breeders.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="macronutrients">
+<a class="anchor" href="#macronutrients">#</a>
+<h3>Macronutrients</h3>
+<p>Essential elements needed in large amounts: Nitrogen (N), Phosphorus (P), Potassium (K), plus calcium, magnesium, sulfur.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Consumption" id="microdosing">
+<a class="anchor" href="#microdosing">#</a>
+<h3>Microdosing</h3>
+<p>Consuming very small amounts of cannabis to maintain focus and balance without heavy intoxication.</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Extraction Testing" id="micron-screens">
+<a class="anchor" href="#micron-screens">#</a>
+<h3>Micron Screens</h3>
+<p>Mesh bags measured in microns used to filter trichomes during bubble hash extraction.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="mother-plant">
+<a class="anchor" href="#mother-plant">#</a>
+<h3>Mother Plant</h3>
+<p>Healthy plant kept in vegetative stage to provide clones; ensures consistent genetics.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Terpene" id="myrcene">
+<a class="anchor" href="#myrcene">#</a>
+<h3>Myrcene</h3>
+<p>One of the most abundant cannabis terpenes; earthy, musky aroma with sedative “couch-lock” reputation.</p>
+<div class="chips"><span class="chip">Terpene</span></div>
+</article>
+</div>
+</section>
+<!-- ===== N ===== -->
+<section class="sec" id="N">
+<h2>N</h2>
+<div class="grid">
+<article class="term" data-tags="Extraction Product" id="nanoemulsion">
+<a class="anchor" href="#nanoemulsion">#</a>
+<h3>Nanoemulsion</h3>
+<p>Process breaking cannabinoids into microscopic droplets to increase absorption in beverages.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Consumption" id="nectar-collector">
+<a class="anchor" href="#nectar-collector">#</a>
+<h3>Nectar Collector</h3>
+<p>Handheld dabbing device with a heated tip, allowing direct inhalation of concentrates.</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Cultivation Product" id="nitrogen-flush">
+<a class="anchor" href="#nitrogen-flush">#</a>
+<h3>Nitrogen Flush</h3>
+<p>Packaging technique that replaces oxygen with nitrogen to preserve freshness of flower.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="node">
+<a class="anchor" href="#node">#</a>
+<h3>Node</h3>
+<p>Point on a cannabis stem where branches, leaves, or flowers emerge; used to judge plant maturity.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="nutrient-burn">
+<a class="anchor" href="#nutrient-burn">#</a>
+<h3>Nutrient Burn</h3>
+<p>Overfeeding plants with fertilizer, causing leaf tips to yellow/brown and curl.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation Product" id="nycd">
+<a class="anchor" href="#nycd">#</a>
+<h3>NYC Diesel</h3>
+<p>Legendary sativa-dominant strain with pungent fuel-citrus aroma and energetic effects.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+</div>
+</section>
+<!-- ===== O ===== -->
+<section class="sec" id="O">
+<h2>O</h2>
+<div class="grid">
+<article class="term" data-tags="Cultivation Product Slang" id="og-kush">
+<a class="anchor" href="#og-kush">#</a>
+<h3>OG Kush</h3>
+<p>One of the most iconic strains; gassy, earthy, pine aroma, backbone for countless hybrids.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="organic-grow">
+<a class="anchor" href="#organic-grow">#</a>
+<h3>Organic Growing</h3>
+<p>Cultivation method using natural soil amendments, compost teas, and microbes instead of synthetic fertilizers.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation Testing" id="osmosis">
+<a class="anchor" href="#osmosis">#</a>
+<h3>Osmosis</h3>
+<p>Movement of water across membranes; important for nutrient uptake in hydroponics.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Product Slang" id="ounce">
+<a class="anchor" href="#ounce">#</a>
+<h3>Ounce (28g)</h3>
+<p>Standard cannabis retail weight; 28 grams, often called a “zip.”</p>
+<div class="chips"><span class="chip">Product</span><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="overwatering">
+<a class="anchor" href="#overwatering">#</a>
+<h3>Overwatering</h3>
+<p>Common grow issue causing drooping, root rot, and slowed growth from lack of oxygen to roots.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+</div>
+</section>
+<!-- ===== P ===== -->
+<section class="sec" id="P">
+<h2>P</h2>
+<div class="grid">
+<article class="term" data-tags="Cultivation Testing" id="par">
+<a class="anchor" href="#par">#</a>
+<h3>PAR (Photosynthetically Active Radiation)</h3>
+<p>Light spectrum (400–700 nm) usable by plants; measured in PPFD for grow lights.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="pheno">
+<a class="anchor" href="#pheno">#</a>
+<h3>Phenotype</h3>
+<p>Observable traits of a cannabis plant (aroma, growth, potency) expressed from genotype + environment.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="phosphorus">
+<a class="anchor" href="#phosphorus">#</a>
+<h3>Phosphorus (P)</h3>
+<p>Macronutrient critical for flowering, root health, and energy transfer in plants.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="photosynthesis">
+<a class="anchor" href="#photosynthesis">#</a>
+<h3>Photosynthesis</h3>
+<p>Process by which plants convert light, water, and CO₂ into sugars for growth.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Testing" id="phyto">
+<a class="anchor" href="#phyto">#</a>
+<h3>Phytocannabinoids</h3>
+<p>Cannabinoids produced naturally in the cannabis plant (e.g., THC, CBD, CBG).</p>
+<div class="chips"><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Slang" id="pinner">
+<a class="anchor" href="#pinner">#</a>
+<h3>Pinner</h3>
+<p>Slang for a very thin, lightly packed joint.</p>
+<div class="chips"><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="plant-training">
+<a class="anchor" href="#plant-training">#</a>
+<h3>Plant Training</h3>
+<p>Grow techniques like topping, LST, SCROG used to manipulate canopy shape and boost yields.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Testing Cultivation" id="ppm">
+<a class="anchor" href="#ppm">#</a>
+<h3>PPM (Parts Per Million)</h3>
+<p>Unit for measuring nutrient concentration in water; helps calibrate feeding solutions.</p>
+<div class="chips"><span class="chip">Testing</span><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Product Consumption" id="pre-roll">
+<a class="anchor" href="#pre-roll">#</a>
+<h3>Pre-roll</h3>
+<p>Joint or blunt prepared in advance and sold ready to smoke; convenient retail option.</p>
+<div class="chips"><span class="chip">Product</span><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Product" id="preroll-pack">
+<a class="anchor" href="#preroll-pack">#</a>
+<h3>Pre-roll Pack</h3>
+<p>Package of multiple pre-rolled joints, often with strain labeling and COAs.</p>
+<div class="chips"><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="propagation">
+<a class="anchor" href="#propagation">#</a>
+<h3>Propagation</h3>
+<p>Process of starting new plants from seeds or clones.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid Testing" id="psychoactive">
+<a class="anchor" href="#psychoactive">#</a>
+<h3>Psychoactive</h3>
+<p>Describes cannabinoids (Δ9 THC, THCP) that alter perception, mood, and cognition.</p>
+<div class="chips"><span class="chip">Cannabinoid</span><span class="chip">Testing</span></div>
+</article>
+</div>
+</section>
+<!-- ===== Q ===== -->
+<section class="sec" id="Q">
+<h2>Q</h2>
+<div class="grid">
+<article class="term" data-tags="Extraction" id="qwet">
+<a class="anchor" href="#qwet">#</a>
+<h3>QWET (Quick Wash Ethanol)</h3>
+<p>Rapid ethanol extraction method that pulls cannabinoids and terpenes with minimal chlorophyll.</p>
+<div class="chips"><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Extraction" id="qwis">
+<a class="anchor" href="#qwis">#</a>
+<h3>QWISO (Quick Wash Isopropyl)</h3>
+<p>DIY concentrate extraction using isopropyl alcohol; requires full purge for safety.</p>
+<div class="chips"><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Consumption Product" id="quartz-banger">
+<a class="anchor" href="#quartz-banger">#</a>
+<h3>Quartz Banger</h3>
+<p>Durable quartz bucket used in dab rigs; retains heat well for low-temp dabbing.</p>
+<div class="chips"><span class="chip">Consumption</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Testing" id="quercetin">
+<a class="anchor" href="#quercetin">#</a>
+<h3>Quercetin</h3>
+<p>Plant flavonoid found in cannabis; contributes to pigmentation and antioxidant effects.</p>
+<div class="chips"><span class="chip">Testing</span></div>
+</article>
+</div>
+</section>
+<!-- ===== R ===== -->
+<section class="sec" id="R">
+<h2>R</h2>
+<div class="grid">
+<article class="term" data-tags="Slang Product" id="reclaim">
+<a class="anchor" href="#reclaim">#</a>
+<h3>Reclaim</h3>
+<p>Concentrate residue collected from rigs; reheated or repurposed, though less flavorful.</p>
+<div class="chips"><span class="chip">Slang</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid Testing" id="receptor">
+<a class="anchor" href="#receptor">#</a>
+<h3>Receptor</h3>
+<p>Protein on cell surfaces that cannabinoids bind to (e.g., CB1, CB2) to trigger effects.</p>
+<div class="chips"><span class="chip">Cannabinoid</span><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="resin">
+<a class="anchor" href="#resin">#</a>
+<h3>Resin</h3>
+<p>Sticky trichome secretions rich in cannabinoids and terpenes; source material for hash and concentrates.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Consumption Product" id="rig">
+<a class="anchor" href="#rig">#</a>
+<h3>Dab Rig</h3>
+<p>Glass water pipe designed for vaporizing cannabis concentrates using a banger or nail.</p>
+<div class="chips"><span class="chip">Consumption</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Slang Consumption" id="roach">
+<a class="anchor" href="#roach">#</a>
+<h3>Roach</h3>
+<p>The small unsmoked end of a joint or blunt; sometimes saved for later use.</p>
+<div class="chips"><span class="chip">Slang</span><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="rosin">
+<a class="anchor" href="#rosin">#</a>
+<h3>Rosin</h3>
+<p>Solventless concentrate made by pressing cannabis with heat and pressure; prized for purity.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="ruderalis">
+<a class="anchor" href="#ruderalis">#</a>
+<h3>Cannabis Ruderalis</h3>
+<p>Wild cannabis subspecies from Central Asia; source of auto-flowering genetics.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+</div>
+</section>
+<!-- ===== S ===== -->
+<section class="sec" id="S">
+<h2>S</h2>
+<div class="grid">
+<article class="term" data-tags="Cultivation Product" id="sativa">
+<a class="anchor" href="#sativa">#</a>
+<h3>Sativa</h3>
+<p>Cannabis subspecies known for tall growth, long flowering times, and uplifting effects.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="scrog">
+<a class="anchor" href="#scrog">#</a>
+<h3>SCROG (Screen of Green)</h3>
+<p>Training method using a screen to spread branches horizontally, increasing light penetration and yield.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Legal" id="seed-to-sale">
+<a class="anchor" href="#seed-to-sale">#</a>
+<h3>Seed-to-Sale Tracking</h3>
+<p>Compliance system that monitors cannabis from cultivation to retail sale.</p>
+<div class="chips"><span class="chip">Legal</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="shatter">
+<a class="anchor" href="#shatter">#</a>
+<h3>Shatter</h3>
+<p>Glass-like cannabis concentrate with brittle texture; made via hydrocarbon extraction.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation Product Slang" id="sherb">
+<a class="anchor" href="#sherb">#</a>
+<h3>Sherbert (Strain)</h3>
+<p>Hybrid strain from the Girl Scout Cookies lineage, known for dessert-like terpene profile.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Cultivation Product" id="slh">
+<a class="anchor" href="#slh">#</a>
+<h3>Super Lemon Haze</h3>
+<p>Award-winning sativa-dominant hybrid with citrus-forward terpene profile.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Slang" id="smoke-session">
+<a class="anchor" href="#smoke-session">#</a>
+<h3>Smoke Session</h3>
+<p>Slang for a group gathering to share cannabis smoking.</p>
+<div class="chips"><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Extraction" id="solventless">
+<a class="anchor" href="#solventless">#</a>
+<h3>Solventless Extraction</h3>
+<p>Method of producing concentrates without chemical solvents, e.g., rosin pressing.</p>
+<div class="chips"><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="sugar-wax">
+<a class="anchor" href="#sugar-wax">#</a>
+<h3>Sugar Wax</h3>
+<p>Concentrate with a crystallized, sugary texture and rich terpene content.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+</div>
+</section>
+<!-- ===== T ===== -->
+<section class="sec" id="T">
+<h2>T</h2>
+<div class="grid">
+<article class="term" data-tags="Terpene Testing" id="terpenes">
+<a class="anchor" href="#terpenes">#</a>
+<h3>Terpenes</h3>
+<p>Aromatic compounds giving cannabis strains unique flavors and effects; interact with cannabinoids in the entourage effect.</p>
+<div class="chips"><span class="chip">Terpene</span><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid Legal" id="thca">
+<a class="anchor" href="#thca">#</a>
+<h3>THCA</h3>
+<p>Acidic precursor to Δ9 THC; non-intoxicating until decarboxylated by heat, then psychoactive.</p>
+<div class="chips"><span class="chip">Cannabinoid</span><span class="chip">Legal</span></div>
+</article>
+<article class="term" data-tags="Cannabinoid" id="thcp">
+<a class="anchor" href="#thcp">#</a>
+<h3>THCP</h3>
+<p>Rare cannabinoid with stronger binding affinity to CB1 receptors than Δ9 THC; extremely potent.</p>
+<div class="chips"><span class="chip">Cannabinoid</span></div>
+</article>
+<article class="term" data-tags="Product Consumption" id="tincture">
+<a class="anchor" href="#tincture">#</a>
+<h3>Tincture</h3>
+<p>Liquid cannabis extract (often alcohol or MCT oil based) dosed under the tongue or in food.</p>
+<div class="chips"><span class="chip">Product</span><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Product Consumption" id="topical">
+<a class="anchor" href="#topical">#</a>
+<h3>Topical</h3>
+<p>Lotions, balms, or oils infused with cannabinoids; used externally for localized relief without intoxication.</p>
+<div class="chips"><span class="chip">Product</span><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Cultivation Testing" id="trichomes">
+<a class="anchor" href="#trichomes">#</a>
+<h3>Trichomes</h3>
+<p>Resin glands covering cannabis flowers/leaves; source of cannabinoids and terpenes.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Cultivation Product" id="trim">
+<a class="anchor" href="#trim">#</a>
+<h3>Trim</h3>
+<p>Leafy material trimmed from buds; often used for pre-rolls or extraction biomass.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Consumption Slang" id="tolerance-break">
+<a class="anchor" href="#tolerance-break">#</a>
+<h3>Tolerance Break (T-Break)</h3>
+<p>Intentional pause in cannabis use to reset the body’s cannabinoid receptor sensitivity.</p>
+<div class="chips"><span class="chip">Consumption</span><span class="chip">Slang</span></div>
+</article>
+</div>
+</section>
+<!-- ===== U ===== -->
+<section class="sec" id="U">
+<h2>U</h2>
+<div class="grid">
+<article class="term" data-tags="Testing" id="ubiquinol">
+<a class="anchor" href="#ubiquinol">#</a>
+<h3>Ubiquinol</h3>
+<p>Antioxidant sometimes measured in cannabis wellness products; not psychoactive.</p>
+<div class="chips"><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="ultraviolet">
+<a class="anchor" href="#ultraviolet">#</a>
+<h3>Ultraviolet Light</h3>
+<p>UV exposure can increase trichome density and cannabinoid production in flowering plants.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="uplighting">
+<a class="anchor" href="#uplighting">#</a>
+<h3>Uplighting</h3>
+<p>Supplemental lighting from beneath the canopy; helps reduce shadowing and boost lower bud growth.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+</div>
+</section>
+<!-- ===== V ===== -->
+<section class="sec" id="V">
+<h2>V</h2>
+<div class="grid">
+<article class="term" data-tags="Consumption Product" id="vaporizer">
+<a class="anchor" href="#vaporizer">#</a>
+<h3>Vaporizer</h3>
+<p>Device that heats cannabis flower or concentrates to release vapor without combustion.</p>
+<div class="chips"><span class="chip">Consumption</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Consumption" id="vaping">
+<a class="anchor" href="#vaping">#</a>
+<h3>Vaping</h3>
+<p>Inhaling vaporized cannabinoids using pens, pods, or desktop units; smoother than smoking.</p>
+<div class="chips"><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="veg">
+<a class="anchor" href="#veg">#</a>
+<h3>Vegetative Stage</h3>
+<p>Growth phase of cannabis plants before flowering; focused on leaves, stems, and root development.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+<article class="term" data-tags="Cultivation Testing" id="vpd">
+<a class="anchor" href="#vpd">#</a>
+<h3>VPD (Vapor Pressure Deficit)</h3>
+<p>Measure of humidity and temperature balance; critical for plant transpiration and growth rates.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Testing</span></div>
+</article>
+</div>
+</section>
+<!-- ===== W ===== -->
+<section class="sec" id="W">
+<h2>W</h2>
+<div class="grid">
+<article class="term" data-tags="Slang Consumption" id="wake-and-bake">
+<a class="anchor" href="#wake-and-bake">#</a>
+<h3>Wake and Bake</h3>
+<p>Slang for consuming cannabis immediately after waking up.</p>
+<div class="chips"><span class="chip">Slang</span><span class="chip">Consumption</span></div>
+</article>
+<article class="term" data-tags="Extraction" id="water-cure">
+<a class="anchor" href="#water-cure">#</a>
+<h3>Water Curing</h3>
+<p>Leaching chlorophyll and impurities from buds by soaking them in water during curing.</p>
+<div class="chips"><span class="chip">Extraction</span></div>
+</article>
+<article class="term" data-tags="Extraction Product" id="wax">
+<a class="anchor" href="#wax">#</a>
+<h3>Wax</h3>
+<p>Soft, opaque cannabis concentrate; similar to budder but usually denser.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Slang" id="weed">
+<a class="anchor" href="#weed">#</a>
+<h3>Weed</h3>
+<p>Most common slang for cannabis, used globally in casual contexts.</p>
+<div class="chips"><span class="chip">Slang</span></div>
+</article>
+<article class="term" data-tags="Extraction Testing" id="winterization">
+<a class="anchor" href="#winterization">#</a>
+<h3>Winterization</h3>
+<p>Process of removing fats, waxes, and lipids from cannabis extracts using cold ethanol.</p>
+<div class="chips"><span class="chip">Extraction</span><span class="chip">Testing</span></div>
+</article>
+</div>
+</section>
+<!-- ===== X ===== -->
+<section class="sec" id="X">
+<h2>X</h2>
+<div class="grid">
+<article class="term" data-tags="Cultivation Product" id="xanadu">
+<a class="anchor" href="#xanadu">#</a>
+<h3>Xanadu (Strain)</h3>
+<p>Sativa-dominant hybrid strain with tropical, fruity terpenes and energetic effects.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation" id="xylem">
+<a class="anchor" href="#xylem">#</a>
+<h3>Xylem</h3>
+<p>Plant tissue that transports water and nutrients from roots to shoots.</p>
+<div class="chips"><span class="chip">Cultivation</span></div>
+</article>
+</div>
+</section>
+<!-- ===== Y ===== -->
+<section class="sec" id="Y">
+<h2>Y</h2>
+<div class="grid">
+<article class="term" data-tags="Cultivation Testing" id="yield">
+<a class="anchor" href="#yield">#</a>
+<h3>Yield</h3>
+<p>Total harvest weight of cannabis per plant or per grow cycle; measured wet and dry.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Product Consumption" id="yocan">
+<a class="anchor" href="#yocan">#</a>
+<h3>Yocan</h3>
+<p>Brand of portable vaporizers and dab pens widely used for cannabis concentrates.</p>
+<div class="chips"><span class="chip">Product</span><span class="chip">Consumption</span></div>
+</article>
+</div>
+</section>
+<!-- ===== Z ===== -->
+<section class="sec" id="Z">
+<h2>Z</h2>
+<div class="grid">
+<article class="term" data-tags="Slang Product" id="zaza">
+<a class="anchor" href="#zaza">#</a>
+<h3>Zaza</h3>
+<p>Slang for exotic, high-quality cannabis strains with premium price tags.</p>
+<div class="chips"><span class="chip">Slang</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Testing" id="zeaxanthin">
+<a class="anchor" href="#zeaxanthin">#</a>
+<h3>Zeaxanthin</h3>
+<p>Carotenoid pigment found in cannabis; contributes to yellow-orange hues.</p>
+<div class="chips"><span class="chip">Testing</span></div>
+</article>
+<article class="term" data-tags="Slang Product" id="zip">
+<a class="anchor" href="#zip">#</a>
+<h3>Zip</h3>
+<p>Slang for an ounce (28 grams) of cannabis; often sold as a standard unit.</p>
+<div class="chips"><span class="chip">Slang</span><span class="chip">Product</span></div>
+</article>
+<article class="term" data-tags="Cultivation Product" id="zookies">
+<a class="anchor" href="#zookies">#</a>
+<h3>Zookies (Strain)</h3>
+<p>Hybrid cannabis cultivar known for balanced effects and sweet, cookie-like aroma.</p>
+<div class="chips"><span class="chip">Cultivation</span><span class="chip">Product</span></div>
+</article>
+</div>
+</section>
+<!-- ===== FOOTER ===== -->
+<div class="foot">
+<strong>Pro tip:</strong> To add terms, duplicate any <code><article class="term"></article></code>, give it a unique <code>id</code>, set <code>data-tags</code>, and drop it under the right A–Z section.
+      Keep definitions concise (1–2 sentences) for fast scanning and solid SEO.
+    </div>
+</div>
+<script>
+    // Simple client-side filtering by text + tag
+    const q = document.getElementById('search');
+    const tag = document.getElementById('tagFilter');
+    const terms = Array.from(document.querySelectorAll('.term'));
+    const countEl = document.getElementById('visibleCount');
+
+    function norm(s){ return s.toLowerCase().trim(); }
+
+    function applyFilter(){
+      const query = norm(q.value);
+      const tagVal = tag.value;
+      let visible = 0;
+      terms.forEach(el=>{
+        const txt = norm(el.innerText);
+        const tags = el.getAttribute('data-tags') || '';
+        const tagHit = !tagVal || tags.includes(tagVal);
+        const qHit = !query || txt.includes(query);
+        const show = tagHit && qHit;
+        el.classList.toggle('hide', !show);
+        if(show) visible++;
+      });
+      countEl.textContent = visible.toString();
+    }
+    q.addEventListener('input', applyFilter);
+    tag.addEventListener('change', applyFilter);
+    applyFilter();
+  </script>
+<script>window.__CF$cv$params={r:'a3556b0b0f914bcb',t:'MTc4ODQ0NTQ2Nw==',u:'01a067a825217141bab286a4f2f1e411',ut:'CdD9.KYg_YvzvQ1UgjBuzm6nL.EostdXLSTWQ2h79Zk-1788445467-1.2.1.1-qv7EgNaHblfUjExubTkuW_grgd4IoSGv_EAWirV2SIpm2WYxbmbQtjHGCah_aT1oOzmvlgFihFwhMnbIl2S.YB4sQmUPaUXRfCJKuvGDJv8',i:60};(function(){if(!document.body)return;var s=document.createElement('script');s.src='/cdn-cgi/challenge-platform/scripts/precursor/main.js';document.head.appendChild(s);})();</script><script src="../payment-config.js"></script><script src="../cart.js"></script></body>
+</html>
