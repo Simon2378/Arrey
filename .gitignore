@@ -4,5 +4,7 @@ __pycache__/
 site-backup/
 /cart_*.png
 /debug_screenshot.png
+/mobile_*.png
+/diag_out*.txt
 *.bundle
 .claude/

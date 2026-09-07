@@ -154,6 +154,22 @@ def strip_marketing_popups(soup: BeautifulSoup):
             script.decompose()
 
 
+def ensure_charset_meta(soup: BeautifulSoup):
+    """The original pages have NO <meta charset> tag at all -- the live site
+    declared UTF-8 via its HTTP Content-Type header instead, which our static
+    file server (and possibly the eventual host) doesn't replicate. Without
+    either signal, browsers guess the encoding and guess wrong, silently
+    mangling every curly quote/em-dash/emoji into mojibake (correctly-encoded
+    UTF-8 bytes displayed as if they were Windows-1252). Adding this tag is
+    the standard, host-independent fix -- it doesn't depend on any server
+    header being set correctly."""
+    head = soup.find("head")
+    if head is None or head.find("meta", charset=True):
+        return
+    meta = soup.new_tag("meta", charset="utf-8")
+    head.insert(0, meta)
+
+
 PAYMENT_BADGES = [
     ("bitcoin", "Bitcoin"),
     ("cashapp", "Cash App"),
@@ -210,6 +226,7 @@ def process_page(page_url: str, local_html_path: str, new_rel: str, url_map: dic
     with open(local_html_path, "rb") as f:
         soup = BeautifulSoup(f.read(), "lxml")
 
+    ensure_charset_meta(soup)
     strip_login_register(soup)
     strip_coupon_badges(soup)
     strip_marketing_popups(soup)

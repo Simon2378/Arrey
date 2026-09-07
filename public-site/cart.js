@@ -156,6 +156,24 @@
     renderCart();
   }
 
+  // There's no automated order confirmation on a static site -- this note
+  // (shown under whichever payment method is selected) is how an order
+  // actually gets completed: the customer emails proof of payment.
+  function renderProofNote() {
+    var email = window.PAYMENT_PROOF_EMAIL;
+    if (email) {
+      var subject = encodeURIComponent("Payment confirmation - order screenshot");
+      return (
+        '<div class="txcc-proof-note">' +
+          "After sending payment, email a screenshot of your payment confirmation to " +
+          '<a href="mailto:' + escapeHtml(email) + "?subject=" + subject + '">' + escapeHtml(email) + "</a>" +
+          " so we can complete your order." +
+        "</div>"
+      );
+    }
+    return '<div class="txcc-proof-note">After sending payment, email us a screenshot of your payment confirmation to complete your order (email coming soon).</div>';
+  }
+
   function renderCart() {
     var container = getCartPageContainer();
     if (!container) return; // not on the cart page -- nothing to render into
@@ -235,7 +253,8 @@
       paymentSection =
         '<div class="txcc-payment-label">Pay with</div>' +
         '<div class="txcc-payment-buttons">' + methodButtons + "</div>" +
-        methodDetail;
+        methodDetail +
+        (activeMethod ? renderProofNote() : "");
     }
 
     container.innerHTML =

@@ -235,6 +235,22 @@
   background: #444;
 }
 
+.txcc-proof-note {
+  margin-top: 0.625rem;
+  padding: 0.625rem;
+  background: #eef7ff;
+  border: 1px solid #b8dcff;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #1a4d80;
+  line-height: 1.4;
+}
+
+.txcc-proof-note a {
+  color: #0b5fad;
+  font-weight: 600;
+}
+
 /* Footer payment badges (Bitcoin / Cash App / Chime) replacing card-network icons */
 .footer-payment-icons {
   display: flex;

@@ -2,6 +2,12 @@
 // this -- the cart panel shows how much more they need to add instead.
 window.MINIMUM_ORDER_TOTAL = 100;
 
+// Shown under every payment method once selected: there's no automated order
+// confirmation, so this email address is how an order actually gets
+// completed -- the customer sends proof of payment here. Leave "" until you
+// give me the real address -- shows a "coming soon" placeholder until then.
+window.PAYMENT_PROOF_EMAIL = "";
+
 // Edit this file to add real payment details, then re-run build_public_site.py.
 //
 // Two kinds of entries:
