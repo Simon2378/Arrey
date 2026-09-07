@@ -244,11 +244,37 @@
   font-size: 0.75rem;
   color: #1a4d80;
   line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
 }
 
-.txcc-proof-note a {
-  color: #0b5fad;
-  font-weight: 600;
+.txcc-info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #0b5fad;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.txcc-info-btn:hover {
+  background: #084a87;
+}
+
+.txcc-info-btn--disabled {
+  background: #a8b8c7;
+  cursor: not-allowed;
 }
 
 /* Footer payment badges (Bitcoin / Cash App / Chime) replacing card-network icons */

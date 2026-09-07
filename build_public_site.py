@@ -154,6 +154,15 @@ def strip_marketing_popups(soup: BeautifulSoup):
             script.decompose()
 
 
+def strip_live_chat_banner(soup: BeautifulSoup):
+    """The 'Questions? Click here to start a live chat' banner links out to
+    a LiveChat.com account tied to the original business -- not something we
+    control or know is still active. Remove it; the payment-proof-by-email
+    flow is the actual support channel now."""
+    for a in soup.find_all("a", href=lambda h: h and "direct.lc.chat" in h):
+        a.decompose()
+
+
 def ensure_charset_meta(soup: BeautifulSoup):
     """The original pages have NO <meta charset> tag at all -- the live site
     declared UTF-8 via its HTTP Content-Type header instead, which our static
@@ -230,6 +239,7 @@ def process_page(page_url: str, local_html_path: str, new_rel: str, url_map: dic
     strip_login_register(soup)
     strip_coupon_badges(soup)
     strip_marketing_popups(soup)
+    strip_live_chat_banner(soup)
     strip_theme_cart_preview_hook(soup)
     fix_cart_link(soup)
     replace_payment_icons(soup)

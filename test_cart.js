@@ -118,6 +118,20 @@ assert(activeBtn && activeBtn.textContent.trim() === "USDT (ERC20)", "clicking U
 let detail = cartContainer.querySelector(".txcc-payment-detail");
 assert(detail.textContent.includes("0xf28d892f4c955bb26622486afb61660dda242ca0"), "USDT address shown, got: " + detail.textContent);
 
+// payment-proof note + "i" button: disabled placeholder state (no email set yet)
+let infoBtn = cartContainer.querySelector(".txcc-info-btn");
+assert(!!infoBtn, "info button renders under the proof note");
+assert(infoBtn.tagName === "SPAN" && infoBtn.classList.contains("txcc-info-btn--disabled"), "info button is disabled (a <span>, not a link) when no proof email is set yet");
+assert(cartContainer.querySelector(".txcc-proof-note").textContent.includes("screenshot"), "proof note mentions sending a screenshot");
+
+// simulate the real email being set, then re-click USDT (click handler always re-renders)
+win2.PAYMENT_PROOF_EMAIL = "orders@example.com";
+Array.from(cartContainer.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "USDT (ERC20)").dispatchEvent(new win2.Event("click", { bubbles: true }));
+cartContainer = doc2.getElementById("cart-page-content");
+infoBtn = cartContainer.querySelector(".txcc-info-btn");
+assert(infoBtn.tagName === "A", "info button becomes a real link once the proof email is set");
+assert(infoBtn.getAttribute("href").startsWith("mailto:orders@example.com"), "info button links to the configured email, got: " + infoBtn.getAttribute("href"));
+
 let copiedText = null;
 win2.navigator.clipboard = {
   writeText: function (text) {

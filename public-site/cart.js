@@ -158,20 +158,21 @@
 
   // There's no automated order confirmation on a static site -- this note
   // (shown under whichever payment method is selected) is how an order
-  // actually gets completed: the customer emails proof of payment.
+  // actually gets completed: the customer emails proof of payment. The "i"
+  // button opens the customer's mail client directly (mailto:) rather than
+  // making them find/click the email address itself.
   function renderProofNote() {
     var email = window.PAYMENT_PROOF_EMAIL;
-    if (email) {
-      var subject = encodeURIComponent("Payment confirmation - order screenshot");
-      return (
-        '<div class="txcc-proof-note">' +
-          "After sending payment, email a screenshot of your payment confirmation to " +
-          '<a href="mailto:' + escapeHtml(email) + "?subject=" + subject + '">' + escapeHtml(email) + "</a>" +
-          " so we can complete your order." +
-        "</div>"
-      );
-    }
-    return '<div class="txcc-proof-note">After sending payment, email us a screenshot of your payment confirmation to complete your order (email coming soon).</div>';
+    var button = email
+      ? '<a class="txcc-info-btn" href="mailto:' + escapeHtml(email) + "?subject=" + encodeURIComponent("Payment confirmation - order screenshot") + '" aria-label="Email us your payment screenshot" title="Email us your payment screenshot">i</a>'
+      : '<span class="txcc-info-btn txcc-info-btn--disabled" aria-label="Email coming soon" title="Email coming soon">i</span>';
+
+    return (
+      '<div class="txcc-proof-note">' +
+        "<div>Send us a screenshot of your payment to complete your order.</div>" +
+        button +
+      "</div>"
+    );
   }
 
   function renderCart() {
