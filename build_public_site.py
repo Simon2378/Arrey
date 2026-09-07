@@ -101,6 +101,25 @@ def strip_theme_cart_preview_hook(soup: BeautifulSoup):
         del tag["data-cart-preview"]
 
 
+def fix_cart_link(soup: BeautifulSoup):
+    """The cart icon's href still points at the dead
+    https://txcannabiscompany.com/cart.php. Point it at our own dedicated
+    /cart/ page instead -- a plain link (no click interception needed) since
+    every device just navigates there, rather than a dropdown anchored to
+    the header, which doesn't work well on mobile.
+
+    data-dropdown/data-options are the theme's own *generic* dropdown-toggle
+    hook (the same mechanism behind Recently Viewed, the account menu, etc.)
+    -- it calls preventDefault() on any click on an element carrying
+    data-dropdown regardless of href, which silently blocked navigation
+    here. Strip them so the click just follows the link normally."""
+    for a in soup.find_all("a", class_="navUser-action--cart"):
+        a["href"] = "/cart/"
+        for attr in ("data-dropdown", "data-options"):
+            if a.has_attr(attr):
+                del a[attr]
+
+
 def strip_login_register(soup: BeautifulSoup):
     login_anchors = soup.find_all("a", href=lambda h: h and "login.php" in h)
     seen_li = set()
@@ -195,6 +214,7 @@ def process_page(page_url: str, local_html_path: str, new_rel: str, url_map: dic
     strip_coupon_badges(soup)
     strip_marketing_popups(soup)
     strip_theme_cart_preview_hook(soup)
+    fix_cart_link(soup)
     replace_payment_icons(soup)
 
     for tag_name, attrs in REWRITE_ATTRS.items():
@@ -238,6 +258,43 @@ def copy_assets():
 def copy_custom_assets():
     for fname in CUSTOM_ASSET_FILES:
         shutil.copyfile(os.path.join(CUSTOM_ASSETS_DIR, fname), os.path.join(OUT_DIR, fname))
+
+
+def build_cart_page():
+    """Builds public-site/cart/index.html -- a dedicated cart page that
+    cart.js renders into (#cart-page-content), replacing the old dropdown
+    panel approach (awkward on mobile). Uses contact-us/index.html as a
+    template purely because it's already-built, has a simple single-column
+    layout, and sits at the same directory depth (one level deep) as
+    cart/index.html will -- so every relative asset/nav link in its
+    header and footer already resolves correctly with no path adjustment."""
+    template_path = os.path.join(OUT_DIR, "contact-us", "index.html")
+    with open(template_path, "rb") as f:
+        soup = BeautifulSoup(f.read(), "lxml")
+
+    title_tag = soup.find("title")
+    if title_tag:
+        title_tag.string = "Your Cart - Texas Cannabis Company"
+
+    main_tag = soup.find("main", class_="page")
+    if main_tag is None:
+        raise RuntimeError("build_cart_page: couldn't find <main class=\"page\"> in the template")
+
+    main_tag.clear()
+    main_tag["class"] = "page"
+    content = BeautifulSoup(
+        '<div class="page-content" style="max-width:640px;margin:0 auto;padding:2rem 1rem;width:100%;">'
+        '<h1 class="page-heading">Your Cart</h1>'
+        '<div id="cart-page-content"></div>'
+        "</div>",
+        "lxml",
+    )
+    main_tag.append(content.find("div", class_="page-content"))
+
+    out_path = os.path.join(OUT_DIR, "cart", "index.html")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(str(soup))
 
 
 def write_readme(manifest: dict):
@@ -297,6 +354,7 @@ def main():
 
     copy_assets()
     copy_custom_assets()
+    build_cart_page()
     write_readme(manifest)
 
     # Post-build patches for known-dead source content (confirmed 404 on the

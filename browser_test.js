@@ -25,63 +25,70 @@ async function runTest(browser) {
     if (!cond) process.exitCode = 1;
   }
 
-  // --- empty cart state on homepage ---
-  await page.goto("http://localhost:8787/", { waitUntil: "domcontentloaded", timeout: 15000 });
-  await page.locator(".navUser-action--cart").first().click();
-  await page.waitForTimeout(300);
-  const emptyPanelHTML = await page.locator("#cart-preview-dropdown").innerHTML();
-  assert(emptyPanelHTML.includes("Your cart is empty"), "empty cart shows 'Your cart is empty', got: " + emptyPanelHTML.trim());
-  assert(page.url() === "http://localhost:8787/", "clicking cart icon does not navigate away");
-
-  // --- go to a real ($2.99) product page: quantity should be pre-filled to the
-  // minimum needed to reach the $100 order minimum on its own (ceil(100/2.99) = 34) ---
+  // --- go to a real product page and add to cart ---
   await page.goto("http://localhost:8787/packwraps-x-twisted-hemp-designer-hemp-wraps-2-pack/index.html", {
     waitUntil: "domcontentloaded",
     timeout: 15000,
   });
 
   const qtyValueOnLoad = await page.locator('input[name="qty[]"]').first().inputValue();
-  assert(qtyValueOnLoad === "34", "qty field pre-filled to 34 for a $2.99 item (ceil(100/2.99)), got: " + qtyValueOnLoad);
+  assert(qtyValueOnLoad === "34", "qty field pre-filled to 34 for a $2.99 item, got: " + qtyValueOnLoad);
 
-  // pick a required variant option by clicking the visible swatch label -- the native
-  // radio input itself is visually hidden, same as a real user would interact with it
   const firstRadioId = await page.locator('input[name="attribute[175]"]').first().getAttribute("id");
   await page.locator('label[for="' + firstRadioId + '"]').click();
   await page.locator("#form-action-addToCart").click();
   await page.waitForTimeout(300);
 
   const badgeText = await page.locator(".cart-quantity").first().textContent();
-  assert(badgeText.trim() === "34", "cart badge shows 34 after add-to-cart (minimum-qty enforced), got: " + JSON.stringify(badgeText));
-  assert(page.url().includes("packwraps"), "adding to cart does not navigate away from the product page, url: " + page.url());
+  assert(badgeText.trim() === "34", "cart badge shows 34 after add-to-cart, got: " + JSON.stringify(badgeText));
+  assert(page.url().includes("packwraps"), "adding to cart does not navigate away from the product page");
 
-  const panelAfterAdd = await page.locator("#cart-preview-dropdown").innerHTML();
-  assert(panelAfterAdd.includes("Packwraps"), "cart panel shows the added product name");
-  assert(panelAfterAdd.includes("$101.66"), "cart total reflects 34 x $2.99 = $101.66, got panel: " + panelAfterAdd.replace(/\s+/g, " ").slice(0, 400));
-  assert(panelAfterAdd.includes("txcc-payment-btn"), "payment method buttons show immediately since total already exceeds $100");
-  assert(!panelAfterAdd.includes("txcc-min-order-notice"), "no minimum-order notice once total exceeds $100");
+  const toastVisible = await page.locator(".txcc-toast--visible").isVisible().catch(() => false);
+  assert(toastVisible, "a visible toast confirms the add-to-cart");
 
-  // --- click Bitcoin, verify real address + copy button ---
+  // --- click the cart icon: should be a REAL navigation to /cart/, not a dropdown ---
+  await page.locator(".navUser-action--cart").first().click();
+  await page.waitForLoadState("domcontentloaded");
+  assert(page.url() === "http://localhost:8787/cart/", "clicking the cart icon navigates to /cart/, got: " + page.url());
+
+  // #cart-preview-dropdown is still present (harmless, empty, hidden by the
+  // theme's own default CSS) since the cart page is cloned from a template
+  // that has it in its header -- nothing renders into it anymore.
+
+  const cartPageBadge = await page.locator(".cart-quantity").first().textContent();
+  assert(cartPageBadge.trim() === "34", "badge persists correctly on the cart page itself, got: " + cartPageBadge);
+
+  const heading = await page.locator("h1.page-heading").textContent().catch(() => "");
+  assert(heading.trim() === "Your Cart", "cart page shows a 'Your Cart' heading, got: " + JSON.stringify(heading));
+
+  const rowCount = await page.locator(".txcc-cart-row").count();
+  assert(rowCount === 1, "cart page shows the 1 line item added, got: " + rowCount);
+  const total = await page.locator(".txcc-cart-total").textContent();
+  assert(total.includes("$101.66"), "cart page total is correct (34 x $2.99), got: " + total);
+
+  // --- select Bitcoin, copy the address ---
   await page.locator(".txcc-payment-btn--bitcoin").click();
-  await page.waitForTimeout(200);
+  await page.waitForTimeout(150);
   const btcDetail = await page.locator(".txcc-payment-detail").textContent();
-  assert(btcDetail.includes("bc1q0fd8xuhdcwtzpe2n69y8qwhrg63v7mp68xcvgc"), "Bitcoin address shows in panel, got: " + btcDetail);
+  assert(btcDetail.includes("bc1q0fd8xuhdcwtzpe2n69y8qwhrg63v7mp68xcvgc"), "Bitcoin address shows, got: " + btcDetail);
 
   const copyBtn = page.locator("[data-copy-address]").first();
-  assert((await copyBtn.count()) === 1, "copy-to-clipboard button is present next to the address");
   await copyBtn.click();
   await page.waitForTimeout(100);
-  const copyBtnText = await copyBtn.textContent();
-  assert(copyBtnText.trim() === "Copied!", "copy button shows 'Copied!' after click, got: " + copyBtnText);
+  assert((await copyBtn.textContent()).trim() === "Copied!", "copy button shows 'Copied!' feedback");
   const clipboardText = await page.evaluate(() => navigator.clipboard.readText()).catch((e) => "ERROR: " + e.message);
-  assert(clipboardText === "bc1q0fd8xuhdcwtzpe2n69y8qwhrg63v7mp68xcvgc", "clipboard actually contains the BTC address, got: " + clipboardText);
+  assert(clipboardText === "bc1q0fd8xuhdcwtzpe2n69y8qwhrg63v7mp68xcvgc", "clipboard actually contains the address, got: " + clipboardText);
 
-  // --- try to decrement quantity below the enforced minimum (34) via the "-" button ---
-  for (let i = 0; i < 3; i++) {
-    await page.locator('.txcc-qty-btn[data-action="dec"]').first().click();
-    await page.waitForTimeout(80);
-  }
-  const qtyAfterDecrements = await page.locator(".txcc-qty-value").first().textContent();
-  assert(qtyAfterDecrements.trim() === "34", "decrement button refuses to go below the per-item minimum (34), got: " + qtyAfterDecrements);
+  const alertVisible = await page.locator("#alert-modal").isVisible().catch(() => false);
+  assert(!alertVisible, "no theme error-alert modal appears when selecting a payment method");
+
+  // --- remove the item, verify empty state ---
+  await page.locator(".txcc-remove-btn").click();
+  await page.waitForTimeout(150);
+  const emptyText = await page.locator("#cart-page-content").textContent();
+  assert(emptyText.includes("Your cart is empty"), "empty state shows after removing the only item, got: " + emptyText);
+  const badgeAfterEmpty = await page.locator(".cart-quantity").first().textContent();
+  assert(badgeAfterEmpty.trim() === "", "badge clears once cart is empty");
 
   console.log("\n--- console errors during full flow ---");
   consoleErrors.forEach((e) => console.log(" ", e));

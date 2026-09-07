@@ -1,7 +1,10 @@
 // Client-side cart for the static export. There is no backend (BigCommerce's
 // real cart.php isn't reachable from here), so this stores the cart in the
-// browser's localStorage and renders it into the existing header cart-preview
-// dropdown that the theme already ships (#cart-preview-dropdown).
+// browser's localStorage. The cart icon in the header is a plain link to
+// /cart/ -- a dedicated page (built at public-site/cart/index.html) that
+// renders the full cart into #cart-page-content. No dropdown: a small
+// anchored panel doesn't work well on mobile, so every device just
+// navigates to the cart page like a normal link.
 (function () {
   "use strict";
 
@@ -54,16 +57,60 @@
     });
   }
 
+  var badgeObserver = null;
+
+  // The original theme JS also tries to sync this same .cart-quantity badge
+  // from a live cart-count API call that has nothing to reach here, and
+  // overwrites it with a hardcoded "0" once that (failing) call resolves --
+  // happens fast enough that even an immediate post-render check can catch
+  // the correct value only to have it clobbered moments later. Rather than
+  // guess at timing, watch the element and re-assert our own value whenever
+  // anything else changes it (same approach as keepAddToCartEnabled below).
   function renderBadge(items) {
     var pill = document.querySelector(".cart-quantity");
     if (!pill) return;
     var count = cartCount(items);
     pill.textContent = count > 0 ? String(count) : "";
     pill.classList.toggle("countPill--positive", count > 0);
+
+    if (!badgeObserver) {
+      badgeObserver = new MutationObserver(function () {
+        var currentCount = cartCount(loadCart());
+        var expectedText = currentCount > 0 ? String(currentCount) : "";
+        var expectedPositive = currentCount > 0;
+        if (pill.textContent === expectedText && pill.classList.contains("countPill--positive") === expectedPositive) {
+          return; // already correct -- this mutation was our own last correction
+        }
+        badgeObserver.disconnect();
+        pill.textContent = expectedText;
+        pill.classList.toggle("countPill--positive", expectedPositive);
+        badgeObserver.observe(pill, { childList: true, characterData: true, subtree: true });
+      });
+      badgeObserver.observe(pill, { childList: true, characterData: true, subtree: true });
+    }
   }
 
-  function getPanel() {
-    return document.getElementById("cart-preview-dropdown");
+  function getCartPageContainer() {
+    return document.getElementById("cart-page-content");
+  }
+
+  function showToast(message) {
+    var existing = document.querySelector(".txcc-toast");
+    if (existing) existing.remove();
+
+    var toast = document.createElement("div");
+    toast.className = "txcc-toast";
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    // force layout so the transition actually runs
+    void toast.offsetWidth;
+    toast.classList.add("txcc-toast--visible");
+
+    setTimeout(function () {
+      toast.classList.remove("txcc-toast--visible");
+      setTimeout(function () { toast.remove(); }, 300);
+    }, 2200);
   }
 
   function addToCart(item) {
@@ -77,8 +124,8 @@
       items.push(item);
     }
     saveCart(items);
-    renderPanel();
-    openPanel();
+    renderCart();
+    showToast("Added to cart: " + item.name + (item.variant ? " (" + item.variant + ")" : ""));
   }
 
   function removeFromCart(id, variant) {
@@ -86,7 +133,7 @@
       return !(i.id === id && i.variant === variant);
     });
     saveCart(items);
-    renderPanel();
+    renderCart();
   }
 
   function changeQty(id, variant, delta) {
@@ -106,18 +153,19 @@
       items = items.filter(function (i) { return i !== item; });
     }
     saveCart(items);
-    renderPanel();
+    renderCart();
   }
 
-  function renderPanel() {
-    var panel = getPanel();
-    if (!panel) return;
+  function renderCart() {
+    var container = getCartPageContainer();
+    if (!container) return; // not on the cart page -- nothing to render into
+
     var items = loadCart();
     var methods = window.PAYMENT_METHODS || [];
-    var selected = panel.getAttribute("data-selected-method") || (methods[0] && methods[0].id) || "";
+    var selected = container.getAttribute("data-selected-method") || (methods[0] && methods[0].id) || "";
 
     if (items.length === 0) {
-      panel.innerHTML = '<div class="txcc-cart-empty">Your cart is empty.</div>';
+      container.innerHTML = '<div class="txcc-cart-empty">Your cart is empty. <a href="/all-products/">Continue shopping</a></div>';
       return;
     }
 
@@ -190,39 +238,14 @@
         methodDetail;
     }
 
-    panel.innerHTML =
-      '<div class="txcc-cart-panel">' +
+    container.innerHTML =
+      '<div class="txcc-cart-page">' +
         '<div class="txcc-cart-items">' + rows + "</div>" +
         '<div class="txcc-cart-total">Total: <strong>' + money(total) + "</strong></div>" +
         '<div class="txcc-payment-methods">' + paymentSection + "</div>" +
       "</div>";
 
-    panel.setAttribute("data-selected-method", selected);
-  }
-
-  function openPanel() {
-    var panel = getPanel();
-    var cartLink = document.querySelector(".navUser-action--cart");
-    if (!panel || !cartLink) return;
-    panel.classList.add("open", "is-open");
-    panel.setAttribute("aria-hidden", "false");
-    cartLink.setAttribute("aria-expanded", "true");
-  }
-
-  function closePanel() {
-    var panel = getPanel();
-    var cartLink = document.querySelector(".navUser-action--cart");
-    if (!panel || !cartLink) return;
-    panel.classList.remove("open", "is-open");
-    panel.setAttribute("aria-hidden", "true");
-    cartLink.setAttribute("aria-expanded", "false");
-  }
-
-  function togglePanel() {
-    var panel = getPanel();
-    if (!panel) return;
-    if (panel.classList.contains("open")) closePanel();
-    else openPanel();
+    container.setAttribute("data-selected-method", selected);
   }
 
   function collectVariant(form) {
@@ -302,9 +325,12 @@
     });
   }
 
-  function handlePanelClick(event) {
+  function handleCartActionClick(event) {
+    var container = getCartPageContainer();
+    if (!container) return;
+
     var actionBtn = event.target.closest("[data-action]");
-    if (actionBtn && getPanel() && getPanel().contains(actionBtn)) {
+    if (actionBtn && container.contains(actionBtn)) {
       var row = actionBtn.closest(".txcc-cart-row");
       if (!row) return;
       var id = row.getAttribute("data-id");
@@ -317,14 +343,14 @@
     }
 
     var methodBtn = event.target.closest(".txcc-payment-btn");
-    if (methodBtn && getPanel() && getPanel().contains(methodBtn)) {
-      getPanel().setAttribute("data-selected-method", methodBtn.getAttribute("data-method"));
-      renderPanel();
+    if (methodBtn && container.contains(methodBtn)) {
+      container.setAttribute("data-selected-method", methodBtn.getAttribute("data-method"));
+      renderCart();
       return;
     }
 
     var copyBtn = event.target.closest("[data-copy-address]");
-    if (copyBtn && getPanel() && getPanel().contains(copyBtn)) {
+    if (copyBtn && container.contains(copyBtn)) {
       var address = copyBtn.getAttribute("data-copy-address");
       copyToClipboard(address, copyBtn);
     }
@@ -367,30 +393,6 @@
     document.body.removeChild(textarea);
   }
 
-  function handleDocumentClick(event) {
-    var panel = getPanel();
-    var cartLink = document.querySelector(".navUser-action--cart");
-    if (!panel || !cartLink) return;
-
-    // Use composedPath() rather than testing event.target against the current
-    // DOM: handlePanelClick (registered before this listener) may have already
-    // called renderPanel() and replaced the clicked element's node, leaving
-    // event.target detached. panel.contains(event.target) would then wrongly
-    // say "outside" and close the panel right after opening/updating it.
-    // composedPath() is captured at dispatch time, before any handler mutates
-    // the DOM, so it still reflects the real ancestry of the original click.
-    var path = event.composedPath ? event.composedPath() : [event.target];
-
-    if (path.indexOf(cartLink) !== -1) {
-      event.preventDefault();
-      togglePanel();
-      return;
-    }
-    if (path.indexOf(panel) === -1) {
-      closePanel();
-    }
-  }
-
   // The original BigCommerce theme JS (theme-bundle.main.js, still loaded from
   // the live CDN) disables the Add to Cart button pending a live stock/price
   // check API call. That call has nothing to reach on a static export, so the
@@ -407,14 +409,13 @@
   }
 
   document.addEventListener("submit", handleAddToCartSubmit, true);
-  document.addEventListener("click", handlePanelClick);
-  document.addEventListener("click", handleDocumentClick);
+  document.addEventListener("click", handleCartActionClick);
 
   keepAddToCartEnabled();
 
   document.addEventListener("DOMContentLoaded", function () {
     renderBadge(loadCart());
-    renderPanel();
+    renderCart();
     keepAddToCartEnabled();
     applyMinQtyToProductPages();
   });

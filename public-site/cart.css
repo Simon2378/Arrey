@@ -17,25 +17,25 @@
   pointer-events: none !important;
 }
 
-/* Cart preview panel */
-#cart-preview-dropdown {
-  max-width: 340px;
-  width: 340px;
-  padding: 0;
-  right: 0;
-  left: auto;
-}
-
-.txcc-cart-panel {
-  padding: 0.75rem;
-  max-height: 420px;
-  overflow-y: auto;
+/* Cart page (/cart/) -- the header cart icon is a plain link here, no
+   dropdown. A small anchored panel doesn't work well on mobile, so the cart
+   always opens as its own full page instead. */
+.txcc-cart-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1rem 0;
 }
 
 .txcc-cart-empty {
-  padding: 1.5rem 1rem;
+  padding: 3rem 1rem;
   text-align: center;
   color: #666;
+  font-size: 1rem;
+}
+
+.txcc-cart-empty a {
+  color: #222;
+  font-weight: 600;
 }
 
 .txcc-cart-items {
@@ -54,10 +54,10 @@
 }
 
 .txcc-cart-row-img {
-  width: 48px;
-  height: 48px;
+  width: 72px;
+  height: 72px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 6px;
   flex: 0 0 auto;
 }
 
@@ -260,3 +260,29 @@
 .footer-payment-badge--cashapp { background: #00d632; }
 .footer-payment-badge--chime { background: #1ee0ac; color: #063; }
 .footer-payment-badge--usdt { background: #26a17b; }
+
+/* "Added to cart" toast (shown after Add to Cart, since there's no dropdown
+   to pop open and confirm it anymore -- the cart icon just links to /cart/) */
+.txcc-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translate(-50%, 12px);
+  background: #222;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 9999;
+  max-width: 90vw;
+  text-align: center;
+}
+
+.txcc-toast--visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
