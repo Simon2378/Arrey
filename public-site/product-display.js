@@ -28,7 +28,7 @@
   }
 
   function productImageSrc(p) {
-    return p.image ? rootRelative(p.image) : rootRelative("assets/placeholder-product.svg");
+    return p.image ? rootRelative(p.image) : rootRelative("placeholder-product.svg");
   }
 
   function cardHtml(p) {
