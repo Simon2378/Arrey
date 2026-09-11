@@ -142,9 +142,18 @@
         return;
       }
       var slug = currentCategorySlug();
-      var matching = slug === "all-products"
-        ? products
-        : products.filter(function (p) { return p.category === slug; });
+      var matching;
+      if (slug === "all-products") {
+        matching = products;
+      } else {
+        // an exact match ("concentrates/live-rosin") is a specific
+        // subcategory; a parent page ("concentrates") should show every
+        // product from all of its subcategories too, not just ones
+        // categorized as the bare parent (which none are, in practice).
+        matching = products.filter(function (p) {
+          return p.category === slug || p.category.indexOf(slug + "/") === 0;
+        });
+      }
       injectIntoListing(matching);
     });
   });

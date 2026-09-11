@@ -176,6 +176,22 @@ function loadAdminPage(cartStore) {
   assert(dom.window.document.body.textContent.indexOf("Test Shatter 1g") !== -1, "injected card shows the matching product's name");
   assert(dom.window.document.body.textContent.indexOf("Test Gummies") === -1, "non-matching category's product is NOT injected here");
 
+  // 2a2. the top-level parent page ("concentrates") should show every
+  // product from ALL of its subcategories (e.g. concentrates/shatter),
+  // not just ones exactly categorized as the bare parent
+  const parentPageHtml =
+    '<html><body><div id="product-listing-container"><p>There are no products listed under this category.</p></div>' +
+    '<script src="../product-display.js"></script></body></html>';
+  let parentDom = new JSDOM(parentPageHtml, { url: "http://localhost:8787/concentrates/", runScripts: "outside-only" });
+  parentDom.window.fetch = mockProductsFetch;
+  parentDom.window.eval(fs.readFileSync(path.join(SITE, "product-display.js"), "utf-8"));
+  await new Promise((r) => setTimeout(r, 30));
+
+  const parentCards = parentDom.window.document.querySelectorAll(".product");
+  assert(parentCards.length === 1, "parent /concentrates/ page shows the subcategory product, got " + parentCards.length);
+  assert(parentDom.window.document.body.textContent.indexOf("Test Shatter 1g") !== -1, "parent page shows the concentrates/shatter product");
+  assert(parentDom.window.document.body.textContent.indexOf("Test Gummies") === -1, "parent /concentrates/ page still excludes an unrelated category's product");
+
   // 2b. all-products page shows every admin product regardless of category
   const allProductsHtml =
     '<html><body><ul class="productGrid"><li class="product">existing scraped item</li></ul>' +
