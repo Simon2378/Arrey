@@ -1060,5 +1060,275 @@
     "description": "Punch · Reg. $69.00",
     "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013026-0",
+    "name": "Gmo Garlic Cookies 14g",
+    "price": 46.5,
+    "category": "thca-flower",
+    "description": "Coastal Sun · Indica · Reg. $62.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.026Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013248-1",
+    "name": "Gmo Garlic Cookies 3.5g",
+    "price": 16.5,
+    "category": "thca-flower",
+    "description": "Coastal Sun · Indica · Reg. $22.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.248Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013248-2",
+    "name": "Hash Burger 14g",
+    "price": 46.5,
+    "category": "thca-flower",
+    "description": "Coastal Sun · Hybrid · Reg. $62.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.248Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013248-3",
+    "name": "Chem Kardashian 3.5g",
+    "price": 16.5,
+    "category": "thca-flower",
+    "description": "Coastal Sun · Sativa · Reg. $22.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.248Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013248-4",
+    "name": "Garlic Ghost 3.5g",
+    "price": 28.7,
+    "category": "thca-flower",
+    "description": "Smoken Promises · Hybrid · Reg. $41.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.248Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013248-5",
+    "name": "Garlic Ghost 7g",
+    "price": 46.2,
+    "category": "thca-flower",
+    "description": "Smoken Promises · Hybrid · Reg. $66.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.248Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013248-6",
+    "name": "Hybrid Roll Your Own Shake 14g",
+    "price": 16.1,
+    "category": "thca-flower",
+    "description": "Cat4 · Hybrid · Reg. $23.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.248Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013248-7",
+    "name": "Casino Kush 3.5g",
+    "price": 52.5,
+    "category": "thca-flower",
+    "description": "Cannabiotix · Indica · Reg. $70.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.248Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013248-8",
+    "name": "Oasis 3.5g",
+    "price": 16.5,
+    "category": "thca-flower",
+    "description": "Coastal Sun · Indica · Reg. $22.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.248Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013248-9",
+    "name": "Strawnana Mac Infused 7g",
+    "price": 27.75,
+    "category": "thca-flower",
+    "description": "Coastal Sun · Indica · Reg. $37.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.248Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013248-10",
+    "name": "Cereal Milk 3.5g",
+    "price": 52.5,
+    "category": "thca-flower",
+    "description": "Cannabiotix · Hybrid · Reg. $70.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-11",
+    "name": "Indica Roll Your Own Shake 28g",
+    "price": 28.7,
+    "category": "thca-flower",
+    "description": "Cat4 · Indica · Reg. $41.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-12",
+    "name": "Paris Og 7g",
+    "price": 29,
+    "category": "thca-flower",
+    "description": "Cizi · Indica",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-13",
+    "name": "Sativa Roll Your Own Shake 14g",
+    "price": 16.1,
+    "category": "thca-flower",
+    "description": "Cat4 · Sativa · Reg. $23.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-14",
+    "name": "Strawnana Mac 7g",
+    "price": 25.5,
+    "category": "thca-flower",
+    "description": "Coastal Sun · Indica · Reg. $34.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-15",
+    "name": "Super Mango Haze 3.5g",
+    "price": 52.5,
+    "category": "thca-flower",
+    "description": "Cannabiotix · Sativa · Reg. $70.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-16",
+    "name": "Grand Master 3.5g",
+    "price": 52.5,
+    "category": "thca-flower",
+    "description": "Cannabiotix · Indica · Reg. $70.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-17",
+    "name": "Xj-13 3.5g",
+    "price": 46.9,
+    "category": "thca-flower",
+    "description": "Alien Labs · Sativa · Reg. $67.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-18",
+    "name": "Orange 43 Infused 7g",
+    "price": 27.75,
+    "category": "thca-flower",
+    "description": "Coastal Sun · Reg. $37.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-19",
+    "name": "Pink Certz 3.5g",
+    "price": 16.5,
+    "category": "thca-flower",
+    "description": "Coastal Sun · Hybrid · Reg. $22.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-20",
+    "name": "Jet Fuel 14g",
+    "price": 81.2,
+    "category": "thca-flower",
+    "description": "Cat4 · Indica · Reg. $116.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-21",
+    "name": "Chrome Dome 3.5g",
+    "price": 40.5,
+    "category": "thca-flower",
+    "description": "Maven · Sativa · Reg. $54.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-22",
+    "name": "Venom Og 14g",
+    "price": 81.2,
+    "category": "thca-flower",
+    "description": "Cat4 · Indica · Reg. $116.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-23",
+    "name": "Peach Z Infused 14g",
+    "price": 54.75,
+    "category": "thca-flower",
+    "description": "West Coast Cure · Hybrid · Reg. $73.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-24",
+    "name": "Paint Pen 7g",
+    "price": 46.2,
+    "category": "thca-flower",
+    "description": "Smoken Promises · Hybrid · Reg. $66.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-25",
+    "name": "Funk Master 3.5g",
+    "price": 52.5,
+    "category": "thca-flower",
+    "description": "Cannabiotix · Reg. $70.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-26",
+    "name": "Umami Butter Smalls 14g",
+    "price": 91.5,
+    "category": "thca-flower",
+    "description": "Maven · Indica · Reg. $122.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-27",
+    "name": "Jack Of Diamonds 10g",
+    "price": 88.2,
+    "category": "thca-flower",
+    "description": "Connected · Sativa · Reg. $126.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-28",
+    "name": "Cereal Milk 7g",
+    "price": 72,
+    "category": "thca-flower",
+    "description": "Oakfruitland · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
+  },
+  {
+    "id": "catalyst-flower-1789248013250-29",
+    "name": "Slumpberry 7g",
+    "price": 46.2,
+    "category": "thca-flower",
+    "description": "Smoken Promises · Hybrid · Reg. $66.00",
+    "image": "",
+    "createdAt": "2026-09-12T21:20:13.250Z"
   }
 ]

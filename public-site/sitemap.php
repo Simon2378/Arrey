@@ -765,15 +765,9 @@ function subscribeOnBodlEvents() {
 <li class="navPage-subMenu-item">
 <a class="navPage-subMenu-action navPages-action" data-instantload="" href="quarter-pounds/index.html">THCA Quarter Pounds</a>
 </li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="thca-flower/prime-collection-aaa-exotic-thca-buds/index.html">Prime Collection (AAA+ Exotic THCA Buds )</a>
-</li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="thca-flower/choice-collection-premium-indoor-thca-flower/index.html">Choice Collection – Premium Indoor THCA Flower</a>
-</li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="thca-flower/select-collection-lows-mids/index.html">Select Collection  - Lows/Mids</a>
-</li>
+
+
+
 <li class="navPage-subMenu-item">
 <a class="navPage-subMenu-action navPages-action" data-instantload="" href="prerolls/index.html">Prerolls</a>
 </li>
@@ -1001,15 +995,9 @@ function subscribeOnBodlEvents() {
 <li class="navPage-subMenu-item">
 <a class="navPage-subMenu-action navPages-action" data-instantload="" href="quarter-pounds/index.html">THCA Quarter Pounds</a>
 </li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="thca-flower/prime-collection-aaa-exotic-thca-buds/index.html">Prime Collection (AAA+ Exotic THCA Buds )</a>
-</li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="thca-flower/choice-collection-premium-indoor-thca-flower/index.html">Choice Collection – Premium Indoor THCA Flower</a>
-</li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="thca-flower/select-collection-lows-mids/index.html">Select Collection  - Lows/Mids</a>
-</li>
+
+
+
 <li class="navPage-subMenu-item">
 <a class="navPage-subMenu-action navPages-action" data-instantload="" href="prerolls/index.html">Prerolls</a>
 </li>
@@ -1164,15 +1152,9 @@ function subscribeOnBodlEvents() {
 <li>
 <a href="quarter-pounds/index.html">THCA Quarter Pounds</a>
 </li>
-<li>
-<a href="thca-flower/prime-collection-aaa-exotic-thca-buds/index.html">Prime Collection (AAA+ Exotic THCA Buds )</a>
-</li>
-<li>
-<a href="thca-flower/choice-collection-premium-indoor-thca-flower/index.html">Choice Collection – Premium Indoor THCA Flower</a>
-</li>
-<li>
-<a href="thca-flower/select-collection-lows-mids/index.html">Select Collection  - Lows/Mids</a>
-</li>
+
+
+
 <li>
 <a href="prerolls/index.html">Prerolls</a>
 </li>

@@ -155,6 +155,9 @@ EMPTY_CONCENTRATE_SUBCATEGORY_URLS = (
     "https://txcannabiscompany.com/concentrates/live-rosin/",
     "https://txcannabiscompany.com/concentrates/shatter/",
     "https://txcannabiscompany.com/concentrates/thca-diamonds/",
+    "https://txcannabiscompany.com/thca-flower/prime-collection-aaa-exotic-thca-buds/",
+    "https://txcannabiscompany.com/thca-flower/select-collection-lows-mids/",
+    "https://txcannabiscompany.com/thca-flower/choice-collection-premium-indoor-thca-flower/",
 )
 
 # matches EMPTY_CONCENTRATE_SUBCATEGORY_URLS above -- kept as the new_rel
@@ -165,17 +168,21 @@ SKIP_NEW_REL_PREFIXES = (
     "concentrates/live-rosin/",
     "concentrates/shatter/",
     "concentrates/thca-diamonds/",
+    "thca-flower/prime-collection-aaa-exotic-thca-buds/",
+    "thca-flower/select-collection-lows-mids/",
+    "thca-flower/choice-collection-premium-indoor-thca-flower/",
 )
 
 
 def strip_empty_concentrate_subcategory_links(soup: BeautifulSoup):
-    """These five Concentrates subcategories (Crumble, Live Resin, Live Rosin,
-    Shatter, THCA Diamonds) were already empty on the live site before it went
-    down, and every Concentrates product now lives directly under the parent
-    category instead of being split across them -- so a link to any of them
-    just lands a visitor on a page that will always say "no products."
-    Remove the links wherever they appear (desktop nav dropdown, mobile nav
-    dropdown, and the Concentrates category page's own subcategory sidebar).
+    """These Concentrates and THCA Flower subcategories (Crumble, Live Resin,
+    Live Rosin, Shatter, THCA Diamonds, and the three THCA Flower tiers) were
+    already empty on the live site before it went down, and every product in
+    both categories now lives directly under its parent category instead of
+    being split across them -- so a link to any of these just lands a
+    visitor on a page that will always say "no products." Remove the links
+    wherever they appear (desktop nav dropdown, mobile nav
+    dropdown, and each category page's own subcategory sidebar).
     The pages themselves are simply not built -- see SKIP_NEW_REL_PREFIXES."""
     for a in soup.find_all("a", href=lambda h: h in EMPTY_CONCENTRATE_SUBCATEGORY_URLS):
         li = a.find_parent("li")
