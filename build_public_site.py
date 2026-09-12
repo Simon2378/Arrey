@@ -38,6 +38,11 @@ CUSTOM_ASSETS_DIR = os.path.join(ROOT, "custom-assets")
 CUSTOM_ASSET_FILES = [
     "cart.js", "cart.css", "payment-config.js",
     "admin.js", "admin.css", "product-display.js", "placeholder-product.svg",
+    # generic licensed stock photos (Wikimedia Commons, CC0/public domain/CC
+    # BY-SA -- see CONCENTRATE_IMAGE_CREDITS.md) used as default product
+    # images per concentrate type until real photos are added via /admin/
+    "concentrate-shatter.jpg", "concentrate-wax.jpg",
+    "concentrate-rosin.jpg", "concentrate-extract.jpg",
 ]
 # products.json is live application data written by the admin panel via the
 # GitHub API, not a build artifact -- only ever *seeded* if missing, never

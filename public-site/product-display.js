@@ -34,6 +34,9 @@
     return "/" + path.replace(/^\/+/, "");
   }
 
+  // the concentrate-*.jpg files are generic licensed stock photos (CC0/
+  // public domain/CC BY-SA, see /CONCENTRATE_IMAGE_CREDITS.md), used as a
+  // stand-in per concentrate type until real photos are added via /admin/
   function productImageSrc(p) {
     return p.image ? rootRelative(p.image) : rootRelative("placeholder-product.svg");
   }

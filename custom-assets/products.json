@@ -5,7 +5,7 @@
     "price": 13.88,
     "category": "concentrates",
     "description": "Bear Labs · Reg. $18.50",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.752Z"
   },
   {
@@ -14,7 +14,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Cat4 · Hybrid · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -23,7 +23,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Cat4 · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -32,7 +32,7 @@
     "price": 15.5,
     "category": "concentrates",
     "description": "Wvy · Hybrid",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -41,7 +41,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Cat4 · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -50,7 +50,7 @@
     "price": 27,
     "category": "concentrates",
     "description": "Raw Garden · Sativa",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -59,7 +59,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Cat4 · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -68,7 +68,7 @@
     "price": 18,
     "category": "concentrates",
     "description": "Punch · S/i",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -77,7 +77,7 @@
     "price": 15.5,
     "category": "concentrates",
     "description": "Wvy · Sativa",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -86,7 +86,7 @@
     "price": 25.5,
     "category": "concentrates",
     "description": "Cannabiotix · Indica · Reg. $34.00",
-    "image": "",
+    "image": "concentrate-extract.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -95,7 +95,7 @@
     "price": 36.75,
     "category": "concentrates",
     "description": "Bear Labs · Reg. $49.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -104,7 +104,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Cat4 · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -113,7 +113,7 @@
     "price": 15.5,
     "category": "concentrates",
     "description": "Wvy",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -122,7 +122,7 @@
     "price": 27,
     "category": "concentrates",
     "description": "Raw Garden · Sativa",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -131,7 +131,7 @@
     "price": 23,
     "category": "concentrates",
     "description": "Wvy",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -140,7 +140,7 @@
     "price": 22,
     "category": "concentrates",
     "description": "West Coast Cure · Indica",
-    "image": "",
+    "image": "concentrate-extract.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -149,7 +149,7 @@
     "price": 60,
     "category": "concentrates",
     "description": "Mountain Man Melts",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -158,7 +158,7 @@
     "price": 24.75,
     "category": "concentrates",
     "description": "Bear Labs · Reg. $33.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -167,7 +167,7 @@
     "price": 55.2,
     "category": "concentrates",
     "description": "Team Elite Genetics · Hybrid · Reg. $69.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -176,7 +176,7 @@
     "price": 25.5,
     "category": "concentrates",
     "description": "Cannabiotix · Reg. $34.00",
-    "image": "",
+    "image": "concentrate-extract.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -185,7 +185,7 @@
     "price": 12.8,
     "category": "concentrates",
     "description": "Punch · Reg. $16.00",
-    "image": "",
+    "image": "concentrate-shatter.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -194,7 +194,7 @@
     "price": 14.4,
     "category": "concentrates",
     "description": "Punch · Reg. $18.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -203,7 +203,7 @@
     "price": 19.5,
     "category": "concentrates",
     "description": "Ces · Reg. $26.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -212,7 +212,7 @@
     "price": 24.75,
     "category": "concentrates",
     "description": "Bear Labs · Reg. $33.00",
-    "image": "",
+    "image": "concentrate-extract.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -221,7 +221,7 @@
     "price": 17.6,
     "category": "concentrates",
     "description": "West Coast Cure · Reg. $22.00",
-    "image": "",
+    "image": "concentrate-extract.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -230,7 +230,7 @@
     "price": 12.4,
     "category": "concentrates",
     "description": "Wvy · Reg. $15.50",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -239,7 +239,7 @@
     "price": 14.4,
     "category": "concentrates",
     "description": "Punch · Reg. $18.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -248,7 +248,7 @@
     "price": 18.4,
     "category": "concentrates",
     "description": "Wvy · Reg. $23.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -257,7 +257,7 @@
     "price": 14.4,
     "category": "concentrates",
     "description": "Punch · Reg. $18.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -266,7 +266,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Punch · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -275,7 +275,7 @@
     "price": 21,
     "category": "concentrates",
     "description": "Bear Labs · Reg. $28.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -284,7 +284,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Cat4 · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -293,7 +293,7 @@
     "price": 40,
     "category": "concentrates",
     "description": "Community · Reg. $50.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -302,7 +302,7 @@
     "price": 48,
     "category": "concentrates",
     "description": "Mountain Man Melts · Reg. $60.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -311,7 +311,7 @@
     "price": 44,
     "category": "concentrates",
     "description": "710 Labs · Reg. $55.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -320,7 +320,7 @@
     "price": 34.5,
     "category": "concentrates",
     "description": "Bear Labs · Reg. $46.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -329,7 +329,7 @@
     "price": 49.6,
     "category": "concentrates",
     "description": "Team Elite Genetics · Reg. $62.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -338,7 +338,7 @@
     "price": 42.4,
     "category": "concentrates",
     "description": "Pistil Whip · Hybrid · Reg. $53.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -347,7 +347,7 @@
     "price": 25.5,
     "category": "concentrates",
     "description": "Cannabiotix · Reg. $34.00",
-    "image": "",
+    "image": "concentrate-extract.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -356,7 +356,7 @@
     "price": 18.4,
     "category": "concentrates",
     "description": "Wvy · Reg. $23.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -365,7 +365,7 @@
     "price": 32.8,
     "category": "concentrates",
     "description": "Coldfire · Reg. $41.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -374,7 +374,7 @@
     "price": 40,
     "category": "concentrates",
     "description": "Community · Reg. $50.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -383,7 +383,7 @@
     "price": 48,
     "category": "concentrates",
     "description": "Barrett Farms · Hybrid · Reg. $60.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -392,7 +392,7 @@
     "price": 48,
     "category": "concentrates",
     "description": "Mountain Man Melts · Reg. $60.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -401,7 +401,7 @@
     "price": 27.2,
     "category": "concentrates",
     "description": "Raw Garden · Reg. $34.00",
-    "image": "",
+    "image": "concentrate-extract.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -410,7 +410,7 @@
     "price": 16.5,
     "category": "concentrates",
     "description": "Bear Labs · Reg. $22.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -419,7 +419,7 @@
     "price": 48,
     "category": "concentrates",
     "description": "Barrett Farms · Hybrid · Reg. $60.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -428,7 +428,7 @@
     "price": 44,
     "category": "concentrates",
     "description": "Heritage Hash Co. · Reg. $55.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -437,7 +437,7 @@
     "price": 42.4,
     "category": "concentrates",
     "description": "Pistil Whip · I/s · Reg. $53.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -446,7 +446,7 @@
     "price": 44,
     "category": "concentrates",
     "description": "710 Labs · Reg. $55.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -455,7 +455,7 @@
     "price": 24.75,
     "category": "concentrates",
     "description": "Bear Labs · Reg. $33.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -464,7 +464,7 @@
     "price": 40,
     "category": "concentrates",
     "description": "Community · Reg. $50.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -473,7 +473,7 @@
     "price": 68,
     "category": "concentrates",
     "description": "710 Labs · Reg. $85.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -482,7 +482,7 @@
     "price": 36.8,
     "category": "concentrates",
     "description": "Beard Bros · Reg. $46.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -491,7 +491,7 @@
     "price": 21.6,
     "category": "concentrates",
     "description": "Raw Garden · Reg. $27.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -500,7 +500,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Cat4 · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -509,7 +509,7 @@
     "price": 18.8,
     "category": "concentrates",
     "description": "Kingpen · Reg. $23.50",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -518,7 +518,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Punch · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -527,7 +527,7 @@
     "price": 21.6,
     "category": "concentrates",
     "description": "Raw Garden · Reg. $27.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -536,7 +536,7 @@
     "price": 14.4,
     "category": "concentrates",
     "description": "Punch · I/s · Reg. $18.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -545,7 +545,7 @@
     "price": 44,
     "category": "concentrates",
     "description": "710 Labs · Reg. $55.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -554,7 +554,7 @@
     "price": 21.6,
     "category": "concentrates",
     "description": "Raw Garden · Reg. $27.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -563,7 +563,7 @@
     "price": 55.2,
     "category": "concentrates",
     "description": "Team Elite Genetics · Hybrid · Reg. $69.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -572,7 +572,7 @@
     "price": 18.8,
     "category": "concentrates",
     "description": "Kingpen · Reg. $23.50",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -581,7 +581,7 @@
     "price": 42.4,
     "category": "concentrates",
     "description": "Pistil Whip · Reg. $53.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -590,7 +590,7 @@
     "price": 36.8,
     "category": "concentrates",
     "description": "Beard Bros · Reg. $46.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -599,7 +599,7 @@
     "price": 27.2,
     "category": "concentrates",
     "description": "Raw Garden · Reg. $34.00",
-    "image": "",
+    "image": "concentrate-extract.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -608,7 +608,7 @@
     "price": 44,
     "category": "concentrates",
     "description": "710 Labs · Reg. $55.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -617,7 +617,7 @@
     "price": 51.2,
     "category": "concentrates",
     "description": "Trichome Miners · Reg. $64.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -626,7 +626,7 @@
     "price": 48,
     "category": "concentrates",
     "description": "Mountain Man Melts · Reg. $60.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -635,7 +635,7 @@
     "price": 44,
     "category": "concentrates",
     "description": "710 Labs · Reg. $55.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -644,7 +644,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Cat4 · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -653,7 +653,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Punch · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -662,7 +662,7 @@
     "price": 52,
     "category": "concentrates",
     "description": "Heritage Hash Co. · Reg. $65.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.917Z"
   },
   {
@@ -671,7 +671,7 @@
     "price": 51.2,
     "category": "concentrates",
     "description": "Trichome Miners · Reg. $64.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -680,7 +680,7 @@
     "price": 17.6,
     "category": "concentrates",
     "description": "West Coast Cure · Reg. $22.00",
-    "image": "",
+    "image": "concentrate-extract.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -689,7 +689,7 @@
     "price": 23.2,
     "category": "concentrates",
     "description": "Abx · Reg. $29.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -698,7 +698,7 @@
     "price": 21.6,
     "category": "concentrates",
     "description": "Raw Garden · Reg. $27.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -707,7 +707,7 @@
     "price": 21.6,
     "category": "concentrates",
     "description": "Raw Garden · Reg. $27.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -716,7 +716,7 @@
     "price": 57,
     "category": "concentrates",
     "description": "Bear Labs · Reg. $76.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -725,7 +725,7 @@
     "price": 42.4,
     "category": "concentrates",
     "description": "Pistil Whip · Reg. $53.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -734,7 +734,7 @@
     "price": 21.6,
     "category": "concentrates",
     "description": "Raw Garden · Reg. $27.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -743,7 +743,7 @@
     "price": 55.2,
     "category": "concentrates",
     "description": "Team Elite Genetics · Reg. $69.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -752,7 +752,7 @@
     "price": 42.4,
     "category": "concentrates",
     "description": "Pistil Whip · Reg. $53.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -761,7 +761,7 @@
     "price": 44,
     "category": "concentrates",
     "description": "710 Labs · Hybrid · Reg. $55.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -770,7 +770,7 @@
     "price": 21.6,
     "category": "concentrates",
     "description": "Raw Garden · Reg. $27.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -779,7 +779,7 @@
     "price": 51.2,
     "category": "concentrates",
     "description": "Karisma · Reg. $64.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -788,7 +788,7 @@
     "price": 18.4,
     "category": "concentrates",
     "description": "Wvy · Reg. $23.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -797,7 +797,7 @@
     "price": 48,
     "category": "concentrates",
     "description": "Barrett Farms · S/i · Reg. $60.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -806,7 +806,7 @@
     "price": 18.4,
     "category": "concentrates",
     "description": "Wvy · Reg. $23.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -815,7 +815,7 @@
     "price": 51.2,
     "category": "concentrates",
     "description": "Karisma · Reg. $64.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -824,7 +824,7 @@
     "price": 42,
     "category": "concentrates",
     "description": "Bear Labs · Reg. $56.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -833,7 +833,7 @@
     "price": 23.2,
     "category": "concentrates",
     "description": "Abx · Reg. $29.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -842,7 +842,7 @@
     "price": 23.2,
     "category": "concentrates",
     "description": "Abx · Reg. $29.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -851,7 +851,7 @@
     "price": 18.4,
     "category": "concentrates",
     "description": "Wvy · Reg. $23.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -860,7 +860,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Punch · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -869,7 +869,7 @@
     "price": 32.8,
     "category": "concentrates",
     "description": "Coldfire · Reg. $41.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -878,7 +878,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Punch · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -887,7 +887,7 @@
     "price": 36,
     "category": "concentrates",
     "description": "Punch · Reg. $45.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -896,7 +896,7 @@
     "price": 18.8,
     "category": "concentrates",
     "description": "Kingpen · Reg. $23.50",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -905,7 +905,7 @@
     "price": 51.2,
     "category": "concentrates",
     "description": "Karisma · Reg. $64.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -914,7 +914,7 @@
     "price": 36,
     "category": "concentrates",
     "description": "Punch · Reg. $45.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -923,7 +923,7 @@
     "price": 46.4,
     "category": "concentrates",
     "description": "Punch · Reg. $58.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -932,7 +932,7 @@
     "price": 28,
     "category": "concentrates",
     "description": "Punch · Reg. $35.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -941,7 +941,7 @@
     "price": 46.4,
     "category": "concentrates",
     "description": "Punch · Reg. $58.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -950,7 +950,7 @@
     "price": 21.6,
     "category": "concentrates",
     "description": "Raw Garden · Reg. $27.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -959,7 +959,7 @@
     "price": 44,
     "category": "concentrates",
     "description": "Heritage Hash Co. · Reg. $55.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -968,7 +968,7 @@
     "price": 44,
     "category": "concentrates",
     "description": "Heritage Hash Co. · Reg. $55.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -977,7 +977,7 @@
     "price": 44,
     "category": "concentrates",
     "description": "Heritage Hash Co. · Reg. $55.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -986,7 +986,7 @@
     "price": 23.2,
     "category": "concentrates",
     "description": "Abx · Reg. $29.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -995,7 +995,7 @@
     "price": 17.6,
     "category": "concentrates",
     "description": "West Coast Cure · Reg. $22.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -1004,7 +1004,7 @@
     "price": 44,
     "category": "concentrates",
     "description": "Heritage Hash Co. · Reg. $55.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -1013,7 +1013,7 @@
     "price": 68,
     "category": "concentrates",
     "description": "710 Labs · Reg. $85.00",
-    "image": "",
+    "image": "concentrate-wax.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -1022,7 +1022,7 @@
     "price": 18.8,
     "category": "concentrates",
     "description": "Kingpen · Reg. $23.50",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -1031,7 +1031,7 @@
     "price": 51.2,
     "category": "concentrates",
     "description": "Trichome Miners · Hybrid · Reg. $64.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -1040,7 +1040,7 @@
     "price": 18.8,
     "category": "concentrates",
     "description": "Kingpen · Reg. $23.50",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -1049,7 +1049,7 @@
     "price": 55.2,
     "category": "concentrates",
     "description": "Punch · Reg. $69.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   },
   {
@@ -1058,7 +1058,7 @@
     "price": 55.2,
     "category": "concentrates",
     "description": "Punch · Reg. $69.00",
-    "image": "",
+    "image": "concentrate-rosin.jpg",
     "createdAt": "2026-09-12T02:47:57.918Z"
   }
 ]
