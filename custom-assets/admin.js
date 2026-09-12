@@ -17,6 +17,7 @@
 
   var CATEGORIES = [
     { value: "all-products", label: "All Products only (no specific category)" },
+    { value: "concentrates", label: "Concentrates" },
     { value: "concentrates/crumble", label: "Concentrates → Crumble" },
     { value: "concentrates/live-resin", label: "Concentrates → Live Resin" },
     { value: "concentrates/live-rosin", label: "Concentrates → Live Rosin" },
