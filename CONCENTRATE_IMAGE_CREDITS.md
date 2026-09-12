@@ -29,5 +29,16 @@ commercial reuse:
 - **concentrate-fine-extract.jpg** — "Hemp extract fine.jpg" by Erik
   Fenderson. License: Public domain.
   https://commons.wikimedia.org/wiki/File:Hemp_extract_fine.jpg
+- **concentrate-bho.jpg** — "Cannabis Butane Honey Oil.JPG" by Vjiced.
+  License: CC BY-SA 3.0.
+  https://commons.wikimedia.org/wiki/File:Cannabis_Butane_Honey_Oil.JPG
+- **concentrate-gold.jpg** — "Gold brown trim butane honey oil.JPG" by
+  Vjiced. License: CC BY-SA 3.0.
+  https://commons.wikimedia.org/wiki/File:Gold_brown_trim_butane_honey_oil.JPG
+- **concentrate-bho2.jpg** — "BHO 420.JPG" by Vjiced. License: CC BY-SA 3.0.
+  https://commons.wikimedia.org/wiki/File:BHO_420.JPG
+- **concentrate-dab.jpg** — "A dab of hash oil.jpg" by DJ Colonel Corn.
+  License: CC BY-SA 3.0.
+  https://commons.wikimedia.org/wiki/File:A_dab_of_hash_oil.jpg
 
 No product photography from any competitor site was used.

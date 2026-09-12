@@ -45,6 +45,8 @@ CUSTOM_ASSET_FILES = [
     "concentrate-rosin.jpg", "concentrate-extract.jpg",
     "concentrate-budder.jpg", "concentrate-oil-drop.jpg",
     "concentrate-hash.jpg", "concentrate-fine-extract.jpg",
+    "concentrate-bho.jpg", "concentrate-gold.jpg",
+    "concentrate-bho2.jpg", "concentrate-dab.jpg",
 ]
 # products.json is live application data written by the admin panel via the
 # GitHub API, not a build artifact -- only ever *seeded* if missing, never
