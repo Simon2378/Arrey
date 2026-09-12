@@ -17,5 +17,17 @@ commercial reuse:
 - **concentrate-extract.jpg** — "FullExtractCannabisOil.jpg" by Stephen
   Charles Thompson (Anon lynx). License: CC BY-SA 3.0.
   https://commons.wikimedia.org/wiki/File:FullExtractCannabisOil.jpg
+- **concentrate-budder.jpg** — "Butane honey oil after being whipped 2.JPG"
+  by Vjiced. License: CC BY-SA 3.0.
+  https://commons.wikimedia.org/wiki/File:Butane_honey_oil_after_being_whipped_2.JPG
+- **concentrate-oil-drop.jpg** — "Drop of cannabis oil.jpg" by Ryan Bushby
+  (HighInBC). License: CC BY 2.5.
+  https://commons.wikimedia.org/wiki/File:Drop_of_cannabis_oil.jpg
+- **concentrate-hash.jpg** — "Cannabis Bho & ice hash (16682729263).jpg",
+  Cannabis Pictures (Flickr). License: CC BY 2.0.
+  https://commons.wikimedia.org/wiki/File:Cannabis_Bho_%26_ice_hash_(16682729263).jpg
+- **concentrate-fine-extract.jpg** — "Hemp extract fine.jpg" by Erik
+  Fenderson. License: Public domain.
+  https://commons.wikimedia.org/wiki/File:Hemp_extract_fine.jpg
 
 No product photography from any competitor site was used.

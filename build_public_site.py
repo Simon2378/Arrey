@@ -43,6 +43,8 @@ CUSTOM_ASSET_FILES = [
     # images per concentrate type until real photos are added via /admin/
     "concentrate-shatter.jpg", "concentrate-wax.jpg",
     "concentrate-rosin.jpg", "concentrate-extract.jpg",
+    "concentrate-budder.jpg", "concentrate-oil-drop.jpg",
+    "concentrate-hash.jpg", "concentrate-fine-extract.jpg",
 ]
 # products.json is live application data written by the admin panel via the
 # GitHub API, not a build artifact -- only ever *seeded* if missing, never
