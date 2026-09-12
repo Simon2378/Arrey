@@ -140,6 +140,39 @@ def strip_login_register(soup: BeautifulSoup):
         target.decompose()
 
 
+EMPTY_CONCENTRATE_SUBCATEGORY_URLS = (
+    "https://txcannabiscompany.com/concentrates/crumble/",
+    "https://txcannabiscompany.com/concentrates/live-resin/",
+    "https://txcannabiscompany.com/concentrates/live-rosin/",
+    "https://txcannabiscompany.com/concentrates/shatter/",
+    "https://txcannabiscompany.com/concentrates/thca-diamonds/",
+)
+
+# matches EMPTY_CONCENTRATE_SUBCATEGORY_URLS above -- kept as the new_rel
+# (output-relative) form so main() can skip building these pages at all
+SKIP_NEW_REL_PREFIXES = (
+    "concentrates/crumble/",
+    "concentrates/live-resin/",
+    "concentrates/live-rosin/",
+    "concentrates/shatter/",
+    "concentrates/thca-diamonds/",
+)
+
+
+def strip_empty_concentrate_subcategory_links(soup: BeautifulSoup):
+    """These five Concentrates subcategories (Crumble, Live Resin, Live Rosin,
+    Shatter, THCA Diamonds) were already empty on the live site before it went
+    down, and every Concentrates product now lives directly under the parent
+    category instead of being split across them -- so a link to any of them
+    just lands a visitor on a page that will always say "no products."
+    Remove the links wherever they appear (desktop nav dropdown, mobile nav
+    dropdown, and the Concentrates category page's own subcategory sidebar).
+    The pages themselves are simply not built -- see SKIP_NEW_REL_PREFIXES."""
+    for a in soup.find_all("a", href=lambda h: h in EMPTY_CONCENTRATE_SUBCATEGORY_URLS):
+        li = a.find_parent("li")
+        (li if li is not None else a).decompose()
+
+
 def strip_coupon_badges(soup: BeautifulSoup):
     for span in soup.find_all("span", class_="price-label"):
         if span.get_text(strip=True).lower() == "can use coupon":
@@ -245,6 +278,7 @@ def process_page(page_url: str, local_html_path: str, new_rel: str, url_map: dic
 
     ensure_charset_meta(soup)
     strip_login_register(soup)
+    strip_empty_concentrate_subcategory_links(soup)
     strip_coupon_badges(soup)
     strip_marketing_popups(soup)
     strip_live_chat_banner(soup)
@@ -437,6 +471,9 @@ def main():
         page_url = entry["url"]
         local_html_path = os.path.join(SRC_DIR, entry["local_path"])
         new_rel = url_map[normalize(page_url)]
+        if new_rel.startswith(SKIP_NEW_REL_PREFIXES):
+            print(f"skipped (empty concentrate subcategory): {new_rel}")
+            continue
         process_page(page_url, local_html_path, new_rel, url_map)
         print(f"built {new_rel}")
 

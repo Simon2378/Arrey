@@ -791,21 +791,11 @@ function subscribeOnBodlEvents() {
 <li class="navPage-subMenu-item">
 <a class="navPage-subMenu-action navPages-action" data-instantload="" href="concentrates/index.html">All Concentrates</a>
 </li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="concentrates/crumble/index.html">Crumble</a>
-</li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="concentrates/live-resin/index.html">Live Resin</a>
-</li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="concentrates/live-rosin/index.html">Live Rosin</a>
-</li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="concentrates/shatter/index.html">Shatter</a>
-</li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="concentrates/thca-diamonds/index.html">THCA Diamonds</a>
-</li>
+
+
+
+
+
 </ul>
 <div class="navPage-subMenu-bottomBanners" data-emthemesmodez-remote-banner="emthemesModezBannersBlockMegaMenuBottom1"></div>
 </div>
@@ -1037,21 +1027,11 @@ function subscribeOnBodlEvents() {
 <li class="navPage-subMenu-item">
 <a class="navPage-subMenu-action navPages-action" data-instantload="" href="concentrates/index.html">All Concentrates</a>
 </li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="concentrates/crumble/index.html">Crumble</a>
-</li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="concentrates/live-resin/index.html">Live Resin</a>
-</li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="concentrates/live-rosin/index.html">Live Rosin</a>
-</li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="concentrates/shatter/index.html">Shatter</a>
-</li>
-<li class="navPage-subMenu-item">
-<a class="navPage-subMenu-action navPages-action" data-instantload="" href="concentrates/thca-diamonds/index.html">THCA Diamonds</a>
-</li>
+
+
+
+
+
 </ul>
 <div class="navPage-subMenu-bottomBanners" data-emthemesmodez-remote-banner="emthemesModezBannersBlockMegaMenuBottom1"></div>
 </div>
@@ -1201,21 +1181,11 @@ function subscribeOnBodlEvents() {
 <li>
 <a href="concentrates/index.html">Concentrates</a>
 <ul>
-<li>
-<a href="concentrates/crumble/index.html">Crumble</a>
-</li>
-<li>
-<a href="concentrates/live-resin/index.html">Live Resin</a>
-</li>
-<li>
-<a href="concentrates/live-rosin/index.html">Live Rosin</a>
-</li>
-<li>
-<a href="concentrates/shatter/index.html">Shatter</a>
-</li>
-<li>
-<a href="concentrates/thca-diamonds/index.html">THCA Diamonds</a>
-</li>
+
+
+
+
+
 </ul>
 </li>
 <li>

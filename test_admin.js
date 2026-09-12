@@ -192,6 +192,21 @@ function loadAdminPage(cartStore) {
   assert(parentDom.window.document.body.textContent.indexOf("Test Shatter 1g") !== -1, "parent page shows the concentrates/shatter product");
   assert(parentDom.window.document.body.textContent.indexOf("Test Gummies") === -1, "parent /concentrates/ page still excludes an unrelated category's product");
 
+  // 2a3. real in-site navigation lands on a literal .../index.html URL (this
+  // is a static export, every link points at the actual file, not a clean
+  // directory URL) -- the slug detection has to strip that filename or it
+  // reads the path as "concentrates/index.html" and matches nothing
+  const indexHtmlPageHtml =
+    '<html><body><div id="product-listing-container"><p>There are no products listed under this category.</p></div>' +
+    '<script src="../product-display.js"></script></body></html>';
+  let indexHtmlDom = new JSDOM(indexHtmlPageHtml, { url: "http://localhost:8787/concentrates/index.html", runScripts: "outside-only" });
+  indexHtmlDom.window.fetch = mockProductsFetch;
+  indexHtmlDom.window.eval(fs.readFileSync(path.join(SITE, "product-display.js"), "utf-8"));
+  await new Promise((r) => setTimeout(r, 30));
+
+  const indexHtmlCards = indexHtmlDom.window.document.querySelectorAll(".product");
+  assert(indexHtmlCards.length === 1, "literal /concentrates/index.html URL still matches the concentrates/shatter product, got " + indexHtmlCards.length);
+
   // 2b. all-products page shows every admin product regardless of category
   const allProductsHtml =
     '<html><body><ul class="productGrid"><li class="product">existing scraped item</li></ul>' +

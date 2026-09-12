@@ -17,7 +17,14 @@
   }
 
   function currentCategorySlug() {
-    return window.location.pathname.replace(/^\/+|\/+$/g, "");
+    // every in-site link points at a literal .../index.html file (this is a
+    // static export, not a server that resolves directory URLs), so the
+    // trailing filename has to be stripped before the path becomes a slug --
+    // otherwise "/concentrates/index.html" reads as "concentrates/index.html"
+    // and never matches a plain "concentrates" category.
+    return window.location.pathname
+      .replace(/index\.html$/i, "")
+      .replace(/^\/+|\/+$/g, "");
   }
 
   function rootRelative(path) {
