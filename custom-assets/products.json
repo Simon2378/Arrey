@@ -1,1065 +1,165 @@
 [
   {
-    "id": "catalyst-1789181277751-0",
-    "name": "Bud Booster Thc-a 1g",
-    "price": 13.88,
-    "category": "concentrates",
-    "description": "Bear Labs · Reg. $18.50",
-    "image": "concentrate-wax.jpg",
-    "createdAt": "2026-09-12T02:47:57.752Z"
-  },
-  {
-    "id": "catalyst-1789181277917-1",
+    "id": "catalyst-1789252671120-0",
     "name": "Cat4 Garlic Juice Rosin 1g",
-    "price": 28,
+    "price": 24.5,
     "category": "concentrates",
     "description": "Cat4 · Hybrid · Reg. $35.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.120Z"
   },
   {
-    "id": "catalyst-1789181277917-2",
+    "id": "catalyst-1789252671244-1",
     "name": "Honey Og Rosin 1g",
-    "price": 28,
+    "price": 24.5,
     "category": "concentrates",
     "description": "Cat4 · Reg. $35.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-3",
+    "id": "catalyst-1789252671244-2",
     "name": "Lemon Cherry Gelato Budder 1g",
     "price": 15.5,
     "category": "concentrates",
     "description": "Wvy · Hybrid",
-    "image": "concentrate-budder.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-4",
+    "id": "catalyst-1789252671244-3",
     "name": "Han Solo Burger Rosin 1g",
-    "price": 28,
+    "price": 24.5,
     "category": "concentrates",
     "description": "Cat4 · Reg. $35.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-5",
+    "id": "catalyst-1789252671244-4",
     "name": "Green Crack Live Resin 1g",
-    "price": 27,
+    "price": 20.25,
     "category": "concentrates",
-    "description": "Raw Garden · Sativa",
-    "image": "concentrate-hash.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "description": "Raw Garden · Sativa · Reg. $27.00",
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-6",
+    "id": "catalyst-1789252671244-5",
     "name": "Musa Melt Rosin 1g",
-    "price": 28,
+    "price": 24.5,
     "category": "concentrates",
     "description": "Cat4 · Reg. $35.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-7",
+    "id": "catalyst-1789252671244-6",
     "name": "Lemon Drop Badder 1g",
     "price": 18,
     "category": "concentrates",
     "description": "Punch · S/i",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-8",
+    "id": "catalyst-1789252671244-7",
     "name": "Blue Dream Budder 1g",
     "price": 15.5,
     "category": "concentrates",
     "description": "Wvy · Sativa",
-    "image": "concentrate-budder.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-9",
+    "id": "catalyst-1789252671244-8",
     "name": "Gm-uhoh Terp Sugar 1g",
     "price": 25.5,
     "category": "concentrates",
     "description": "Cannabiotix · Indica · Reg. $34.00",
-    "image": "concentrate-fine-extract.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-10",
+    "id": "catalyst-1789252671244-9",
     "name": "Papaya Punch Budder (tier 1) 1g",
     "price": 36.75,
     "category": "concentrates",
     "description": "Bear Labs · Reg. $49.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-11",
+    "id": "catalyst-1789252671244-10",
     "name": "Cherry Gmo Rosin 1g",
-    "price": 28,
+    "price": 24.5,
     "category": "concentrates",
     "description": "Cat4 · Reg. $35.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-12",
-    "name": "Mule Fuel Budder 1g",
-    "price": 15.5,
-    "category": "concentrates",
-    "description": "Wvy",
-    "image": "concentrate-budder.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-13",
-    "name": "Hella Jelly Live Resin 1g",
-    "price": 27,
-    "category": "concentrates",
-    "description": "Raw Garden · Sativa",
-    "image": "concentrate-dab.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-14",
-    "name": "Banana Burger Rosin 1g",
-    "price": 23,
-    "category": "concentrates",
-    "description": "Wvy",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-15",
+    "id": "catalyst-1789252671244-11",
     "name": "Gas Og Live Resin Sugar 1g",
-    "price": 22,
+    "price": 16.5,
     "category": "concentrates",
-    "description": "West Coast Cure · Indica",
-    "image": "concentrate-extract.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "description": "West Coast Cure · Indica · Reg. $22.00",
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-16",
-    "name": "Rainbow Guava Live Rosin 1g",
-    "price": 60,
-    "category": "concentrates",
-    "description": "Mountain Man Melts",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-17",
-    "name": "Forbidden Blueprint Budder (tier 2)...",
-    "price": 24.75,
-    "category": "concentrates",
-    "description": "Bear Labs · Reg. $33.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-18",
-    "name": "Freeze Truck Live Rosin Badder (tie...",
-    "price": 55.2,
-    "category": "concentrates",
-    "description": "Team Elite Genetics · Hybrid · Reg. $69.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-19",
-    "name": "Wedding Cake Terp Sugar 1g",
-    "price": 25.5,
-    "category": "concentrates",
-    "description": "Cannabiotix · Reg. $34.00",
-    "image": "concentrate-fine-extract.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-20",
-    "name": "Sweet Treat Shatter 1g",
-    "price": 12.8,
-    "category": "concentrates",
-    "description": "Punch · Reg. $16.00",
-    "image": "concentrate-shatter.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-21",
-    "name": "Nyc Vapor Badder 1g",
-    "price": 14.4,
-    "category": "concentrates",
-    "description": "Punch · Reg. $18.00",
-    "image": "concentrate-budder.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-22",
-    "name": "Legend Og Budder 1g",
-    "price": 19.5,
-    "category": "concentrates",
-    "description": "Ces · Reg. $26.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-23",
-    "name": "Cuban Haze Diamonds (tier 2) 1g",
-    "price": 24.75,
-    "category": "concentrates",
-    "description": "Bear Labs · Reg. $33.00",
-    "image": "concentrate-extract.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-24",
+    "id": "catalyst-1789252671244-12",
     "name": "First Class Funk Live Resin Sugar 1...",
-    "price": 17.6,
+    "price": 16.5,
     "category": "concentrates",
     "description": "West Coast Cure · Reg. $22.00",
-    "image": "concentrate-extract.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-25",
-    "name": "Gas Plant Budder 1g",
-    "price": 12.4,
-    "category": "concentrates",
-    "description": "Wvy · Reg. $15.50",
-    "image": "concentrate-budder.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-26",
-    "name": "Red Runtz Badder 1g",
-    "price": 14.4,
-    "category": "concentrates",
-    "description": "Punch · Reg. $18.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-27",
+    "id": "catalyst-1789252671244-13",
     "name": "Wvy Garlic Juice Rosin 1g",
     "price": 18.4,
     "category": "concentrates",
     "description": "Wvy · Reg. $23.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-28",
-    "name": "Gelato 41 Badder 1g",
-    "price": 14.4,
-    "category": "concentrates",
-    "description": "Punch · Reg. $18.00",
-    "image": "concentrate-budder.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-29",
-    "name": "Mimosa Live Rosin Badder (tier 4) 1...",
-    "price": 28,
-    "category": "concentrates",
-    "description": "Punch · Reg. $35.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-30",
-    "name": "Papaya Runtz Budder (tier 3) 1g",
-    "price": 21,
-    "category": "concentrates",
-    "description": "Bear Labs · Reg. $28.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-31",
-    "name": "Rikers Island Rosin 1g",
-    "price": 28,
-    "category": "concentrates",
-    "description": "Cat4 · Reg. $35.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-32",
-    "name": "Peach Panther Cold Cure Rosin 1g",
-    "price": 40,
-    "category": "concentrates",
-    "description": "Community · Reg. $50.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-33",
-    "name": "Government Oasis Live Rosin 1g",
-    "price": 48,
-    "category": "concentrates",
-    "description": "Mountain Man Melts · Reg. $60.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-34",
-    "name": "Upside Down Frown #15 X Jackson Hei...",
-    "price": 44,
-    "category": "concentrates",
-    "description": "710 Labs · Reg. $55.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-35",
-    "name": "Zushi Gush Mintz Rosin (tier 3) 1g",
-    "price": 34.5,
-    "category": "concentrates",
-    "description": "Bear Labs · Reg. $46.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-36",
-    "name": "Gas Trucker Live Rosin Badder (tier...",
-    "price": 49.6,
-    "category": "concentrates",
-    "description": "Team Elite Genetics · Reg. $62.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-37",
-    "name": "Sour Garlic Cookies Bx Live Rosin B...",
-    "price": 42.4,
-    "category": "concentrates",
-    "description": "Pistil Whip · Hybrid · Reg. $53.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-38",
+    "id": "catalyst-1789252671244-14",
     "name": "Casino Lemonade Terp Sugar 1g",
     "price": 25.5,
     "category": "concentrates",
     "description": "Cannabiotix · Reg. $34.00",
-    "image": "concentrate-fine-extract.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-39",
-    "name": "Banana Pie Rosin 1g",
-    "price": 18.4,
-    "category": "concentrates",
-    "description": "Wvy · Reg. $23.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-40",
-    "name": "Zawg Live Resin Badder (green Dawg)...",
-    "price": 32.8,
-    "category": "concentrates",
-    "description": "Coldfire · Reg. $41.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-41",
-    "name": "Double Up Cold Cure Rosin 1g",
-    "price": 40,
-    "category": "concentrates",
-    "description": "Community · Reg. $50.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-42",
-    "name": "Strawberry Pie Rosin 1g",
-    "price": 48,
-    "category": "concentrates",
-    "description": "Barrett Farms · Hybrid · Reg. $60.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-43",
-    "name": "Madd Boof Live Rosin 1g",
-    "price": 48,
-    "category": "concentrates",
-    "description": "Mountain Man Melts · Reg. $60.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-44",
-    "name": "Sunshine Sorbet Crushed Diamonds 1g",
-    "price": 27.2,
-    "category": "concentrates",
-    "description": "Raw Garden · Reg. $34.00",
-    "image": "concentrate-extract.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-45",
-    "name": "Strawberry Tahoe Budder (tier 4) 1g",
-    "price": 16.5,
-    "category": "concentrates",
-    "description": "Bear Labs · Reg. $22.00",
-    "image": "concentrate-budder.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-46",
-    "name": "Papaya Spritzer Rosin (cryo) 1g",
-    "price": 48,
-    "category": "concentrates",
-    "description": "Barrett Farms · Hybrid · Reg. $60.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-47",
-    "name": "Zowah Live Rosin 1g",
-    "price": 44,
-    "category": "concentrates",
-    "description": "Heritage Hash Co. · Reg. $55.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-48",
+    "id": "catalyst-1789252671244-15",
     "name": "Gmozk Live Rosin Badder 1g",
     "price": 42.4,
     "category": "concentrates",
     "description": "Pistil Whip · I/s · Reg. $53.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-49",
-    "name": "Tropicanna Grape Cake #11 X Grapefr...",
-    "price": 44,
-    "category": "concentrates",
-    "description": "710 Labs · Reg. $55.00",
-    "image": "concentrate-wax.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-50",
-    "name": "Rainbow Gelato Budder (tier 2) 1g",
-    "price": 24.75,
-    "category": "concentrates",
-    "description": "Bear Labs · Reg. $33.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-51",
-    "name": "Champaya Pop Cold Cure Rosin 1g",
-    "price": 40,
-    "category": "concentrates",
-    "description": "Community · Reg. $50.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-52",
-    "name": "Chocolate Oranges #25 Persy Badder...",
-    "price": 68,
-    "category": "concentrates",
-    "description": "710 Labs · Reg. $85.00",
-    "image": "concentrate-budder.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-53",
-    "name": "1:1 Thc:cbd Full Spectrum Oil Syrin...",
-    "price": 36.8,
-    "category": "concentrates",
-    "description": "Beard Bros · Reg. $46.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-54",
-    "name": "Og Haze Live Resin 1g",
-    "price": 21.6,
-    "category": "concentrates",
-    "description": "Raw Garden · Reg. $27.00",
-    "image": "concentrate-hash.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-55",
-    "name": "Peanut Butter Pinecone Rosin 1g",
-    "price": 28,
-    "category": "concentrates",
-    "description": "Cat4 · Reg. $35.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-56",
-    "name": "Toronja Live Resin Badder 1.5g",
-    "price": 18.8,
-    "category": "concentrates",
-    "description": "Kingpen · Reg. $23.50",
-    "image": "concentrate-dab.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-57",
-    "name": "Banana Gmo Live Rosin (tier 4) 1g",
-    "price": 28,
-    "category": "concentrates",
-    "description": "Punch · Reg. $35.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-58",
-    "name": "Mothers Milk #31 Live Resin Badder...",
-    "price": 21.6,
-    "category": "concentrates",
-    "description": "Raw Garden · Reg. $27.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-59",
-    "name": "Black Cherry Gelato Badder 1g",
-    "price": 14.4,
-    "category": "concentrates",
-    "description": "Punch · I/s · Reg. $18.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-60",
-    "name": "Sundae Driver Live Rosin Badder 1g",
-    "price": 44,
-    "category": "concentrates",
-    "description": "710 Labs · Reg. $55.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-61",
-    "name": "Mile High Freeze Live Resin Badder...",
-    "price": 21.6,
-    "category": "concentrates",
-    "description": "Raw Garden · Reg. $27.00",
-    "image": "concentrate-hash.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-62",
-    "name": "Pineapple Muffin Rosin (tier 1) 1g",
-    "price": 55.2,
-    "category": "concentrates",
-    "description": "Team Elite Genetics · Hybrid · Reg. $69.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-63",
-    "name": "Gush Mintz Live Resin Badder 1.5g",
-    "price": 18.8,
-    "category": "concentrates",
-    "description": "Kingpen · Reg. $23.50",
-    "image": "concentrate-dab.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-64",
-    "name": "Banana Chem Live Rosin Badder 1g",
-    "price": 42.4,
-    "category": "concentrates",
-    "description": "Pistil Whip · Reg. $53.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-65",
-    "name": "Cbd Full Spectrum Oil Syringe 1g",
-    "price": 36.8,
-    "category": "concentrates",
-    "description": "Beard Bros · Reg. $46.00",
-    "image": "concentrate-oil-drop.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-66",
-    "name": "Carbon Fiber Crushed Diamonds 1g",
-    "price": 27.2,
-    "category": "concentrates",
-    "description": "Raw Garden · Reg. $34.00",
-    "image": "concentrate-extract.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-67",
-    "name": "Randy Watzon #13 X Rambutan #11 Liv...",
-    "price": 44,
-    "category": "concentrates",
-    "description": "710 Labs · Reg. $55.00",
-    "image": "concentrate-wax.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-68",
+    "id": "catalyst-1789252671244-16",
     "name": "Super Boof Live Rosin (tier 2) 1g",
     "price": 51.2,
     "category": "concentrates",
     "description": "Trichome Miners · Reg. $64.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
-    "id": "catalyst-1789181277917-69",
-    "name": "Valedictorian Live Rosin 1g",
-    "price": 48,
+    "id": "catalyst-1789252671244-17",
+    "name": "Grape Pie Shatter 1g",
+    "price": 12.8,
     "category": "concentrates",
-    "description": "Mountain Man Melts · Reg. $60.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-70",
-    "name": "Grapefruit Og X Garlic Cocktail #7...",
-    "price": 44,
-    "category": "concentrates",
-    "description": "710 Labs · Reg. $55.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-71",
-    "name": "Black Maple Rosin 1g",
-    "price": 28,
-    "category": "concentrates",
-    "description": "Cat4 · Reg. $35.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-72",
-    "name": "Spritzer Face Live Rosin Badder (ti...",
-    "price": 28,
-    "category": "concentrates",
-    "description": "Punch · Reg. $35.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277917-73",
-    "name": "Tallymon Thirteen Aged Temple Ball...",
-    "price": 52,
-    "category": "concentrates",
-    "description": "Heritage Hash Co. · Reg. $65.00",
-    "image": "concentrate-wax.jpg",
-    "createdAt": "2026-09-12T02:47:57.917Z"
-  },
-  {
-    "id": "catalyst-1789181277918-74",
-    "name": "Papaya Mon Live Rosin (tier 2) 1g",
-    "price": 51.2,
-    "category": "concentrates",
-    "description": "Trichome Miners · Reg. $64.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-75",
-    "name": "Ultra Jack Live Resin Sugar 1g",
-    "price": 17.6,
-    "category": "concentrates",
-    "description": "West Coast Cure · Reg. $22.00",
-    "image": "concentrate-extract.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-76",
-    "name": "Raspberry Beltz Badder 1g",
-    "price": 23.2,
-    "category": "concentrates",
-    "description": "Abx · Reg. $29.00",
-    "image": "concentrate-budder.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-77",
-    "name": "Pack Mule #4 Live Resin 1g",
-    "price": 21.6,
-    "category": "concentrates",
-    "description": "Raw Garden · Reg. $27.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-78",
-    "name": "Mule Fuel Live Resin 1g",
-    "price": 21.6,
-    "category": "concentrates",
-    "description": "Raw Garden · Reg. $27.00",
-    "image": "concentrate-hash.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-79",
-    "name": "Sunday Brunch (pioca) Rosin 1g",
-    "price": 57,
-    "category": "concentrates",
-    "description": "Bear Labs · Reg. $76.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-80",
-    "name": "Madd Honey Live Rosin Badder 1g",
-    "price": 42.4,
-    "category": "concentrates",
-    "description": "Pistil Whip · Reg. $53.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-81",
-    "name": "Wubba Og Live Resin 1g",
-    "price": 21.6,
-    "category": "concentrates",
-    "description": "Raw Garden · Reg. $27.00",
-    "image": "concentrate-dab.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-82",
-    "name": "Cream Cheese Live Rosin Badder (tie...",
-    "price": 55.2,
-    "category": "concentrates",
-    "description": "Team Elite Genetics · Reg. $69.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-83",
-    "name": "Berry Smash Live Rosin Badder 1g",
-    "price": 42.4,
-    "category": "concentrates",
-    "description": "Pistil Whip · Reg. $53.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-84",
-    "name": "Garlic Cocktail #7 Live Rosin Badde...",
-    "price": 44,
-    "category": "concentrates",
-    "description": "710 Labs · Hybrid · Reg. $55.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-85",
-    "name": "Kush Crasher Live Resin 1g",
-    "price": 21.6,
-    "category": "concentrates",
-    "description": "Raw Garden · Reg. $27.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-86",
-    "name": "Ridgeline Limes Live Rosin 1g",
-    "price": 51.2,
-    "category": "concentrates",
-    "description": "Karisma · Reg. $64.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-87",
-    "name": "Peach Soda Pop Rosin 1g",
-    "price": 18.4,
-    "category": "concentrates",
-    "description": "Wvy · Reg. $23.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-88",
-    "name": "Sb36 X Mimosa Rosin 1g",
-    "price": 48,
-    "category": "concentrates",
-    "description": "Barrett Farms · S/i · Reg. $60.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-89",
-    "name": "Grape Dulce Beltz Rosin 1g",
-    "price": 18.4,
-    "category": "concentrates",
-    "description": "Wvy · Reg. $23.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-90",
-    "name": "Payamosa Pack Live Rosin 1g",
-    "price": 51.2,
-    "category": "concentrates",
-    "description": "Karisma · Reg. $64.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-91",
-    "name": "Nana Beltz Rosin (tier 2) 1g",
-    "price": 42,
-    "category": "concentrates",
-    "description": "Bear Labs · Reg. $56.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-92",
-    "name": "Papaya Punch Badder 1g",
-    "price": 23.2,
-    "category": "concentrates",
-    "description": "Abx · Reg. $29.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-93",
-    "name": "Tropical Punch Badder 1g",
-    "price": 23.2,
-    "category": "concentrates",
-    "description": "Abx · Reg. $29.00",
-    "image": "concentrate-budder.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-94",
-    "name": "Trop Peaches Rosin 1g",
-    "price": 18.4,
-    "category": "concentrates",
-    "description": "Wvy · Reg. $23.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-95",
-    "name": "Papaya Moon Live Rosin (tier 4) 1g",
-    "price": 28,
-    "category": "concentrates",
-    "description": "Punch · Reg. $35.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-96",
-    "name": "Banga X Sweetie Live Resin Badder (...",
-    "price": 32.8,
-    "category": "concentrates",
-    "description": "Coldfire · Reg. $41.00",
-    "image": "concentrate-hash.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-97",
-    "name": "Banana Limon Live Rosin (tier 4) 1g",
-    "price": 28,
-    "category": "concentrates",
-    "description": "Punch · Reg. $35.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-98",
-    "name": "Watermelon Spritz Live Rosin Badder...",
-    "price": 36,
-    "category": "concentrates",
-    "description": "Punch · Reg. $45.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-99",
-    "name": "Papaya Bomb Live Resin Badder 1.5g",
-    "price": 18.8,
-    "category": "concentrates",
-    "description": "Kingpen · Reg. $23.50",
-    "image": "concentrate-dab.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-100",
-    "name": "Tropaya Live Rosin 1g",
-    "price": 51.2,
-    "category": "concentrates",
-    "description": "Karisma · Reg. $64.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-101",
-    "name": "Luma's 4z Live Rosin Badder (tier 3...",
-    "price": 36,
-    "category": "concentrates",
-    "description": "Punch · Reg. $45.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-102",
-    "name": "Melonz Live Rosin (tier 2) 1g",
-    "price": 46.4,
-    "category": "concentrates",
-    "description": "Punch · Reg. $58.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-103",
-    "name": "Watermelon Oreoz Live Rosin Badder...",
-    "price": 28,
-    "category": "concentrates",
-    "description": "Punch · Reg. $35.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-104",
-    "name": "Luma's Banana Punch Live Rosin (tie...",
-    "price": 46.4,
-    "category": "concentrates",
-    "description": "Punch · Reg. $58.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-105",
-    "name": "Banana Punch Live Badder 1g",
-    "price": 21.6,
-    "category": "concentrates",
-    "description": "Raw Garden · Reg. $27.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-106",
-    "name": "Zour Truffles Live Rosin 1g",
-    "price": 44,
-    "category": "concentrates",
-    "description": "Heritage Hash Co. · Reg. $55.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-107",
-    "name": "Madd Zowah Live Rosin 1g",
-    "price": 44,
-    "category": "concentrates",
-    "description": "Heritage Hash Co. · Reg. $55.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-108",
-    "name": "Frosted Tangerine Live Rosin 1g",
-    "price": 44,
-    "category": "concentrates",
-    "description": "Heritage Hash Co. · Reg. $55.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-109",
-    "name": "Diesfez Badder 1g",
-    "price": 23.2,
-    "category": "concentrates",
-    "description": "Abx · Reg. $29.00",
-    "image": "concentrate-budder.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-110",
-    "name": "Georgia Z Live Resin Badder 1g",
-    "price": 17.6,
-    "category": "concentrates",
-    "description": "West Coast Cure · Reg. $22.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-111",
-    "name": "Crimson Gas Live Rosin 1g",
-    "price": 44,
-    "category": "concentrates",
-    "description": "Heritage Hash Co. · Reg. $55.00",
-    "image": "concentrate-gold.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-112",
-    "name": "Trop Cookies #13 Persy Badder 1g",
-    "price": 68,
-    "category": "concentrates",
-    "description": "710 Labs · Reg. $85.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-113",
-    "name": "Sonoma Coma Live Resin Badder 1.5g",
-    "price": 18.8,
-    "category": "concentrates",
-    "description": "Kingpen · Reg. $23.50",
-    "image": "concentrate-hash.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-114",
-    "name": "Strawberry Lawn Chair Live Rosin (t...",
-    "price": 51.2,
-    "category": "concentrates",
-    "description": "Trichome Miners · Hybrid · Reg. $64.00",
-    "image": "concentrate-bho.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-115",
-    "name": "Satsuma Sherbet Live Resin Badder 1...",
-    "price": 18.8,
-    "category": "concentrates",
-    "description": "Kingpen · Reg. $23.50",
-    "image": "concentrate-dab.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-116",
-    "name": "Luma's Peach Panther Live Rosin (ti...",
-    "price": 55.2,
-    "category": "concentrates",
-    "description": "Punch · Reg. $69.00",
-    "image": "concentrate-bho2.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
-  },
-  {
-    "id": "catalyst-1789181277918-117",
-    "name": "New York Sour Diesel Live Rosin (ti...",
-    "price": 55.2,
-    "category": "concentrates",
-    "description": "Punch · Reg. $69.00",
-    "image": "concentrate-rosin.jpg",
-    "createdAt": "2026-09-12T02:47:57.918Z"
+    "description": "Punch · Reg. $16.00",
+    "image": "",
+    "createdAt": "2026-09-12T22:37:51.244Z"
   },
   {
     "id": "catalyst-flower-1789248013026-0",
