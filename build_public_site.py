@@ -530,7 +530,15 @@ def main():
 
     if os.path.exists(OUT_DIR):
         for name in os.listdir(OUT_DIR):
-            if name == ".git":
+            # .git obviously has to survive; products.json is live data
+            # written by the admin panel via the GitHub API, not a build
+            # artifact -- copy_custom_assets() below only ever *seeds* it
+            # when missing specifically so a rebuild can't clobber real
+            # admin edits, but that guard is worthless if this loop deletes
+            # the file out from under it first (which it did: this exact
+            # bug just silently reverted 55 live-edited products, including
+            # image links to real uploaded photos, back to stale seed data).
+            if name in (".git", "products.json"):
                 continue
             full = os.path.join(OUT_DIR, name)
             if os.path.isdir(full):
