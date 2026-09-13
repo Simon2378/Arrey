@@ -347,6 +347,40 @@ def process_page(page_url: str, local_html_path: str, new_rel: str, url_map: dic
         f.write(str(soup))
 
 
+ADMIN_UPLOADS_REL = os.path.join("assets", "admin-uploads")
+
+
+def read_admin_uploads():
+    """admin-uploads/ holds real product photos added live through /admin/
+    via the GitHub API -- it has no counterpart in the original scrape, so
+    left alone it gets silently deleted by main()'s top-level wipe of
+    OUT_DIR on every rebuild (this actually happened: a routine rebuild
+    wiped 60 photos a user had just uploaded, caught only because the push
+    that would have made it permanent happened to be rejected for an
+    unrelated reason). Call this before the wipe and write_admin_uploads
+    after, so this directory survives no matter what's -- or isn't -- in
+    the source scrape."""
+    path = os.path.join(OUT_DIR, ADMIN_UPLOADS_REL)
+    preserved = {}
+    if os.path.isdir(path):
+        for fn in os.listdir(path):
+            fp = os.path.join(path, fn)
+            if os.path.isfile(fp):
+                with open(fp, "rb") as f:
+                    preserved[fn] = f.read()
+    return preserved
+
+
+def write_admin_uploads(preserved: dict):
+    if not preserved:
+        return
+    path = os.path.join(OUT_DIR, ADMIN_UPLOADS_REL)
+    os.makedirs(path, exist_ok=True)
+    for fn, data in preserved.items():
+        with open(os.path.join(path, fn), "wb") as f:
+            f.write(data)
+
+
 def copy_assets():
     src_assets = os.path.join(SRC_DIR, "assets")
     dst_assets = os.path.join(OUT_DIR, "assets")
@@ -492,6 +526,8 @@ def main():
     with open(MANIFEST_PATH, "r", encoding="utf-8") as f:
         manifest = json.load(f)
 
+    preserved_uploads = read_admin_uploads()
+
     if os.path.exists(OUT_DIR):
         for name in os.listdir(OUT_DIR):
             if name == ".git":
@@ -516,6 +552,7 @@ def main():
         print(f"built {new_rel}")
 
     copy_assets()
+    write_admin_uploads(preserved_uploads)
     copy_custom_assets()
     build_cart_page()
     build_admin_page()
