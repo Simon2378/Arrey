@@ -113,31 +113,82 @@
     });
   }
 
-  function fileToBase64(file) {
+  function fileToBase64(fileOrBlob) {
     return new Promise(function (resolve, reject) {
       var reader = new FileReader();
       reader.onload = function () { resolve(reader.result.split(",")[1]); };
       reader.onerror = function () { reject(new Error("Couldn't read the selected image file.")); };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(fileOrBlob);
+    });
+  }
+
+  // GitHub's Contents API (used to save images as real git blobs via this
+  // simple create/update-file endpoint) rejects content much over ~1MB --
+  // a full-resolution phone camera photo is routinely 3-10MB and fails
+  // silently from the user's point of view (just an upload error). Resize
+  // and re-encode as JPEG client-side first, shrinking further if needed,
+  // so any photo the browser can display can also be saved here.
+  var MAX_UPLOAD_BYTES = 700000; // binary size; base64 inflates ~33% on top
+
+  function drawToBlob(img, maxDim, quality) {
+    var scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+    var canvas = document.createElement("canvas");
+    canvas.width = Math.max(1, Math.round(img.width * scale));
+    canvas.height = Math.max(1, Math.round(img.height * scale));
+    canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+    return new Promise(function (resolve, reject) {
+      canvas.toBlob(function (blob) {
+        if (!blob) reject(new Error("Couldn't process the selected image."));
+        else resolve(blob);
+      }, "image/jpeg", quality);
+    });
+  }
+
+  function loadImageElement(file) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () { URL.revokeObjectURL(url); resolve(img); };
+      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error("Couldn't read the selected image file -- is it a valid photo?")); };
+      img.src = url;
+    });
+  }
+
+  function resizeImageFile(file) {
+    return loadImageElement(file).then(function (img) {
+      var attempts = [
+        [1600, 0.82], [1600, 0.6], [1200, 0.6], [900, 0.55], [700, 0.5],
+      ];
+      function tryAttempt(i) {
+        var maxDim = attempts[i][0], quality = attempts[i][1];
+        return drawToBlob(img, maxDim, quality).then(function (blob) {
+          if (blob.size <= MAX_UPLOAD_BYTES || i === attempts.length - 1) return blob;
+          return tryAttempt(i + 1);
+        });
+      }
+      return tryAttempt(0);
     });
   }
 
   function uploadImage(token, file) {
-    return fileToBase64(file).then(function (base64) {
-      var safeName = Date.now() + "-" + file.name.toLowerCase().replace(/[^a-z0-9.-]/g, "-");
-      var path = "public-site/assets/admin-uploads/" + safeName;
-      var url = "https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + path;
-      return fetch(url, {
-        method: "PUT",
-        headers: Object.assign({ "Content-Type": "application/json" }, apiHeaders(token)),
-        body: JSON.stringify({
-          message: "Admin: upload product image " + safeName,
-          content: base64,
-          branch: BRANCH,
-        }),
-      }).then(function (res) {
-        if (!res.ok) return apiError(res, "Failed to upload the image.");
-        return "assets/admin-uploads/" + safeName;
+    return resizeImageFile(file).then(function (blob) {
+      return fileToBase64(blob).then(function (base64) {
+        var baseName = file.name.toLowerCase().replace(/[^a-z0-9.-]/g, "-").replace(/\.[a-z0-9]+$/, "");
+        var safeName = Date.now() + "-" + baseName + ".jpg";
+        var path = "public-site/assets/admin-uploads/" + safeName;
+        var url = "https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + path;
+        return fetch(url, {
+          method: "PUT",
+          headers: Object.assign({ "Content-Type": "application/json" }, apiHeaders(token)),
+          body: JSON.stringify({
+            message: "Admin: upload product image " + safeName,
+            content: base64,
+            branch: BRANCH,
+          }),
+        }).then(function (res) {
+          if (!res.ok) return apiError(res, "Failed to upload the image.");
+          return "assets/admin-uploads/" + safeName;
+        });
       });
     });
   }
