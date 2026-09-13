@@ -432,129 +432,372 @@
     "createdAt": "2026-09-12T21:20:13.250Z"
   },
   {
-    "id": "catalyst-edible-1789250735865-0",
-    "name": "Blue Razz Gummy 10 Pack 100mg",
-    "price": 12.5,
-    "category": "edibles-gummies",
-    "description": "Froot · Hybrid",
-    "image": "",
-    "createdAt": "2026-09-12T22:05:35.865Z"
-  },
-  {
-    "id": "catalyst-edible-1789250736007-1",
-    "name": "Cherry Razz Storm Solventless Gummy...",
-    "price": 14.4,
-    "category": "edibles-gummies",
-    "description": "Punch · Reg. $18.00",
-    "image": "",
-    "createdAt": "2026-09-12T22:05:36.007Z"
-  },
-  {
-    "id": "catalyst-edible-1789250736007-2",
-    "name": "Chocolate Crispy Rice Bar Single 10...",
-    "price": 12,
-    "category": "edibles-gummies",
-    "description": "Dr. Norm's · Hybrid · Reg. $15.00",
-    "image": "",
-    "createdAt": "2026-09-12T22:05:36.007Z"
-  },
-  {
-    "id": "catalyst-edible-1789250736007-3",
-    "name": "Chocolate Fudge Brownie Single 100m...",
-    "price": 12,
-    "category": "edibles-gummies",
-    "description": "Dr. Norm's · Hybrid · Reg. $15.00",
-    "image": "",
-    "createdAt": "2026-09-12T22:05:36.007Z"
-  },
-  {
-    "id": "catalyst-edible-1789250736007-4",
-    "name": "Huckleberry Gummy 10 Pack 100mg",
-    "price": 19.5,
-    "category": "edibles-gummies",
-    "description": "Wyld · Hybrid",
-    "image": "",
-    "createdAt": "2026-09-12T22:05:36.007Z"
-  },
-  {
-    "id": "catalyst-edible-1789250736008-5",
-    "name": "Key Lime Pie Chocolate Solventless...",
-    "price": 12.8,
-    "category": "edibles-gummies",
-    "description": "Punch · Hybrid · Reg. $16.00",
-    "image": "",
-    "createdAt": "2026-09-12T22:05:36.008Z"
-  },
-  {
-    "id": "catalyst-edible-1789250736008-6",
+    "id": "catalyst-edible-1789279942867-0",
     "name": "Lemon Gummy 2 Pack 100mg",
     "price": 7.5,
     "category": "edibles-gummies",
     "description": "Drops · Sativa",
     "image": "",
-    "createdAt": "2026-09-12T22:05:36.008Z"
+    "createdAt": "2026-09-13T06:12:22.867Z"
   },
   {
-    "id": "catalyst-edible-1789250736008-7",
+    "id": "catalyst-edible-1789279942980-1",
     "name": "Lime Gummy 2 Pack 100mg",
     "price": 7.5,
     "category": "edibles-gummies",
     "description": "Drops · Hybrid",
     "image": "",
-    "createdAt": "2026-09-12T22:05:36.008Z"
+    "createdAt": "2026-09-13T06:12:22.980Z"
   },
   {
-    "id": "catalyst-edible-1789250736008-8",
+    "id": "catalyst-edible-1789279942980-2",
     "name": "Marionberry Gummy 10 Pack 100mg",
     "price": 19.5,
     "category": "edibles-gummies",
     "description": "Wyld · Indica",
     "image": "",
-    "createdAt": "2026-09-12T22:05:36.008Z"
+    "createdAt": "2026-09-13T06:12:22.980Z"
   },
   {
-    "id": "catalyst-edible-1789250736008-9",
-    "name": "Pineapple Express Gummy 10 Pack 100...",
-    "price": 12.5,
-    "category": "edibles-gummies",
-    "description": "Froot · Hybrid",
-    "image": "",
-    "createdAt": "2026-09-12T22:05:36.008Z"
-  },
-  {
-    "id": "catalyst-edible-1789250736008-10",
-    "name": "Sour Cherry Gummy 10 Pack 100mg",
-    "price": 19.5,
-    "category": "edibles-gummies",
-    "description": "Wyld · Indica",
-    "image": "",
-    "createdAt": "2026-09-12T22:05:36.008Z"
-  },
-  {
-    "id": "catalyst-edible-1789250736008-11",
-    "name": "Sweet Pink Lemonade Solventless Gum...",
-    "price": 10.5,
-    "category": "edibles-gummies",
-    "description": "Space Gem · Hybrid",
-    "image": "",
-    "createdAt": "2026-09-12T22:05:36.008Z"
-  },
-  {
-    "id": "catalyst-edible-1789250736008-12",
+    "id": "catalyst-edible-1789279942980-3",
     "name": "Watermelon Gummy 10 Pack 100mg",
     "price": 12.5,
     "category": "edibles-gummies",
     "description": "Froot · Hybrid",
     "image": "",
-    "createdAt": "2026-09-12T22:05:36.008Z"
+    "createdAt": "2026-09-13T06:12:22.980Z"
   },
   {
-    "id": "catalyst-edible-1789250736008-13",
+    "id": "catalyst-edible-1789279942980-4",
+    "name": "Huckleberry Gummy 10 Pack 100mg",
+    "price": 19.5,
+    "category": "edibles-gummies",
+    "description": "Wyld · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-5",
+    "name": "Sweet Pink Lemonade Solventless Gum...",
+    "price": 10.5,
+    "category": "edibles-gummies",
+    "description": "Space Gem · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-6",
     "name": "Wicked Watermelon Hash Gummy Single...",
     "price": 11,
     "category": "edibles-gummies",
     "description": "Dr. Norm's · Indica",
     "image": "",
-    "createdAt": "2026-09-12T22:05:36.008Z"
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-7",
+    "name": "Blue Razz Gummy 10 Pack 100mg",
+    "price": 12.5,
+    "category": "edibles-gummies",
+    "description": "Froot · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-8",
+    "name": "Pineapple Express Gummy 10 Pack 100...",
+    "price": 12.5,
+    "category": "edibles-gummies",
+    "description": "Froot · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-9",
+    "name": "Sour Cherry Gummy 10 Pack 100mg",
+    "price": 19.5,
+    "category": "edibles-gummies",
+    "description": "Wyld · Indica",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-10",
+    "name": "Mysleep Gummy 20 Pack 100mg",
+    "price": 15.5,
+    "category": "edibles-gummies",
+    "description": "Froot · Indica",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-11",
+    "name": "Strawberry Grape Nebula Solventless...",
+    "price": 18,
+    "category": "edibles-gummies",
+    "description": "Punch",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-12",
+    "name": "Sour Tangerine Gummy 10 Pack 100mg",
+    "price": 19.5,
+    "category": "edibles-gummies",
+    "description": "Wyld · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-13",
+    "name": "Sativa Effect Mini Gems Gummy 20 Pa...",
+    "price": 21,
+    "category": "edibles-gummies",
+    "description": "Space Gem · Sativa",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-14",
+    "name": "Grape Ape Gummy 10 Pack 100mg",
+    "price": 12.5,
+    "category": "edibles-gummies",
+    "description": "Froot · Indica",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-15",
+    "name": "Lemon Gummy 20 Pack 100mg",
+    "price": 15.5,
+    "category": "edibles-gummies",
+    "description": "Drops · Sativa",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-16",
+    "name": "Sour Watermelon Gummy Single 100mg",
+    "price": 9.5,
+    "category": "edibles-gummies",
+    "description": "Froot · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-17",
+    "name": "Cherry Gummy 20 Pack 100mg",
+    "price": 15.5,
+    "category": "edibles-gummies",
+    "description": "Drops · Indica",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-18",
+    "name": "Watermelon Nova Solventless Gummy 1...",
+    "price": 18,
+    "category": "edibles-gummies",
+    "description": "Punch",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-19",
+    "name": "Sour Grape Gummy Single 100mg",
+    "price": 9.5,
+    "category": "edibles-gummies",
+    "description": "Froot · Indica",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-20",
+    "name": "Toffee Milk Chocolate Bar Single 10...",
+    "price": 13,
+    "category": "edibles-gummies",
+    "description": "Punch · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-21",
+    "name": "Hybrid Effect Mini Gems Gummy 20 Pa...",
+    "price": 21,
+    "category": "edibles-gummies",
+    "description": "Space Gem · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-22",
+    "name": "Galactic Fruit Punch Solventless Gu...",
+    "price": 18,
+    "category": "edibles-gummies",
+    "description": "Punch",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-23",
+    "name": "Peanut Butter Milk Chocolate Bar Si...",
+    "price": 13,
+    "category": "edibles-gummies",
+    "description": "None",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-24",
+    "name": "Mint Dark Chocolate Bar Single 100m...",
+    "price": 13,
+    "category": "edibles-gummies",
+    "description": "Punch",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-25",
+    "name": "Blazin Blue Razz Gummy Single 100mg",
+    "price": 10,
+    "category": "edibles-gummies",
+    "description": "Dr. Norm's · Indica",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-26",
+    "name": "Strawberry Cheesecake Chocolate Bar...",
+    "price": 13,
+    "category": "edibles-gummies",
+    "description": "Punch",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-27",
+    "name": "Caramel Chocolate Chocolate Single...",
+    "price": 7.5,
+    "category": "edibles-gummies",
+    "description": "Whoa · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-28",
+    "name": "Sour Blueberry Gummy 10 Pack 100mg",
+    "price": 19.5,
+    "category": "edibles-gummies",
+    "description": "Highatus · Indica",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-29",
+    "name": "Sour Pineapple Gummy 10 Pack 100mg",
+    "price": 19.5,
+    "category": "edibles-gummies",
+    "description": "Highatus",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-30",
+    "name": "Sour L'orange Gummy 10 Pack 100mg",
+    "price": 19.5,
+    "category": "edibles-gummies",
+    "description": "Highatus · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-31",
+    "name": "Blue Raspberry Gummy 10 Pack 100mg",
+    "price": 18.5,
+    "category": "edibles-gummies",
+    "description": "Kanha · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-32",
+    "name": "Sweet Space Drops Solventless Gummy...",
+    "price": 26,
+    "category": "edibles-gummies",
+    "description": "Space Gem",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-33",
+    "name": "Almonds Dark Chocolate Bar Single 1...",
+    "price": 13,
+    "category": "edibles-gummies",
+    "description": "Punch",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-34",
+    "name": "Cherry Razz Storm Solventless Gummy...",
+    "price": 18,
+    "category": "edibles-gummies",
+    "description": "Punch",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-35",
+    "name": "Pink Guava Gummy 10 Pack 100mg",
+    "price": 18.5,
+    "category": "edibles-gummies",
+    "description": "Kanha · Sativa",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-36",
+    "name": "Sour Melon Rush Vegan Rosin Gummy 1...",
+    "price": 29,
+    "category": "edibles-gummies",
+    "description": "Kanha · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-37",
+    "name": "Chocolate Fudge Brownie Single 100m...",
+    "price": 15,
+    "category": "edibles-gummies",
+    "description": "Dr. Norm's · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-38",
+    "name": "Key Lime Pie Chocolate Solventless...",
+    "price": 16,
+    "category": "edibles-gummies",
+    "description": "Punch · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-39",
+    "name": "Peanut Butter Milk Chocoloate Crunc...",
+    "price": 16,
+    "category": "edibles-gummies",
+    "description": "None",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
+  },
+  {
+    "id": "catalyst-edible-1789279942980-40",
+    "name": "Chocolate Crispy Rice Bar Single 10...",
+    "price": 15,
+    "category": "edibles-gummies",
+    "description": "Dr. Norm's · Hybrid",
+    "image": "",
+    "createdAt": "2026-09-13T06:12:22.980Z"
   }
 ]
