@@ -108,8 +108,36 @@
   margin-top: 0.125rem;
 }
 
+.txcc-admin-edit-btn,
 .txcc-admin-delete-btn {
   flex-shrink: 0;
+}
+
+.txcc-admin-delete-btn {
   color: #c0392b;
   border-color: #c0392b;
+}
+
+.txcc-admin-edit-form {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.txcc-admin-edit-form .txcc-admin-row-img {
+  width: 64px;
+  height: 64px;
+}
+
+.txcc-admin-edit-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.txcc-admin-edit-actions button {
+  margin-top: 0;
+  width: auto;
+  flex: 1 1 auto;
 }

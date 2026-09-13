@@ -125,13 +125,41 @@ function loadAdminPage(cartStore) {
   assert(rows.length === 1, "dashboard lists the 1 saved product after re-render, got " + rows.length);
   assert(rows[0].textContent.indexOf("Test Shatter 1g") !== -1, "listed row shows the product name");
 
+  // edit it: open the edit form, change every field including a new photo,
+  // and confirm the saved product keeps its id but gets the new values
+  const originalId = serverProducts[0].id;
+  const editBtn = win.document.querySelector(".txcc-admin-edit-btn");
+  assert(!!editBtn, "edit button present on the row");
+  editBtn.dispatchEvent(new win.Event("click", { bubbles: true }));
+  const editForm = win.document.querySelector(".txcc-admin-edit-form");
+  assert(!!editForm, "clicking edit swaps the row for an edit form");
+  assert(editForm.querySelector(".txcc-edit-name").value === "Test Shatter 1g", "edit form pre-fills the current name");
+  assert(parseFloat(editForm.querySelector(".txcc-edit-price").value) === 19.99, "edit form pre-fills the current price");
+
+  editForm.querySelector(".txcc-edit-name").value = "Test Shatter 1g (Updated)";
+  editForm.querySelector(".txcc-edit-price").value = "24.99";
+  editForm.querySelector(".txcc-edit-category").value = "concentrates/live-resin";
+  editForm.querySelector(".txcc-edit-description").value = "Updated description.";
+  editForm.dispatchEvent(new win.Event("submit", { bubbles: true, cancelable: true }));
+  await new Promise((r) => setTimeout(r, 30));
+
+  assert(putCalls.length === 2, "saving the edit form makes a second PUT call, got " + putCalls.length);
+  assert(serverProducts.length === 1, "edit doesn't add or remove a product, still 1");
+  assert(serverProducts[0].id === originalId, "edited product keeps its original id");
+  assert(serverProducts[0].name === "Test Shatter 1g (Updated)", "edited product has the new name, got: " + serverProducts[0].name);
+  assert(serverProducts[0].price === 24.99, "edited product has the new price, got: " + serverProducts[0].price);
+  assert(serverProducts[0].category === "concentrates/live-resin", "edited product has the new category");
+  assert(serverProducts[0].image === "", "edited product keeps its existing image when no new photo is chosen");
+
+  await new Promise((r) => setTimeout(r, 1300));
+
   // delete it
   const deleteBtn = win.document.querySelector(".txcc-admin-delete-btn");
   assert(!!deleteBtn, "delete button present on the row");
   win.confirm = () => true; // simulate the user confirming the delete prompt
   deleteBtn.dispatchEvent(new win.Event("click", { bubbles: true }));
   await new Promise((r) => setTimeout(r, 30));
-  assert(putCalls.length === 2, "delete makes a second PUT call");
+  assert(putCalls.length === 3, "delete makes a third PUT call (after add and edit), got " + putCalls.length);
   assert(serverProducts.length === 0, "server-side product list is empty after delete");
 
   // logout clears the token and returns to login

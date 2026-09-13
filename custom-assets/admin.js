@@ -204,25 +204,58 @@
     });
   }
 
-  function renderDashboardWith(token, products, sha) {
-    var options = CATEGORIES.map(function (c) {
-      return '<option value="' + escapeHtml(c.value) + '">' + escapeHtml(c.label) + "</option>";
+  function categoryOptionsHtml(selected) {
+    return CATEGORIES.map(function (c) {
+      var sel = c.value === selected ? " selected" : "";
+      return '<option value="' + escapeHtml(c.value) + '"' + sel + ">" + escapeHtml(c.label) + "</option>";
     }).join("");
+  }
 
-    var rows = products.length
+  function editFormHtml(p) {
+    return (
+      '<form class="txcc-admin-edit-form" data-id="' + escapeHtml(p.id) + '">' +
+        '<img class="txcc-admin-row-img" src="' + escapeHtml(p.image ? "/" + p.image : "/assets/placeholder-product.svg") + '" alt="">' +
+        '<label>Name</label>' +
+        '<input class="txcc-edit-name" type="text" value="' + escapeHtml(p.name) + '" required>' +
+        '<label>Price (USD)</label>' +
+        '<input class="txcc-edit-price" type="number" min="0.01" step="0.01" value="' + escapeHtml(p.price) + '" required>' +
+        '<label>Category</label>' +
+        '<select class="txcc-edit-category">' + categoryOptionsHtml(p.category) + "</select>" +
+        '<label>Description (optional)</label>' +
+        '<textarea class="txcc-edit-description" rows="2">' + escapeHtml(p.description || "") + "</textarea>" +
+        '<label>Replace Photo (optional)</label>' +
+        '<input class="txcc-edit-image" type="file" accept="image/*">' +
+        '<div class="txcc-admin-edit-actions">' +
+          '<button type="submit" class="button button--small button--primary">Save Changes</button>' +
+          '<button type="button" class="button button--small txcc-admin-cancel-btn">Cancel</button>' +
+        "</div>" +
+        '<p class="txcc-admin-status txcc-edit-status"></p>' +
+      "</form>"
+    );
+  }
+
+  function rows(products) {
+    return products.length
       ? products.map(function (p) {
           return (
-            '<div class="txcc-admin-row">' +
+            '<div class="txcc-admin-row" data-row-id="' + escapeHtml(p.id) + '">' +
               '<img class="txcc-admin-row-img" src="' + escapeHtml(p.image ? "/" + p.image : "/assets/placeholder-product.svg") + '" alt="">' +
               '<div class="txcc-admin-row-body">' +
                 '<div class="txcc-admin-row-name">' + escapeHtml(p.name) + "</div>" +
                 '<div class="txcc-admin-row-meta">$' + Number(p.price).toFixed(2) + " · " + escapeHtml(categoryLabel(p.category)) + "</div>" +
               "</div>" +
+              '<button type="button" class="button button--small txcc-admin-edit-btn" data-id="' + escapeHtml(p.id) + '">Edit</button>' +
               '<button type="button" class="button button--small txcc-admin-delete-btn" data-id="' + escapeHtml(p.id) + '">Delete</button>' +
             "</div>"
           );
         }).join("")
       : '<p class="txcc-admin-hint">No products added yet.</p>';
+  }
+
+  function renderDashboardWith(token, products, sha) {
+    var options = CATEGORIES.map(function (c) {
+      return '<option value="' + escapeHtml(c.value) + '">' + escapeHtml(c.label) + "</option>";
+    }).join("");
 
     root.innerHTML =
       '<div class="txcc-admin-dashboard">' +
@@ -246,7 +279,7 @@
           '<p id="admin-add-status" class="txcc-admin-status"></p>' +
         "</form>" +
         "<h2>Current Products (" + products.length + ")</h2>" +
-        '<div id="admin-product-list">' + rows + "</div>" +
+        '<div id="admin-product-list">' + rows(products) + "</div>" +
       "</div>";
 
     document.getElementById("admin-logout-btn").addEventListener("click", function () {
@@ -298,25 +331,98 @@
       });
     });
 
-    document.getElementById("admin-product-list").addEventListener("click", function (event) {
-      var btn = event.target.closest(".txcc-admin-delete-btn");
-      if (!btn) return;
-      if (!window.confirm("Delete this product? This can't be undone.")) return;
+    var listEl = document.getElementById("admin-product-list");
 
-      var id = btn.getAttribute("data-id");
-      btn.disabled = true;
-      btn.textContent = "Deleting…";
+    listEl.addEventListener("click", function (event) {
+      var deleteBtn = event.target.closest(".txcc-admin-delete-btn");
+      if (deleteBtn) {
+        if (!window.confirm("Delete this product? This can't be undone.")) return;
 
-      getProductsFile(token).then(function (fresh) {
-        var updated = fresh.products.filter(function (p) { return p.id !== id; });
-        var removed = fresh.products.filter(function (p) { return p.id === id; })[0];
-        return saveProductsFile(token, updated, fresh.sha, "Admin: delete product \"" + (removed ? removed.name : id) + "\"");
+        var id = deleteBtn.getAttribute("data-id");
+        deleteBtn.disabled = true;
+        deleteBtn.textContent = "Deleting…";
+
+        getProductsFile(token).then(function (fresh) {
+          var updated = fresh.products.filter(function (p) { return p.id !== id; });
+          var removed = fresh.products.filter(function (p) { return p.id === id; })[0];
+          return saveProductsFile(token, updated, fresh.sha, "Admin: delete product \"" + (removed ? removed.name : id) + "\"");
+        }).then(function () {
+          renderDashboard();
+        }).catch(function (err) {
+          deleteBtn.disabled = false;
+          deleteBtn.textContent = "Delete";
+          window.alert("Failed to delete: " + err.message);
+        });
+        return;
+      }
+
+      var editBtn = event.target.closest(".txcc-admin-edit-btn");
+      if (editBtn) {
+        var editId = editBtn.getAttribute("data-id");
+        var product = products.filter(function (p) { return p.id === editId; })[0];
+        if (!product) return;
+        var rowEl = listEl.querySelector('[data-row-id="' + editId + '"]');
+        if (rowEl) rowEl.outerHTML = editFormHtml(product);
+        return;
+      }
+
+      var cancelBtn = event.target.closest(".txcc-admin-cancel-btn");
+      if (cancelBtn) {
+        var form = cancelBtn.closest(".txcc-admin-edit-form");
+        var cancelId = form.getAttribute("data-id");
+        var original = products.filter(function (p) { return p.id === cancelId; })[0];
+        if (original) form.outerHTML = rows([original]);
+        return;
+      }
+    });
+
+    listEl.addEventListener("submit", function (event) {
+      var form = event.target.closest(".txcc-admin-edit-form");
+      if (!form) return;
+      event.preventDefault();
+
+      var id = form.getAttribute("data-id");
+      var statusEl = form.querySelector(".txcc-edit-status");
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var name = form.querySelector(".txcc-edit-name").value.trim();
+      var price = parseFloat(form.querySelector(".txcc-edit-price").value);
+      var category = form.querySelector(".txcc-edit-category").value;
+      var description = form.querySelector(".txcc-edit-description").value.trim();
+      var imageFile = form.querySelector(".txcc-edit-image").files[0];
+
+      if (!name || !price || price <= 0) {
+        setStatus(statusEl, "Enter a name and a price greater than $0.", true);
+        return;
+      }
+
+      submitBtn.disabled = true;
+      setStatus(statusEl, imageFile ? "Uploading image…" : "Saving…");
+
+      var imageStepPromise = imageFile ? uploadImage(token, imageFile) : Promise.resolve(null);
+
+      imageStepPromise.then(function (newImagePath) {
+        setStatus(statusEl, "Saving product…");
+        return getProductsFile(token).then(function (fresh) {
+          var updated = fresh.products.map(function (p) {
+            if (p.id !== id) return p;
+            return {
+              id: p.id,
+              name: name,
+              price: price,
+              category: category,
+              description: description,
+              image: newImagePath !== null ? newImagePath : p.image,
+              createdAt: p.createdAt,
+            };
+          });
+          return saveProductsFile(token, updated, fresh.sha, "Admin: edit product \"" + name + "\"");
+        });
       }).then(function () {
-        renderDashboard();
+        setStatus(statusEl, "Saved! It'll be live on the site in under a minute once your host redeploys.");
+        setTimeout(renderDashboard, 1200);
       }).catch(function (err) {
-        btn.disabled = false;
-        btn.textContent = "Delete";
-        window.alert("Failed to delete: " + err.message);
+        submitBtn.disabled = false;
+        setStatus(statusEl, err.message, true);
       });
     });
   }
