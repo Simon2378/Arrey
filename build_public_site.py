@@ -21,6 +21,7 @@ Usage:
     python build_public_site.py
 """
 
+import hashlib
 import json
 import os
 import posixpath
@@ -261,18 +262,33 @@ def replace_payment_icons(soup: BeautifulSoup):
         container.append(span)
 
 
+_ASSET_VERSION_CACHE: dict = {}
+
+
+def asset_version(fname: str) -> str:
+    """A short content hash appended as a ?v= query string so browsers never
+    serve a stale cached copy of a custom script/stylesheet after it
+    changes -- without this, a real fix (like the admin image-upload one)
+    can silently keep failing in a visitor's browser until they happen to
+    hard-refresh, which most people never think to do."""
+    if fname not in _ASSET_VERSION_CACHE:
+        with open(os.path.join(CUSTOM_ASSETS_DIR, fname), "rb") as f:
+            _ASSET_VERSION_CACHE[fname] = hashlib.sha1(f.read()).hexdigest()[:8]
+    return _ASSET_VERSION_CACHE[fname]
+
+
 def inject_custom_assets(soup: BeautifulSoup, new_rel: str):
     prefix = "../" * new_rel.count("/")
 
     head = soup.find("head")
     if head:
-        link = soup.new_tag("link", rel="stylesheet", href=f"{prefix}cart.css")
+        link = soup.new_tag("link", rel="stylesheet", href=f"{prefix}cart.css?v={asset_version('cart.css')}")
         head.append(link)
 
     body = soup.find("body")
     if body:
         for fname in ("payment-config.js", "cart.js", "product-display.js"):
-            script = soup.new_tag("script", src=f"{prefix}{fname}")
+            script = soup.new_tag("script", src=f"{prefix}{fname}?v={asset_version(fname)}")
             body.append(script)
 
 
@@ -412,8 +428,8 @@ def build_admin_page():
     admin.js. Not linked from anywhere in the site nav; reach it directly
     at /admin/."""
     soup = BeautifulSoup("<div></div>", "lxml")
-    link = soup.new_tag("link", rel="stylesheet", href="../admin.css")
-    script = soup.new_tag("script", src="../admin.js")
+    link = soup.new_tag("link", rel="stylesheet", href=f"../admin.css?v={asset_version('admin.css')}")
+    script = soup.new_tag("script", src=f"../admin.js?v={asset_version('admin.js')}")
 
     _build_page_from_template(
         "admin",
