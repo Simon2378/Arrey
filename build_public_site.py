@@ -262,7 +262,13 @@ def replace_payment_icons(soup: BeautifulSoup, new_rel: str):
     prefix = "../" * new_rel.count("/")
     container.clear()
     for slug, label, logo_file in PAYMENT_BADGES:
-        span = soup.new_tag("span", **{"class": f"footer-payment-icon footer-payment-badge footer-payment-badge--{slug}"})
+        # deliberately NOT using the original theme's "footer-payment-icon"
+        # class here -- its CSS (theme-*.css, from the original BigCommerce
+        # scrape) hard-codes width:3.125rem for the old small square
+        # card-network icons, which fought with our own sizing and clipped
+        # the logo+label content ("not fitting the box"). Our own classes
+        # fully control this badge's layout now.
+        span = soup.new_tag("span", **{"class": f"footer-payment-badge footer-payment-badge--{slug}"})
         img = soup.new_tag("img", src=f"{prefix}{logo_file}", alt=label, **{"class": "footer-payment-badge-logo"})
         span.append(img)
         span.append(label)
