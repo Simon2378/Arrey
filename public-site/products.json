@@ -763,14 +763,5 @@
     "description": "None",
     "image": "assets/admin-uploads/1789364175247-img-7515.jpg",
     "createdAt": "2026-09-13T06:12:22.980Z"
-  },
-  {
-    "id": "catalyst-edible-1789279942980-40",
-    "name": "Chocolate Crispy Rice Bar Single 10...",
-    "price": 15,
-    "category": "edibles-gummies",
-    "description": "Dr. Norm's · Hybrid",
-    "image": "assets/admin-uploads/1789364223116-img-7528.jpg",
-    "createdAt": "2026-09-13T06:12:22.980Z"
   }
 ]
