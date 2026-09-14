@@ -48,6 +48,10 @@ CUSTOM_ASSET_FILES = [
     "concentrate-hash.jpg", "concentrate-fine-extract.jpg",
     "concentrate-bho.jpg", "concentrate-gold.jpg",
     "concentrate-bho2.jpg", "concentrate-dab.jpg",
+    # payment method logos -- simple-icons (MIT) for bitcoin/tether/cashapp,
+    # Wikimedia Commons (public-domain wordmark) for chime
+    "payment-logo-bitcoin.svg", "payment-logo-tether.svg",
+    "payment-logo-cashapp.svg", "payment-logo-chime.svg",
 ]
 # products.json is live application data written by the admin panel via the
 # GitHub API, not a build artifact -- only ever *seeded* if missing, never

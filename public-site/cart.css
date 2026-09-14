@@ -148,6 +148,10 @@
 
 .txcc-payment-btn {
   flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
   padding: 0.5rem 0.5rem;
   border: 1.5px solid #ccc;
   border-radius: 6px;
@@ -155,6 +159,13 @@
   cursor: pointer;
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+.txcc-payment-btn-logo {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
 .txcc-payment-btn--active {
@@ -167,6 +178,20 @@
 .txcc-payment-btn--cashapp.txcc-payment-btn--active { background: #00d632; border-color: #00d632; }
 .txcc-payment-btn--chime.txcc-payment-btn--active { background: #1ee0ac; border-color: #1ee0ac; color: #063; }
 .txcc-payment-btn--usdt.txcc-payment-btn--active { background: #26a17b; border-color: #26a17b; }
+
+.txcc-order-now-btn {
+  display: block;
+  width: 100%;
+  margin-top: 0.625rem;
+}
+
+.txcc-payment-paid-note {
+  margin-top: 0.625rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed #ccc;
+  font-size: 0.75rem;
+  color: #444;
+}
 
 .txcc-payment-detail {
   margin-top: 0.5rem;

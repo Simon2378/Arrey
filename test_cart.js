@@ -110,13 +110,41 @@ assert(methodBtns.length === 4, "4 payment method buttons rendered on cart page,
 const labels = Array.from(methodBtns).map((b) => b.textContent.trim()).join(",");
 assert(labels === "Bitcoin,Cash App,Chime,USDT (ERC20)", "payment method labels correct, got: " + labels);
 
-// select USDT, verify address + copy button
+// each button carries a real brand logo now
+assert(Array.from(methodBtns).every((b) => !!b.querySelector(".txcc-payment-btn-logo")), "every payment button includes a logo image");
+
+// select USDT: this only highlights the button and shows "Order Now" --
+// the address must NOT appear until Order Now is actually clicked
 const usdtBtn = Array.from(methodBtns).find((b) => b.textContent.trim() === "USDT (ERC20)");
 usdtBtn.dispatchEvent(new win2.Event("click", { bubbles: true }));
 let activeBtn = cartContainer.querySelector(".txcc-payment-btn--active");
 assert(activeBtn && activeBtn.textContent.trim() === "USDT (ERC20)", "clicking USDT makes it active");
+assert(!cartContainer.querySelector(".txcc-payment-detail"), "USDT address is NOT shown just from selecting the method");
+let orderNowBtn = cartContainer.querySelector("[data-order-now]");
+assert(!!orderNowBtn && orderNowBtn.getAttribute("data-order-now") === "usdt", "an Order Now button appears for the selected method instead");
+
+// click Order Now -- now the address/instructions reveal
+orderNowBtn.dispatchEvent(new win2.Event("click", { bubbles: true }));
+cartContainer = doc2.getElementById("cart-page-content");
 let detail = cartContainer.querySelector(".txcc-payment-detail");
-assert(detail.textContent.includes("0xf28d892f4c955bb26622486afb61660dda242ca0"), "USDT address shown, got: " + detail.textContent);
+assert(!!detail, "clicking Order Now reveals the payment detail section");
+assert(detail.textContent.includes("0xf28d892f4c955bb26622486afb61660dda242ca0"), "USDT address shown after Order Now, got: " + detail.textContent);
+assert(!cartContainer.querySelector("[data-order-now]"), "Order Now button is gone once details are revealed");
+assert(detail.textContent.includes("Once paid, contact us"), "revealed detail includes the once-paid contact-us note, got: " + detail.textContent);
+
+// switching to a different method hides the detail again until Order Now
+// is clicked for that new method too
+const chimeBtnForSwitch = Array.from(cartContainer.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "Chime");
+chimeBtnForSwitch.dispatchEvent(new win2.Event("click", { bubbles: true }));
+cartContainer = doc2.getElementById("cart-page-content");
+assert(!cartContainer.querySelector(".txcc-payment-detail"), "switching methods hides the previous method's revealed detail");
+assert(!!cartContainer.querySelector("[data-order-now]"), "Order Now reappears for the newly-selected method");
+// switch back to USDT and confirm again so the rest of this suite (which
+// expects USDT's detail to be visible) continues to work unchanged
+Array.from(cartContainer.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "USDT (ERC20)").dispatchEvent(new win2.Event("click", { bubbles: true }));
+cartContainer = doc2.getElementById("cart-page-content");
+cartContainer.querySelector("[data-order-now]").dispatchEvent(new win2.Event("click", { bubbles: true }));
+cartContainer = doc2.getElementById("cart-page-content");
 
 // payment-proof note + "i" button: disabled placeholder state (no email set yet)
 let infoBtn = cartContainer.querySelector(".txcc-info-btn");
@@ -155,9 +183,16 @@ assert(cartContainer.querySelector(".txcc-qty-value").textContent.trim() === "34
 // Cash App: contactEmail placeholder, then simulate the real email being set
 const cashBtn = Array.from(cartContainer.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "Cash App");
 cashBtn.dispatchEvent(new win2.Event("click", { bubbles: true }));
+cartContainer.querySelector("[data-order-now]").dispatchEvent(new win2.Event("click", { bubbles: true }));
+cartContainer = doc2.getElementById("cart-page-content");
 assert(cartContainer.querySelector(".txcc-payment-detail").textContent.includes("coming soon"), "Cash App shows 'coming soon' placeholder with no email set");
 win2.PAYMENT_METHODS.find((m) => m.id === "cashapp").contactEmail = "orders@example.com";
+// re-selecting the SAME method it's already confirmed for keeps the detail
+// visible (no Order Now button to click again) -- only *switching* methods
+// hides it, which is already covered above
 Array.from(cartContainer.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "Cash App").dispatchEvent(new win2.Event("click", { bubbles: true }));
+cartContainer = doc2.getElementById("cart-page-content");
+assert(!cartContainer.querySelector("[data-order-now]"), "re-clicking an already-confirmed method doesn't hide its detail behind Order Now again");
 const emailLink = cartContainer.querySelector(".txcc-payment-email-link");
 assert(!!emailLink && emailLink.getAttribute("href").startsWith("mailto:orders@example.com"), "mailto link appears once contactEmail is set, got: " + (emailLink && emailLink.getAttribute("href")));
 

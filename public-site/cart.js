@@ -57,6 +57,13 @@
     });
   }
 
+  // cart.js/cart.css live at the site root at every page depth (copied
+  // there verbatim by the build), so a root-absolute path always resolves
+  // correctly regardless of how deep the current page is.
+  function rootRelativeAsset(fname) {
+    return "/" + fname;
+  }
+
   var badgeObserver = null;
 
   // The original theme JS also tries to sync this same .cart-quantity badge
@@ -211,6 +218,13 @@
     var minTotal = minOrderTotal();
     var meetsMinimum = total >= minTotal;
 
+    var LOGO_BY_METHOD = {
+      bitcoin: "payment-logo-bitcoin.svg",
+      cashapp: "payment-logo-cashapp.svg",
+      chime: "payment-logo-chime.svg",
+      usdt: "payment-logo-tether.svg",
+    };
+
     var paymentSection;
     if (!meetsMinimum) {
       var remaining = minTotal - total;
@@ -219,14 +233,22 @@
           "Minimum order is " + money(minTotal) + ". Add " + money(remaining) + " more to choose a payment method." +
         "</div>";
     } else {
+      // Two-step reveal: picking a method only highlights it -- the address
+      // and instructions stay hidden until the customer explicitly clicks
+      // "Order Now" for that method, rather than dumping payment details on
+      // screen the moment a button is touched.
+      var confirmed = container.getAttribute("data-order-confirmed") === selected;
+
       var methodButtons = methods.map(function (m) {
         var active = m.id === selected ? " txcc-payment-btn--active" : "";
-        return '<button type="button" class="txcc-payment-btn txcc-payment-btn--' + m.id + active + '" data-method="' + m.id + '">' + escapeHtml(m.label) + "</button>";
+        var logoFile = LOGO_BY_METHOD[m.id];
+        var logo = logoFile ? '<img class="txcc-payment-btn-logo" src="' + rootRelativeAsset(logoFile) + '" alt="">' : "";
+        return '<button type="button" class="txcc-payment-btn txcc-payment-btn--' + m.id + active + '" data-method="' + m.id + '">' + logo + '<span>' + escapeHtml(m.label) + "</span></button>";
       }).join("");
 
       var activeMethod = methods.filter(function (m) { return m.id === selected; })[0];
       var methodDetail = "";
-      if (activeMethod) {
+      if (activeMethod && confirmed) {
         methodDetail = '<div class="txcc-payment-detail">';
         if (Object.prototype.hasOwnProperty.call(activeMethod, "contactEmail")) {
           if (activeMethod.contactEmail) {
@@ -248,14 +270,24 @@
           }
           methodDetail += "<div>" + escapeHtml(activeMethod.instructions || "") + "</div>";
         }
+        methodDetail +=
+          '<div class="txcc-payment-paid-note">Once paid, contact us at ' +
+          (window.PAYMENT_PROOF_EMAIL ? escapeHtml(window.PAYMENT_PROOF_EMAIL) : "the email below") +
+          " so we can confirm your order." +
+          "</div>";
         methodDetail += "</div>";
       }
+
+      var orderNowBtn = (activeMethod && !confirmed)
+        ? '<button type="button" class="button button--primary txcc-order-now-btn" data-order-now="' + escapeHtml(activeMethod.id) + '">Order Now</button>'
+        : "";
 
       paymentSection =
         '<div class="txcc-payment-label">Pay with</div>' +
         '<div class="txcc-payment-buttons">' + methodButtons + "</div>" +
+        orderNowBtn +
         methodDetail +
-        (activeMethod ? renderProofNote() : "");
+        (activeMethod && confirmed ? renderProofNote() : "");
     }
 
     container.innerHTML =
@@ -364,7 +396,22 @@
 
     var methodBtn = event.target.closest(".txcc-payment-btn");
     if (methodBtn && container.contains(methodBtn)) {
-      container.setAttribute("data-selected-method", methodBtn.getAttribute("data-method"));
+      var newMethod = methodBtn.getAttribute("data-method");
+      // switching to a different method (or re-picking after already having
+      // confirmed one) hides the address/instructions again until Order Now
+      // is clicked for it -- selecting a button should never by itself
+      // reveal payment details
+      if (container.getAttribute("data-selected-method") !== newMethod) {
+        container.removeAttribute("data-order-confirmed");
+      }
+      container.setAttribute("data-selected-method", newMethod);
+      renderCart();
+      return;
+    }
+
+    var orderNowBtn = event.target.closest("[data-order-now]");
+    if (orderNowBtn && container.contains(orderNowBtn)) {
+      container.setAttribute("data-order-confirmed", orderNowBtn.getAttribute("data-order-now"));
       renderCart();
       return;
     }
