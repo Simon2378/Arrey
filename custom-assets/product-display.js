@@ -103,6 +103,18 @@
 
     document.title = product.name + " - Texas Cannabis Company";
 
+    // The site enforces a $100 minimum order. A single unit of most items
+    // costs less than that, so rather than silently bumping the quantity up
+    // on submit (confusing: customer picks 1, cart shows 6 with no
+    // explanation), show the real minimum up front with a plain-language
+    // reason, the same way the minimum-order notice already works on the
+    // cart page itself.
+    var minQty = (window.TxccCart && window.TxccCart.minQtyForPrice) ? window.TxccCart.minQtyForPrice(product.price) : 1;
+    var minOrderTotal = window.MINIMUM_ORDER_TOTAL || 100;
+    var minOrderNote = minQty > 1
+      ? "Minimum order is " + money(minOrderTotal) + ". At " + money(product.price) + " each, that means at least " + minQty + " of this item on its own -- or mix in other products and reach " + money(minOrderTotal) + " across your whole order instead."
+      : "Minimum order is " + money(minOrderTotal) + ".";
+
     container.innerHTML =
       '<div class="txcc-product-detail">' +
         '<img class="txcc-product-detail-img" src="' + escapeHtml(productImageSrc(product)) + '" alt="' + escapeHtml(product.name) + '">' +
@@ -112,8 +124,9 @@
           (product.description ? '<p class="txcc-product-detail-desc">' + escapeHtml(product.description) + "</p>" : "") +
           '<div class="txcc-product-detail-qty">' +
             '<label for="txcc-pd-qty">Quantity</label>' +
-            '<input id="txcc-pd-qty" type="number" min="1" value="1">' +
+            '<input id="txcc-pd-qty" type="number" min="' + minQty + '" value="' + minQty + '">' +
           "</div>" +
+          '<p class="txcc-min-order-note">' + escapeHtml(minOrderNote) + "</p>" +
           '<button type="button" id="txcc-pd-add" class="button button--primary">Add to Cart</button>' +
           '<p id="txcc-pd-status" class="txcc-admin-status"></p>' +
         "</div>" +
@@ -122,7 +135,6 @@
     document.getElementById("txcc-pd-add").addEventListener("click", function () {
       if (!window.TxccCart) return;
       var qtyInput = document.getElementById("txcc-pd-qty");
-      var minQty = window.TxccCart.minQtyForPrice(product.price);
       var qty = Math.max(minQty, parseInt(qtyInput.value, 10) || 1);
       window.TxccCart.addToCart({
         id: product.id,

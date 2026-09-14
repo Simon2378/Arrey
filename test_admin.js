@@ -274,8 +274,13 @@ function loadAdminPage(cartStore) {
   assert(dom.window.document.body.textContent.indexOf("$9.50") !== -1, "product detail page shows the price");
   assert(dom.window.document.body.textContent.indexOf("desc B") !== -1, "product detail page shows the description");
 
+  // quantity is pre-filled with the real minimum on page load now (not
+  // silently bumped only after clicking Add to Cart) -- $9.50 item needs
+  // ceil(100/9.5)=11 to hit the $100 minimum on its own
   const qtyInput = dom.window.document.getElementById("txcc-pd-qty");
-  assert(qtyInput.value === "1", "quantity defaults to 1 on the detail page");
+  assert(qtyInput.value === "11", "quantity is pre-filled to the real minimum (ceil(100/9.5)=11) on page load, got: " + qtyInput.value);
+  assert(qtyInput.min === "11", "quantity input's min attribute matches, got: " + qtyInput.min);
+  assert(dom.window.document.body.textContent.indexOf("Minimum order is $100.00") !== -1, "detail page explains the minimum order up front instead of silently bumping quantity");
   const addBtn = dom.window.document.getElementById("txcc-pd-add");
   addBtn.dispatchEvent(new dom.window.Event("click", { bubbles: true }));
   assert(!!addedItem, "clicking Add to Cart calls TxccCart.addToCart");

@@ -350,6 +350,17 @@
   border-radius: 6px;
 }
 
+.txcc-min-order-note {
+  padding: 0.625rem;
+  margin-bottom: 1rem;
+  background: #fff4e5;
+  border: 1px solid #f7931a;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #7a4b00;
+  line-height: 1.4;
+}
+
 .footer-payment-badge--bitcoin { background: #f7931a; }
 .footer-payment-badge--cashapp { background: #00d632; }
 .footer-payment-badge--chime { background: #1ee0ac; color: #063; }
