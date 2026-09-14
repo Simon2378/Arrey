@@ -754,14 +754,5 @@
     "description": "Dr. Norm's · Hybrid",
     "image": "assets/admin-uploads/1789363650680-img-7527.jpg",
     "createdAt": "2026-09-13T06:12:22.980Z"
-  },
-  {
-    "id": "catalyst-edible-1789279942980-39",
-    "name": "Peanut Butter Milk Chocoloate Crunc...",
-    "price": 16,
-    "category": "edibles-gummies",
-    "description": "None",
-    "image": "assets/admin-uploads/1789364175247-img-7515.jpg",
-    "createdAt": "2026-09-13T06:12:22.980Z"
   }
 ]
