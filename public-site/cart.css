@@ -309,6 +309,9 @@
   gap: 0.5rem;
 }
 
+/* Same look as the cart page's payment method buttons (.txcc-payment-btn):
+   white background, bordered box, real logo + label -- no solid brand-color
+   fill, just a plain neutral badge matching the rest of the site. */
 .footer-payment-badge {
   display: inline-flex;
   align-items: center;
@@ -317,16 +320,18 @@
   height: 2.1875rem;
   min-width: 2.75rem;
   padding: 0 0.625rem;
+  border: 1.5px solid #ccc;
   border-radius: 6px;
+  background: #fff;
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #fff;
+  font-weight: 600;
+  color: #222;
   white-space: nowrap;
 }
 
 .footer-payment-badge-logo {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
   object-fit: contain;
 }
@@ -394,10 +399,6 @@
   line-height: 1.4;
 }
 
-.footer-payment-badge--bitcoin { background: #f7931a; }
-.footer-payment-badge--cashapp { background: #00d632; }
-.footer-payment-badge--chime { background: #1ee0ac; color: #063; }
-.footer-payment-badge--usdt { background: #26a17b; }
 
 /* "Added to cart" toast (shown after Add to Cart, since there's no dropdown
    to pop open and confirm it anymore -- the cart icon just links to /cart/) */
