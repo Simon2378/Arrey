@@ -1,14 +1,5 @@
 [
   {
-    "id": "catalyst-1789252671120-0",
-    "name": "Cat4 Garlic Juice Rosin 1g",
-    "price": 24.5,
-    "category": "concentrates",
-    "description": "Cat4 · Hybrid · Reg. $35.00",
-    "image": "assets/admin-uploads/1789363764103-img-7453.jpg",
-    "createdAt": "2026-09-12T22:37:51.120Z"
-  },
-  {
     "id": "catalyst-1789252671244-1",
     "name": "Honey Og Rosin 1g",
     "price": 24.5,
@@ -762,33 +753,6 @@
     "category": "edibles-gummies",
     "description": "Dr. Norm's · Hybrid",
     "image": "assets/admin-uploads/1789363650680-img-7527.jpg",
-    "createdAt": "2026-09-13T06:12:22.980Z"
-  },
-  {
-    "id": "catalyst-edible-1789279942980-38",
-    "name": "Key Lime Pie Chocolate Solventless...",
-    "price": 16,
-    "category": "edibles-gummies",
-    "description": "Punch · Hybrid",
-    "image": "assets/admin-uploads/1789363817353-img-7521.jpg",
-    "createdAt": "2026-09-13T06:12:22.980Z"
-  },
-  {
-    "id": "catalyst-edible-1789279942980-39",
-    "name": "Peanut Butter Milk Chocoloate Crunc...",
-    "price": 16,
-    "category": "edibles-gummies",
-    "description": "None",
-    "image": "assets/admin-uploads/1789364175247-img-7515.jpg",
-    "createdAt": "2026-09-13T06:12:22.980Z"
-  },
-  {
-    "id": "catalyst-edible-1789279942980-40",
-    "name": "Chocolate Crispy Rice Bar Single 10...",
-    "price": 15,
-    "category": "edibles-gummies",
-    "description": "Dr. Norm's · Hybrid",
-    "image": "assets/admin-uploads/1789364223116-img-7528.jpg",
     "createdAt": "2026-09-13T06:12:22.980Z"
   }
 ]
