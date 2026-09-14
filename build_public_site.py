@@ -248,21 +248,24 @@ def ensure_charset_meta(soup: BeautifulSoup):
 
 
 PAYMENT_BADGES = [
-    ("bitcoin", "Bitcoin"),
-    ("cashapp", "Cash App"),
-    ("chime", "Chime"),
-    ("usdt", "USDT"),
+    ("bitcoin", "Bitcoin", "payment-logo-bitcoin.svg"),
+    ("cashapp", "Cash App", "payment-logo-cashapp.svg"),
+    ("chime", "Chime", "payment-logo-chime.svg"),
+    ("usdt", "USDT", "payment-logo-tether.svg"),
 ]
 
 
-def replace_payment_icons(soup: BeautifulSoup):
+def replace_payment_icons(soup: BeautifulSoup, new_rel: str):
     container = soup.find("div", class_="footer-payment-icons")
     if not container:
         return
+    prefix = "../" * new_rel.count("/")
     container.clear()
-    for slug, label in PAYMENT_BADGES:
+    for slug, label, logo_file in PAYMENT_BADGES:
         span = soup.new_tag("span", **{"class": f"footer-payment-icon footer-payment-badge footer-payment-badge--{slug}"})
-        span.string = label
+        img = soup.new_tag("img", src=f"{prefix}{logo_file}", alt=label, **{"class": "footer-payment-badge-logo"})
+        span.append(img)
+        span.append(label)
         container.append(span)
 
 
@@ -326,7 +329,7 @@ def process_page(page_url: str, local_html_path: str, new_rel: str, url_map: dic
     strip_live_chat_banner(soup)
     strip_theme_cart_preview_hook(soup)
     fix_cart_link(soup)
-    replace_payment_icons(soup)
+    replace_payment_icons(soup, new_rel)
 
     for tag_name, attrs in REWRITE_ATTRS.items():
         for tag in soup.find_all(tag_name):

@@ -62,10 +62,10 @@ const cartLink = doc1.querySelector(".navUser-action--cart");
 assert(!!cartLink, "found cart icon link");
 assert(cartLink.getAttribute("href") === "/cart/", "cart icon is a plain link to /cart/, not a dropdown trigger, got: " + cartLink.getAttribute("href"));
 
-// $2.99 item -> minimum qty to reach the $100 order minimum on its own is ceil(100/2.99) = 34
+// Quantity is free to pick per item now -- no per-item minimum is forced.
+// The $100 order minimum is enforced once, for the whole cart, at Order Now.
 const qtyInput = doc1.querySelector('input[name="qty[]"]');
-assert(qtyInput.value === "34", "qty field pre-filled to 34 for a $2.99 item on page load, got: " + qtyInput.value);
-assert(qtyInput.min === "34", "qty field min attribute set to 34, got: " + qtyInput.min);
+assert(qtyInput.value === "1", "qty field is NOT auto-bumped on page load, defaults to whatever the page itself set, got: " + qtyInput.value);
 
 const firstRadio = doc1.querySelector('input[name="attribute[175]"]');
 firstRadio.checked = true;
@@ -73,6 +73,9 @@ firstRadio.checked = true;
 const form = doc1.querySelector("form[data-cart-item-add]");
 form.checkValidity = () => true;
 form.reportValidity = () => true;
+// pick 34 by hand (same as a customer typing a quantity in) so the rest of
+// this suite still has a $100+ cart to exercise the payment-method flow
+qtyInput.value = "34";
 form.dispatchEvent(new win1.Event("submit", { bubbles: true, cancelable: true }));
 
 const pillAfter1 = doc1.querySelector(".cart-quantity");
@@ -173,12 +176,13 @@ copyBtn.dispatchEvent(new win2.Event("click", { bubbles: true }));
 assert(copiedText === "0xf28d892f4c955bb26622486afb61660dda242ca0", "copy button actually copies the address, got: " + copiedText);
 assert(copyBtn.textContent.trim() === "Copied!", "copy button shows feedback, got: " + copyBtn.textContent);
 
-// decrement floor: can't go below the per-item minimum (34) via "-"
+// decrement is free to go all the way down to 1 now (no per-item minimum
+// forced) -- only stops at 1, use Remove to drop the line item entirely
 for (let i = 0; i < 3; i++) {
   cartContainer.querySelector('.txcc-qty-btn[data-action="dec"]').dispatchEvent(new win2.Event("click", { bubbles: true }));
 }
 cartContainer = doc2.getElementById("cart-page-content");
-assert(cartContainer.querySelector(".txcc-qty-value").textContent.trim() === "34", "decrement refuses to go below the per-item minimum (34)");
+assert(cartContainer.querySelector(".txcc-qty-value").textContent.trim() === "31", "decrement freely reduces quantity (34 - 3 = 31), no per-item floor, got: " + cartContainer.querySelector(".txcc-qty-value").textContent.trim());
 
 // Cash App: contactEmail placeholder, then simulate the real email being set
 const cashBtn = Array.from(cartContainer.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "Cash App");
@@ -209,17 +213,47 @@ assert(!!cartContainer.querySelector('a[href="/all-products/"]'), "empty state i
 const badgeEmpty = doc2.querySelector(".cart-quantity");
 assert(badgeEmpty.textContent.trim() === "", "badge is empty once the cart is empty");
 
-// ---------- minimum-order gate: inject a below-threshold cart, load a 3rd "page" ----------
+// ---------- minimum-order gate: enforced once, at Order Now, on the whole
+// cart total -- not by hiding payment methods or forcing per-item quantity ----------
 cartStore["txcc_cart_v1"] = JSON.stringify([
   { id: "999", variant: "", name: "Cheap Test Item", price: 2, image: "", qty: 1, minQty: 1 },
 ]);
 let win3 = loadPage("cart/index.html", "http://localhost:8787/cart/index.html");
 let doc3 = win3.document;
 let container3 = doc3.getElementById("cart-page-content");
+assert(container3.querySelectorAll(".txcc-payment-btn").length === 4, "payment methods are still selectable even while under the minimum, got " + container3.querySelectorAll(".txcc-payment-btn").length);
+assert(!container3.querySelector(".txcc-min-order-notice"), "no minimum-order notice just from loading a below-threshold cart");
+
+// select a method -- still no notice yet, just the Order Now button
+const bitcoinBtn3 = Array.from(container3.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "Bitcoin");
+bitcoinBtn3.dispatchEvent(new win3.Event("click", { bubbles: true }));
+container3 = doc3.getElementById("cart-page-content");
+assert(!container3.querySelector(".txcc-min-order-notice"), "selecting a method under the minimum still doesn't show the notice yet");
+assert(!!container3.querySelector("[data-order-now]"), "Order Now button is available even under the minimum");
+assert(!container3.querySelector(".txcc-payment-detail"), "no address/instructions shown yet");
+
+// click Order Now while under $100 -- THIS is what pops the message, and
+// it must not reveal the address
+container3.querySelector("[data-order-now]").dispatchEvent(new win3.Event("click", { bubbles: true }));
+container3 = doc3.getElementById("cart-page-content");
 const notice = container3.querySelector(".txcc-min-order-notice");
-assert(!!notice, "minimum-order notice renders when total is below $100");
-assert(notice.textContent.includes("$98.00"), "notice states the correct remaining amount, got: " + notice.textContent);
-assert(container3.querySelectorAll(".txcc-payment-btn").length === 0, "payment buttons hidden while below the minimum");
+assert(!!notice, "clicking Order Now under the minimum pops a minimum-order message");
+assert(notice.textContent.includes("$100") && notice.textContent.includes("$98.00"), "message states the $100+ minimum and correct remaining amount, got: " + notice.textContent);
+assert(!container3.querySelector(".txcc-payment-detail"), "clicking Order Now under the minimum does NOT reveal the address");
+assert(!!container3.querySelector("[data-order-now]"), "Order Now button remains so they can try again once the cart meets the minimum");
+
+// add enough to clear $100, then Order Now actually confirms this time
+cartStore["txcc_cart_v1"] = JSON.stringify([
+  { id: "999", variant: "", name: "Cheap Test Item", price: 2, image: "", qty: 60, minQty: 1 },
+]);
+win3 = loadPage("cart/index.html", "http://localhost:8787/cart/index.html");
+doc3 = win3.document;
+container3 = doc3.getElementById("cart-page-content");
+Array.from(container3.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "Bitcoin").dispatchEvent(new win3.Event("click", { bubbles: true }));
+container3.querySelector("[data-order-now]").dispatchEvent(new win3.Event("click", { bubbles: true }));
+container3 = doc3.getElementById("cart-page-content");
+assert(!container3.querySelector(".txcc-min-order-notice"), "no minimum-order message once the cart actually meets $100");
+assert(!!container3.querySelector(".txcc-payment-detail"), "Order Now reveals payment details once the cart meets the minimum");
 
 console.log(failed ? "\nSOME TESTS FAILED" : "\nALL TESTS PASSED");
 process.exit(failed ? 1 : 0);

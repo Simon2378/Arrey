@@ -274,17 +274,16 @@ function loadAdminPage(cartStore) {
   assert(dom.window.document.body.textContent.indexOf("$9.50") !== -1, "product detail page shows the price");
   assert(dom.window.document.body.textContent.indexOf("desc B") !== -1, "product detail page shows the description");
 
-  // quantity is pre-filled with the real minimum on page load now (not
-  // silently bumped only after clicking Add to Cart) -- $9.50 item needs
-  // ceil(100/9.5)=11 to hit the $100 minimum on its own
+  // quantity is free to pick per item -- the $100 minimum applies to the
+  // whole order (mix any products to reach it) and is enforced once, at
+  // Order Now on the cart page, not by forcing a big per-item quantity here
   const qtyInput = dom.window.document.getElementById("txcc-pd-qty");
-  assert(qtyInput.value === "11", "quantity is pre-filled to the real minimum (ceil(100/9.5)=11) on page load, got: " + qtyInput.value);
-  assert(qtyInput.min === "11", "quantity input's min attribute matches, got: " + qtyInput.min);
-  assert(dom.window.document.body.textContent.indexOf("Minimum order is $100.00") !== -1, "detail page explains the minimum order up front instead of silently bumping quantity");
+  assert(qtyInput.value === "1", "quantity defaults to 1 on the detail page, not forced up per item, got: " + qtyInput.value);
+  assert(dom.window.document.body.textContent.indexOf("Minimum order is $100.00") !== -1, "detail page still mentions the overall $100 minimum");
   const addBtn = dom.window.document.getElementById("txcc-pd-add");
   addBtn.dispatchEvent(new dom.window.Event("click", { bubbles: true }));
   assert(!!addedItem, "clicking Add to Cart calls TxccCart.addToCart");
-  assert(addedItem.id === "admin-2" && addedItem.qty === 11, "add-to-cart item has right id and qty bumped to minQty (ceil(100/9.5)=11), got: " + JSON.stringify(addedItem));
+  assert(addedItem.id === "admin-2" && addedItem.qty === 1, "add-to-cart item keeps the quantity the customer actually chose (1), got: " + JSON.stringify(addedItem));
 
   console.log(failed ? "\nSOME TESTS FAILED" : "\nALL TESTS PASSED");
   process.exit(failed ? 1 : 0);

@@ -670,7 +670,7 @@ function subscribeOnBodlEvents() {
 
  </script>
 <!-- snippet location htmlhead -->
-<link href="cart.css?v=46811623" rel="stylesheet"/></head>
+<link href="cart.css?v=9d130987" rel="stylesheet"/></head>
 <body class="csscolumns papaSupermarket-layout--left-sidebar papaSupermarket-style--modern papaSupermarket-pageType--sitemap papaSupermarket-page--pages-sitemap emthemesModez-productUniform papaSupermarket--hideContentNav" id="topOfPage">
 <!-- snippet location header -->
 <svg class="icons-svg-sprite" data-src="https://cdn11.bigcommerce.com/s-rpcehsuohu/stencil/9578a150-8c4c-013e-531b-5eaa469dda74/e/9c9a9f10-91bd-013e-bbf8-22bac285f2f0/img/icon-sprite.svg"></svg>
@@ -1596,7 +1596,7 @@ function subscribeOnBodlEvents() {
                     </script>
                     Powered by <a href="http://bigcommerce.com" rel="nofollow">BigCommerce</a>. Theme designed by <a href="https://papathemes.com" rel="nofollow">Papathemes</a>.
             </p>
-<div class="footer-payment-icons"><span class="footer-payment-icon footer-payment-badge footer-payment-badge--bitcoin">Bitcoin</span><span class="footer-payment-icon footer-payment-badge footer-payment-badge--cashapp">Cash App</span><span class="footer-payment-icon footer-payment-badge footer-payment-badge--chime">Chime</span><span class="footer-payment-icon footer-payment-badge footer-payment-badge--usdt">USDT</span></div>
+<div class="footer-payment-icons"><span class="footer-payment-icon footer-payment-badge footer-payment-badge--bitcoin"><img alt="Bitcoin" class="footer-payment-badge-logo" src="payment-logo-bitcoin.svg"/>Bitcoin</span><span class="footer-payment-icon footer-payment-badge footer-payment-badge--cashapp"><img alt="Cash App" class="footer-payment-badge-logo" src="payment-logo-cashapp.svg"/>Cash App</span><span class="footer-payment-icon footer-payment-badge footer-payment-badge--chime"><img alt="Chime" class="footer-payment-badge-logo" src="payment-logo-chime.svg"/>Chime</span><span class="footer-payment-icon footer-payment-badge footer-payment-badge--usdt"><img alt="USDT" class="footer-payment-badge-logo" src="payment-logo-tether.svg"/>USDT</span></div>
 <div data-content-region="ssl_site_seal--global"></div>
 </div>
 </div>
@@ -1757,5 +1757,5 @@ function subscribeOnBodlEvents() {
 <script src="https://cdn11.bigcommerce.com/shared/js/csrf-protection-header-5eeddd5de78d98d146ef4fd71b2aedce4161903e.js" type="text/javascript"></script>
 <script src="https://bigcommerce.route.com/checkout/routeimg.js"></script><script src="https://bigcommerce.route.com/checkout/listener.js?s=rpcehsuohu"></script>
 <!-- snippet location footer -->
-<script>window.__CF$cv$params={r:'a3556e86e9d74bcb',t:'MTc4ODQ0NTYxMA==',u:'01a067aa529f74d1addafa22916a3f46',ut:'9NwZ6xi97D8xCOrmnfkJCedxaU0aXT9w6y9QMmOSHUk-1788445610-1.2.1.1-8GFGL73pwRBGdueu1g6S5ou_ypuiRDCROLb.NNuHNaK5vqUuvuohiA2XNAZVVfFHA0q1WS7a9yAFsSxhAll0EXivlRSDRYRi4Me3IS74qpY',i:60};(function(){if(!document.body)return;var s=document.createElement('script');s.src='/cdn-cgi/challenge-platform/scripts/precursor/main.js';document.head.appendChild(s);})();</script><script src="payment-config.js?v=d5a3f982"></script><script src="cart.js?v=7a86ea4c"></script><script src="product-display.js?v=f30ec66a"></script></body>
+<script>window.__CF$cv$params={r:'a3556e86e9d74bcb',t:'MTc4ODQ0NTYxMA==',u:'01a067aa529f74d1addafa22916a3f46',ut:'9NwZ6xi97D8xCOrmnfkJCedxaU0aXT9w6y9QMmOSHUk-1788445610-1.2.1.1-8GFGL73pwRBGdueu1g6S5ou_ypuiRDCROLb.NNuHNaK5vqUuvuohiA2XNAZVVfFHA0q1WS7a9yAFsSxhAll0EXivlRSDRYRi4Me3IS74qpY',i:60};(function(){if(!document.body)return;var s=document.createElement('script');s.src='/cdn-cgi/challenge-platform/scripts/precursor/main.js';document.head.appendChild(s);})();</script><script src="payment-config.js?v=d5a3f982"></script><script src="cart.js?v=0e8edaa0"></script><script src="product-display.js?v=faf13b8a"></script></body>
 </html>

@@ -225,70 +225,73 @@
       usdt: "payment-logo-tether.svg",
     };
 
-    var paymentSection;
-    if (!meetsMinimum) {
-      var remaining = minTotal - total;
-      paymentSection =
-        '<div class="txcc-min-order-notice">' +
-          "Minimum order is " + money(minTotal) + ". Add " + money(remaining) + " more to choose a payment method." +
-        "</div>";
-    } else {
-      // Two-step reveal: picking a method only highlights it -- the address
-      // and instructions stay hidden until the customer explicitly clicks
-      // "Order Now" for that method, rather than dumping payment details on
-      // screen the moment a button is touched.
-      var confirmed = container.getAttribute("data-order-confirmed") === selected;
+    // Any product can be ordered in any quantity on its own -- the $100
+    // minimum is enforced once, for the whole cart, at the moment the
+    // customer tries to actually order (clicking Order Now), rather than
+    // hiding payment methods or forcing a big per-item quantity up front.
+    var confirmed = meetsMinimum && container.getAttribute("data-order-confirmed") === selected;
 
-      var methodButtons = methods.map(function (m) {
-        var active = m.id === selected ? " txcc-payment-btn--active" : "";
-        var logoFile = LOGO_BY_METHOD[m.id];
-        var logo = logoFile ? '<img class="txcc-payment-btn-logo" src="' + rootRelativeAsset(logoFile) + '" alt="">' : "";
-        return '<button type="button" class="txcc-payment-btn txcc-payment-btn--' + m.id + active + '" data-method="' + m.id + '">' + logo + '<span>' + escapeHtml(m.label) + "</span></button>";
-      }).join("");
+    var methodButtons = methods.map(function (m) {
+      var active = m.id === selected ? " txcc-payment-btn--active" : "";
+      var logoFile = LOGO_BY_METHOD[m.id];
+      var logo = logoFile ? '<img class="txcc-payment-btn-logo" src="' + rootRelativeAsset(logoFile) + '" alt="">' : "";
+      return '<button type="button" class="txcc-payment-btn txcc-payment-btn--' + m.id + active + '" data-method="' + m.id + '">' + logo + '<span>' + escapeHtml(m.label) + "</span></button>";
+    }).join("");
 
-      var activeMethod = methods.filter(function (m) { return m.id === selected; })[0];
-      var methodDetail = "";
-      if (activeMethod && confirmed) {
-        methodDetail = '<div class="txcc-payment-detail">';
-        if (Object.prototype.hasOwnProperty.call(activeMethod, "contactEmail")) {
-          if (activeMethod.contactEmail) {
-            var subject = encodeURIComponent("Order inquiry - " + activeMethod.label);
-            methodDetail +=
-              '<a class="txcc-payment-email-link" href="mailto:' + escapeHtml(activeMethod.contactEmail) + "?subject=" + subject + '">' +
-              "Email us to pay with " + escapeHtml(activeMethod.label) +
-              "</a>";
-          } else {
-            methodDetail += "<div>Email contact coming soon. Contact us to complete your order.</div>";
-          }
+    var activeMethod = methods.filter(function (m) { return m.id === selected; })[0];
+    var methodDetail = "";
+    if (activeMethod && confirmed) {
+      methodDetail = '<div class="txcc-payment-detail">';
+      if (Object.prototype.hasOwnProperty.call(activeMethod, "contactEmail")) {
+        if (activeMethod.contactEmail) {
+          var subject = encodeURIComponent("Order inquiry - " + activeMethod.label);
+          methodDetail +=
+            '<a class="txcc-payment-email-link" href="mailto:' + escapeHtml(activeMethod.contactEmail) + "?subject=" + subject + '">' +
+            "Email us to pay with " + escapeHtml(activeMethod.label) +
+            "</a>";
         } else {
-          if (activeMethod.address) {
-            methodDetail +=
-              '<div class="txcc-payment-address-row">' +
-                '<span class="txcc-payment-address">' + escapeHtml(activeMethod.address) + "</span>" +
-                '<button type="button" class="txcc-copy-btn" data-copy-address="' + escapeHtml(activeMethod.address) + '">Copy</button>' +
-              "</div>";
-          }
-          methodDetail += "<div>" + escapeHtml(activeMethod.instructions || "") + "</div>";
+          methodDetail += "<div>Email contact coming soon. Contact us to complete your order.</div>";
         }
-        methodDetail +=
-          '<div class="txcc-payment-paid-note">Once paid, contact us at ' +
-          (window.PAYMENT_PROOF_EMAIL ? escapeHtml(window.PAYMENT_PROOF_EMAIL) : "the email below") +
-          " so we can confirm your order." +
-          "</div>";
-        methodDetail += "</div>";
+      } else {
+        if (activeMethod.address) {
+          methodDetail +=
+            '<div class="txcc-payment-address-row">' +
+              '<span class="txcc-payment-address">' + escapeHtml(activeMethod.address) + "</span>" +
+              '<button type="button" class="txcc-copy-btn" data-copy-address="' + escapeHtml(activeMethod.address) + '">Copy</button>' +
+            "</div>";
+        }
+        methodDetail += "<div>" + escapeHtml(activeMethod.instructions || "") + "</div>";
       }
-
-      var orderNowBtn = (activeMethod && !confirmed)
-        ? '<button type="button" class="button button--primary txcc-order-now-btn" data-order-now="' + escapeHtml(activeMethod.id) + '">Order Now</button>'
-        : "";
-
-      paymentSection =
-        '<div class="txcc-payment-label">Pay with</div>' +
-        '<div class="txcc-payment-buttons">' + methodButtons + "</div>" +
-        orderNowBtn +
-        methodDetail +
-        (activeMethod && confirmed ? renderProofNote() : "");
+      methodDetail +=
+        '<div class="txcc-payment-paid-note">Once paid, contact us at ' +
+        (window.PAYMENT_PROOF_EMAIL ? escapeHtml(window.PAYMENT_PROOF_EMAIL) : "the email below") +
+        " so we can confirm your order." +
+        "</div>";
+      methodDetail += "</div>";
     }
+
+    // Clicking Order Now while under the minimum doesn't confirm anything --
+    // it pops this message instead, right where the customer is looking.
+    var belowMinimumNotice = "";
+    if (activeMethod && !meetsMinimum && container.getAttribute("data-order-now-blocked") === activeMethod.id) {
+      var remaining = minTotal - total;
+      belowMinimumNotice =
+        '<div class="txcc-min-order-notice">' +
+          "Minimum order is " + money(minTotal) + "+. Add " + money(remaining) + " more to place this order." +
+        "</div>";
+    }
+
+    var orderNowBtn = (activeMethod && !confirmed)
+      ? '<button type="button" class="button button--primary txcc-order-now-btn" data-order-now="' + escapeHtml(activeMethod.id) + '">Order Now</button>'
+      : "";
+
+    var paymentSection =
+      '<div class="txcc-payment-label">Pay with</div>' +
+      '<div class="txcc-payment-buttons">' + methodButtons + "</div>" +
+      orderNowBtn +
+      belowMinimumNotice +
+      methodDetail +
+      (activeMethod && confirmed ? renderProofNote() : "");
 
     container.innerHTML =
       '<div class="txcc-cart-page">' +
@@ -350,31 +353,10 @@
     var image = imgEl ? imgEl.getAttribute("src") : "";
     var variant = collectVariant(form);
 
-    var minQty = minQtyForPrice(price);
-    if (qty < minQty) {
-      qty = minQty;
-      if (qtyInput) qtyInput.value = String(minQty);
-    }
-
-    addToCart({ id: id, variant: variant, name: name, price: price, image: image, qty: qty, minQty: minQty });
-  }
-
-  // Pre-fill each product page's quantity field with the minimum needed to
-  // reach the minimum order total on that item alone, so cheap items don't
-  // let someone order e.g. a single $2 item by itself.
-  function applyMinQtyToProductPages() {
-    document.querySelectorAll("form[data-cart-item-add]").forEach(function (form) {
-      var qtyInput = form.querySelector('input[name="qty[]"], input[name="qty"]');
-      if (!qtyInput) return;
-      var section = form.closest(".productView") || document;
-      var priceEl = section.querySelector(".productView-price [data-product-price-without-tax]");
-      if (!priceEl) return;
-      var price = parseFloat(priceEl.textContent.replace(/[^0-9.]/g, "")) || 0;
-      var minQty = minQtyForPrice(price);
-      qtyInput.min = String(minQty);
-      var current = parseInt(qtyInput.value, 10) || 1;
-      if (current < minQty) qtyInput.value = String(minQty);
-    });
+    // The $100 minimum applies to the whole order (mix any products to
+    // reach it), not to any single item, so quantity here is whatever the
+    // customer actually entered -- enforcement happens once, at Order Now.
+    addToCart({ id: id, variant: variant, name: name, price: price, image: image, qty: Math.max(1, qty), minQty: 1 });
   }
 
   function handleCartActionClick(event) {
@@ -403,6 +385,7 @@
       // reveal payment details
       if (container.getAttribute("data-selected-method") !== newMethod) {
         container.removeAttribute("data-order-confirmed");
+        container.removeAttribute("data-order-now-blocked");
       }
       container.setAttribute("data-selected-method", newMethod);
       renderCart();
@@ -411,7 +394,14 @@
 
     var orderNowBtn = event.target.closest("[data-order-now]");
     if (orderNowBtn && container.contains(orderNowBtn)) {
-      container.setAttribute("data-order-confirmed", orderNowBtn.getAttribute("data-order-now"));
+      var methodId = orderNowBtn.getAttribute("data-order-now");
+      if (cartTotal(loadCart()) < minOrderTotal()) {
+        // under the minimum -- pop the notice instead of confirming
+        container.setAttribute("data-order-now-blocked", methodId);
+      } else {
+        container.removeAttribute("data-order-now-blocked");
+        container.setAttribute("data-order-confirmed", methodId);
+      }
       renderCart();
       return;
     }
@@ -493,6 +483,5 @@
     renderBadge(loadCart());
     renderCart();
     keepAddToCartEnabled();
-    applyMinQtyToProductPages();
   });
 })();
