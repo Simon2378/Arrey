@@ -149,6 +149,9 @@ cartContainer = doc2.getElementById("cart-page-content");
 cartContainer.querySelector("[data-order-now]").dispatchEvent(new win2.Event("click", { bubbles: true }));
 cartContainer = doc2.getElementById("cart-page-content");
 
+// "Message Us Now" button: hidden entirely when no proof email is set yet
+assert(!cartContainer.querySelector(".txcc-message-us-btn"), "Message Us Now button does not render before a proof email is configured");
+
 // payment-proof note + "i" button: disabled placeholder state (no email set yet)
 let infoBtn = cartContainer.querySelector(".txcc-info-btn");
 assert(!!infoBtn, "info button renders under the proof note");
@@ -162,6 +165,18 @@ cartContainer = doc2.getElementById("cart-page-content");
 infoBtn = cartContainer.querySelector(".txcc-info-btn");
 assert(infoBtn.tagName === "A", "info button becomes a real link once the proof email is set");
 assert(infoBtn.getAttribute("href").startsWith("mailto:orders@example.com"), "info button links to the configured email, got: " + infoBtn.getAttribute("href"));
+
+// "Message Us Now" button: appears once a proof email is configured, and
+// opens a mailto: link pre-filled with the cart contents
+const messageUsBtn = cartContainer.querySelector(".txcc-message-us-btn");
+assert(!!messageUsBtn, "Message Us Now button renders once a proof email is configured");
+assert(messageUsBtn.tagName === "A", "Message Us Now is a real link, got: " + (messageUsBtn && messageUsBtn.tagName));
+const messageUsHref = decodeURIComponent(messageUsBtn.getAttribute("href") || "");
+assert(messageUsHref.startsWith("mailto:orders@example.com"), "Message Us Now links to the configured proof email, got: " + messageUsHref);
+assert(messageUsHref.includes("subject=Order inquiry"), "Message Us Now sets a subject line, got: " + messageUsHref);
+assert(messageUsHref.includes("Packwraps"), "Message Us Now pre-fills the order body with the cart's item name, got: " + messageUsHref);
+assert(/Total: \$\d+\.\d{2}/.test(messageUsHref), "Message Us Now pre-fills the order body with the cart total, got: " + messageUsHref);
+assert(!!cartContainer.querySelector(".txcc-message-us-divider"), "a divider separates Message Us Now from the self-serve payment methods below it");
 
 let copiedText = null;
 win2.navigator.clipboard = {

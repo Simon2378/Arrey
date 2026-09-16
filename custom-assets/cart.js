@@ -218,6 +218,27 @@
     var minTotal = minOrderTotal();
     var meetsMinimum = total >= minTotal;
 
+    // Lets a customer skip the self-serve payment flow entirely and just
+    // email the order in directly -- opens their own email app (mailto:)
+    // with the cart contents pre-filled, same address as everywhere else
+    // orders get finalized (window.PAYMENT_PROOF_EMAIL).
+    var messageUsBtn;
+    if (window.PAYMENT_PROOF_EMAIL) {
+      var orderLines = items.map(function (item) {
+        return "- " + item.qty + " x " + item.name + (item.variant ? " (" + item.variant + ")" : "") + " -- " + money(item.price * item.qty);
+      }).join("\n");
+      var body = "Hi, I'd like to place this order:\n\n" + orderLines + "\n\nTotal: " + money(total);
+      var mailHref =
+        "mailto:" + encodeURIComponent(window.PAYMENT_PROOF_EMAIL) +
+        "?subject=" + encodeURIComponent("Order inquiry") +
+        "&body=" + encodeURIComponent(body);
+      messageUsBtn =
+        '<a class="button button--primary txcc-message-us-btn" href="' + mailHref + '">Message Us Now</a>' +
+        '<div class="txcc-message-us-divider">or pay with</div>';
+    } else {
+      messageUsBtn = "";
+    }
+
     var LOGO_BY_METHOD = {
       bitcoin: "payment-logo-bitcoin.svg",
       cashapp: "payment-logo-cashapp.svg",
@@ -286,6 +307,7 @@
       : "";
 
     var paymentSection =
+      messageUsBtn +
       '<div class="txcc-payment-label">Pay with</div>' +
       '<div class="txcc-payment-buttons">' + methodButtons + "</div>" +
       orderNowBtn +
