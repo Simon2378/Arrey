@@ -247,6 +247,20 @@ def ensure_charset_meta(soup: BeautifulSoup):
     head.insert(0, meta)
 
 
+GOOGLE_SITE_VERIFICATION = "85_XhKPZeWIiELUylh8YU8Foj4pirhH9DxTeLsXLTrE"
+
+
+def ensure_google_site_verification(soup: BeautifulSoup):
+    """Google Search Console's "HTML tag" ownership-verification method --
+    baked into every page's <head> at build time so it survives rebuilds
+    instead of depending on a one-off manual edit."""
+    head = soup.find("head")
+    if head is None or head.find("meta", attrs={"name": "google-site-verification"}):
+        return
+    meta = soup.new_tag("meta", attrs={"name": "google-site-verification", "content": GOOGLE_SITE_VERIFICATION})
+    head.insert(0, meta)
+
+
 PAYMENT_BADGES = [
     ("bitcoin", "Bitcoin", "payment-logo-bitcoin.svg"),
     ("cashapp", "Cash App", "payment-logo-cashapp.svg"),
@@ -328,6 +342,7 @@ def process_page(page_url: str, local_html_path: str, new_rel: str, url_map: dic
         soup = BeautifulSoup(f.read(), "lxml")
 
     ensure_charset_meta(soup)
+    ensure_google_site_verification(soup)
     strip_login_register(soup)
     strip_empty_concentrate_subcategory_links(soup)
     strip_coupon_badges(soup)
