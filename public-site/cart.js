@@ -70,6 +70,10 @@
     return typeof window.MINIMUM_ORDER_TOTAL === "number" ? window.MINIMUM_ORDER_TOTAL : 100;
   }
 
+  function shippingFee() {
+    return typeof window.SHIPPING_FEE === "number" ? window.SHIPPING_FEE : 20;
+  }
+
   // Minimum quantity so a single line item's own total reaches the minimum
   // order amount on its own (e.g. a $2 item needs 50 units to reach $100).
   function minQtyForPrice(price) {
@@ -249,15 +253,22 @@
       );
     }
 
-    var notice = "";
     if (!meetsMinimum && container.getAttribute("data-place-order-blocked") === "1") {
       var remaining = minTotal - total;
-      notice =
+      var fee = shippingFee();
+      return (
         '<div class="txcc-min-order-notice">' +
-          "Minimum order is " + money(minTotal) + "+. Add " + money(remaining) + " more to place this order." +
-        "</div>";
+          "Orders under " + money(minTotal) + " don't qualify for free shipping. Add " +
+          money(remaining) + " more in items for free shipping, or add a flat " +
+          money(fee) + " shipping fee to place your order now." +
+        "</div>" +
+        '<div class="txcc-shipping-choice-row">' +
+          '<button type="button" class="button button--primary txcc-place-order-btn" data-add-shipping>Add ' + money(fee) + ' Shipping &amp; Continue</button>' +
+          '<a class="button button--tertiary txcc-place-order-btn" href="/all-products/">Continue Shopping</a>' +
+        "</div>"
+      );
     }
-    return '<button type="button" class="button button--primary txcc-place-order-btn" data-place-order>Place Order</button>' + notice;
+    return '<button type="button" class="button button--primary txcc-place-order-btn" data-place-order>Place Order</button>';
   }
 
   function renderCart() {
@@ -295,6 +306,8 @@
     var total = cartTotal(items);
     var minTotal = minOrderTotal();
     var meetsMinimum = total >= minTotal;
+    var effectiveTotal = total;
+    var shippingCharged = false;
 
     // Name/email/phone/shipping address are collected once, up front, before
     // any way of finishing the order (Message Us, Call Us, or a payment
@@ -306,6 +319,15 @@
     if (!checkoutInfo) {
       paymentSection = renderCheckoutGate(container, total, minTotal, meetsMinimum);
     } else {
+      // Below the free-shipping minimum, the customer already chose (at
+      // Place Order) to pay a flat shipping fee rather than add more items --
+      // that choice is baked into checkoutInfo so it survives exactly like
+      // the rest of this info, and unblocks every step from here on out.
+      var shippingFeeApplied = !!checkoutInfo.shippingFeeApplied;
+      var canProceed = meetsMinimum || shippingFeeApplied;
+      shippingCharged = !meetsMinimum && shippingFeeApplied;
+      effectiveTotal = shippingCharged ? total + shippingFee() : total;
+
       // Lets a customer skip the self-serve payment flow entirely and just
       // email the order in directly -- opens their own email app (mailto:)
       // with the cart contents pre-filled, same address as everywhere else
@@ -315,7 +337,8 @@
         var orderLines = items.map(function (item) {
           return "- " + item.qty + " x " + item.name + (item.variant ? " (" + item.variant + ")" : "") + " -- " + money(item.price * item.qty);
         }).join("\n");
-        var body = "Hi, I'd like to place this order:\n\n" + orderLines + "\n\nTotal: " + money(total) + "\n\n" + checkoutInfoSummaryText(checkoutInfo);
+        var shippingLine = shippingCharged ? "\nShipping: " + money(shippingFee()) : "";
+        var body = "Hi, I'd like to place this order:\n\n" + orderLines + shippingLine + "\n\nTotal: " + money(effectiveTotal) + "\n\n" + checkoutInfoSummaryText(checkoutInfo);
         var mailHref =
           "mailto:" + encodeURIComponent(window.PAYMENT_PROOF_EMAIL) +
           "?subject=" + encodeURIComponent("Order inquiry") +
@@ -347,7 +370,7 @@
       // customer tries to actually order (clicking Place Order, or Order Now
       // here as a fallback if the cart shrinks below it again afterward),
       // rather than hiding payment methods or forcing a big quantity up front.
-      var confirmed = meetsMinimum && container.getAttribute("data-order-confirmed") === selected;
+      var confirmed = canProceed && container.getAttribute("data-order-confirmed") === selected;
 
       var methodButtons = methods.map(function (m) {
         var active = m.id === selected ? " txcc-payment-btn--active" : "";
@@ -360,10 +383,15 @@
       var methodDetail = "";
       if (activeMethod && confirmed) {
         methodDetail = '<div class="txcc-payment-detail">';
+        if (shippingCharged) {
+          methodDetail +=
+            '<div class="txcc-payment-shipping-note">Order total (including ' + money(shippingFee()) + ' shipping): <strong>' + money(effectiveTotal) + "</strong></div>";
+        }
         if (Object.prototype.hasOwnProperty.call(activeMethod, "contactEmail")) {
           if (activeMethod.contactEmail) {
             var subject = encodeURIComponent("Order inquiry - " + activeMethod.label);
-            var methodBody = encodeURIComponent(checkoutInfoSummaryText(checkoutInfo));
+            var methodBodyText = checkoutInfoSummaryText(checkoutInfo) + (shippingCharged ? "\nShipping: " + money(shippingFee()) + "\nTotal: " + money(effectiveTotal) : "");
+            var methodBody = encodeURIComponent(methodBodyText);
             methodDetail +=
               '<a class="txcc-payment-email-link" href="mailto:' + escapeHtml(activeMethod.contactEmail) + "?subject=" + subject + "&body=" + methodBody + '">' +
               "Email us to pay with " + escapeHtml(activeMethod.label) +
@@ -389,15 +417,18 @@
         methodDetail += "</div>";
       }
 
-      // Clicking Order Now while under the minimum doesn't confirm anything --
-      // it pops this message instead, right where the customer is looking.
+      // Clicking Order Now while under the minimum (and no shipping fee was
+      // ever applied -- e.g. the cart shrank again after checkout info was
+      // already saved) doesn't confirm anything -- it pops this message
+      // instead, right where the customer is looking.
       var belowMinimumNotice = "";
-      if (activeMethod && !meetsMinimum && container.getAttribute("data-order-now-blocked") === activeMethod.id) {
+      if (activeMethod && !canProceed && container.getAttribute("data-order-now-blocked") === activeMethod.id) {
         var remaining = minTotal - total;
         belowMinimumNotice =
           '<div class="txcc-min-order-notice">' +
-            "Minimum order is " + money(minTotal) + "+. Add " + money(remaining) + " more to place this order." +
-          "</div>";
+            "Orders under " + money(minTotal) + " don't qualify for free shipping. Add " + money(remaining) + " more in items for free shipping, or add a flat " + money(shippingFee()) + " shipping fee to place your order now." +
+          "</div>" +
+          '<button type="button" class="button button--primary txcc-order-now-btn" data-apply-shipping-now>Add ' + money(shippingFee()) + " Shipping &amp; Place Order</button>";
       }
 
       var orderNowBtn = (activeMethod && !confirmed)
@@ -414,10 +445,18 @@
         (activeMethod && confirmed ? renderProofNote(checkoutInfo) : "");
     }
 
+    var totalBlock = shippingCharged
+      ? (
+          '<div class="txcc-cart-total">Subtotal: <strong>' + money(total) + "</strong></div>" +
+          '<div class="txcc-cart-total">Shipping: <strong>' + money(shippingFee()) + "</strong></div>" +
+          '<div class="txcc-cart-total txcc-cart-total--grand">Total: <strong>' + money(effectiveTotal) + "</strong></div>"
+        )
+      : '<div class="txcc-cart-total">Total: <strong>' + money(total) + "</strong></div>";
+
     container.innerHTML =
       '<div class="txcc-cart-page">' +
         '<div class="txcc-cart-items">' + rows + "</div>" +
-        '<div class="txcc-cart-total">Total: <strong>' + money(total) + "</strong></div>" +
+        totalBlock +
         '<div class="txcc-payment-methods">' + paymentSection + "</div>" +
       "</div>";
 
@@ -490,6 +529,7 @@
       return;
     }
 
+    var container = getCartPageContainer();
     var info = {
       name: form.querySelector('[name="name"]').value.trim(),
       email: form.querySelector('[name="email"]').value.trim(),
@@ -498,10 +538,12 @@
       city: form.querySelector('[name="city"]').value.trim(),
       state: form.querySelector('[name="state"]').value.trim(),
       zip: form.querySelector('[name="zip"]').value.trim(),
+      // Baked in here (once) so it survives exactly like the rest of this
+      // info -- persisted in localStorage, not lost on a page reload.
+      shippingFeeApplied: !!(container && container.getAttribute("data-shipping-fee-applied") === "1"),
     };
     saveCheckoutInfo(info);
 
-    var container = getCartPageContainer();
     if (container) {
       container.removeAttribute("data-checkout-stage");
       renderCart();
@@ -520,6 +562,14 @@
         container.removeAttribute("data-place-order-blocked");
         container.setAttribute("data-checkout-stage", "form");
       }
+      renderCart();
+      return;
+    }
+
+    var addShippingBtn = event.target.closest("[data-add-shipping]");
+    if (addShippingBtn && container.contains(addShippingBtn)) {
+      container.setAttribute("data-shipping-fee-applied", "1");
+      container.setAttribute("data-checkout-stage", "form");
       renderCart();
       return;
     }
@@ -556,13 +606,29 @@
     var orderNowBtn = event.target.closest("[data-order-now]");
     if (orderNowBtn && container.contains(orderNowBtn)) {
       var methodId = orderNowBtn.getAttribute("data-order-now");
-      if (cartTotal(loadCart()) < minOrderTotal()) {
-        // under the minimum -- pop the notice instead of confirming
+      var infoForOrderNow = loadCheckoutInfo();
+      var alreadyPaysShipping = !!(infoForOrderNow && infoForOrderNow.shippingFeeApplied);
+      if (cartTotal(loadCart()) < minOrderTotal() && !alreadyPaysShipping) {
+        // under the minimum, and no shipping fee on file yet -- pop the
+        // notice (with the option to add one) instead of confirming
         container.setAttribute("data-order-now-blocked", methodId);
       } else {
         container.removeAttribute("data-order-now-blocked");
         container.setAttribute("data-order-confirmed", methodId);
       }
+      renderCart();
+      return;
+    }
+
+    var applyShippingNowBtn = event.target.closest("[data-apply-shipping-now]");
+    if (applyShippingNowBtn && container.contains(applyShippingNowBtn)) {
+      var infoToUpdate = loadCheckoutInfo();
+      if (infoToUpdate) {
+        infoToUpdate.shippingFeeApplied = true;
+        saveCheckoutInfo(infoToUpdate);
+      }
+      container.removeAttribute("data-order-now-blocked");
+      container.setAttribute("data-order-confirmed", container.getAttribute("data-selected-method") || "");
       renderCart();
       return;
     }

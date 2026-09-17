@@ -361,5 +361,95 @@ container3 = doc3.getElementById("cart-page-content");
 assert(!container3.querySelector(".txcc-min-order-notice"), "no minimum-order message once the cart actually meets $100");
 assert(!!container3.querySelector(".txcc-payment-detail"), "Order Now reveals payment details once the cart meets the minimum");
 
+// ---------- Shipping fee: pay a flat fee instead of adding more items ----------
+let winShip = loadIsolatedPage("cart/index.html", "http://localhost:8787/cart/index.html", [
+  { id: "888", variant: "", name: "Shipping Test Item", price: 80, image: "", qty: 1, minQty: 1 },
+]);
+let containerShip = winShip.document.getElementById("cart-page-content");
+containerShip.querySelector("[data-place-order]").dispatchEvent(new winShip.Event("click", { bubbles: true }));
+containerShip = winShip.document.getElementById("cart-page-content");
+const shipNotice = containerShip.querySelector(".txcc-min-order-notice");
+assert(!!shipNotice, "under the minimum, Place Order shows the choice notice instead of the form");
+assert(shipNotice.textContent.includes("$20.00") && shipNotice.textContent.includes("$20.00 more"), "notice mentions both the shipping fee and how much more is needed, got: " + shipNotice.textContent);
+assert(!!containerShip.querySelector("[data-add-shipping]"), "an 'Add Shipping & Continue' button is offered");
+assert(!!containerShip.querySelector('a[href="/all-products/"]'), "a Continue Shopping link is offered as the add-more-items alternative");
+assert(!containerShip.querySelector(".txcc-checkout-form"), "the info form still doesn't show until a choice is made");
+
+containerShip.querySelector("[data-add-shipping]").dispatchEvent(new winShip.Event("click", { bubbles: true }));
+containerShip = winShip.document.getElementById("cart-page-content");
+const shipForm = containerShip.querySelector(".txcc-checkout-form");
+assert(!!shipForm, "clicking Add Shipping & Continue goes straight to the info form");
+
+shipForm.querySelector('[name="name"]').value = "Sam Shipper";
+shipForm.querySelector('[name="email"]').value = "sam@example.com";
+shipForm.querySelector('[name="phone"]').value = "555-999-0000";
+shipForm.querySelector('[name="street"]').value = "1 Ship Ln";
+shipForm.querySelector('[name="city"]').value = "Austin";
+shipForm.querySelector('[name="state"]').value = "TX";
+shipForm.querySelector('[name="zip"]').value = "73301";
+shipForm.dispatchEvent(new winShip.Event("submit", { bubbles: true, cancelable: true }));
+containerShip = winShip.document.getElementById("cart-page-content");
+assert(!containerShip.querySelector(".txcc-checkout-form"), "form is gone after submitting with the shipping choice made");
+
+const shipTotalsText = containerShip.textContent.replace(/\s+/g, " ");
+assert(shipTotalsText.includes("Subtotal:") && shipTotalsText.includes("Shipping:"), "cart total area shows a subtotal/shipping breakdown once the fee is applied, got: " + shipTotalsText.slice(0, 200));
+assert(/Total:\s*\$100\.00/.test(shipTotalsText), "grand total is $80 subtotal + $20 shipping = $100.00, got: " + shipTotalsText.slice(0, 200));
+
+assert(containerShip.querySelectorAll(".txcc-payment-btn").length === 4, "payment methods render immediately, no further block, once shipping is applied");
+const shipMessageBtn = containerShip.querySelector(".txcc-message-us-btn");
+const shipMailHref = decodeURIComponent(shipMessageBtn.getAttribute("href"));
+assert(shipMailHref.includes("Shipping: $20.00") && shipMailHref.includes("Total: $100.00"), "Message Us Now mailto includes the shipping line and the correct grand total, got: " + shipMailHref);
+
+const shipBitcoinBtn = Array.from(containerShip.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "Bitcoin");
+shipBitcoinBtn.dispatchEvent(new winShip.Event("click", { bubbles: true }));
+containerShip = winShip.document.getElementById("cart-page-content");
+assert(!containerShip.querySelector(".txcc-min-order-notice"), "no minimum-order notice once the shipping fee is already on file");
+containerShip.querySelector("[data-order-now]").dispatchEvent(new winShip.Event("click", { bubbles: true }));
+containerShip = winShip.document.getElementById("cart-page-content");
+const shipDetail = containerShip.querySelector(".txcc-payment-detail");
+assert(!!shipDetail, "Order Now confirms immediately -- no minimum block -- once the shipping fee is on file");
+assert(shipDetail.textContent.includes("$20.00 shipping") && shipDetail.textContent.includes("$100.00"), "payment detail shows the order total including shipping, got: " + shipDetail.textContent);
+
+// ---------- fallback: cart shrinks below the minimum AFTER checkout info
+// was already saved without a shipping fee -- Order Now offers the same
+// shipping-fee option, and taking it confirms immediately ----------
+let winShrink = loadIsolatedPage("cart/index.html", "http://localhost:8787/cart/index.html", [
+  { id: "777", variant: "", name: "Shrink Test Item", price: 60, image: "", qty: 2, minQty: 1 },
+]);
+let containerShrink = winShrink.document.getElementById("cart-page-content");
+containerShrink.querySelector("[data-place-order]").dispatchEvent(new winShrink.Event("click", { bubbles: true }));
+containerShrink = winShrink.document.getElementById("cart-page-content");
+const shrinkForm = containerShrink.querySelector(".txcc-checkout-form");
+assert(!!shrinkForm, "cart starts at $120 (meets the minimum), so Place Order goes straight to the form");
+shrinkForm.querySelector('[name="name"]').value = "Shrinky Dev";
+shrinkForm.querySelector('[name="email"]').value = "shrink@example.com";
+shrinkForm.querySelector('[name="phone"]').value = "555-111-2222";
+shrinkForm.querySelector('[name="street"]').value = "2 Shrink Rd";
+shrinkForm.querySelector('[name="city"]').value = "Dallas";
+shrinkForm.querySelector('[name="state"]').value = "TX";
+shrinkForm.querySelector('[name="zip"]').value = "75201";
+shrinkForm.dispatchEvent(new winShrink.Event("submit", { bubbles: true, cancelable: true }));
+containerShrink = winShrink.document.getElementById("cart-page-content");
+assert(containerShrink.querySelectorAll(".txcc-payment-btn").length === 4, "payment methods render normally -- the cart met the minimum with no shipping fee needed");
+
+// shrink the cart from $120 to $60 (qty 2 -> 1 at $60 each)
+containerShrink.querySelector('.txcc-qty-btn[data-action="dec"]').dispatchEvent(new winShrink.Event("click", { bubbles: true }));
+containerShrink = winShrink.document.getElementById("cart-page-content");
+assert(containerShrink.textContent.includes("$60.00"), "cart total dropped to $60 after decrementing, got: " + containerShrink.textContent.replace(/\s+/g, " ").slice(0, 200));
+
+const shrinkBitcoinBtn = Array.from(containerShrink.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "Bitcoin");
+shrinkBitcoinBtn.dispatchEvent(new winShrink.Event("click", { bubbles: true }));
+containerShrink = winShrink.document.getElementById("cart-page-content");
+containerShrink.querySelector("[data-order-now]").dispatchEvent(new winShrink.Event("click", { bubbles: true }));
+containerShrink = winShrink.document.getElementById("cart-page-content");
+assert(!!containerShrink.querySelector(".txcc-min-order-notice"), "Order Now on the now-under-minimum cart pops the notice again (no shipping fee on file yet)");
+const applyShippingBtn = containerShrink.querySelector("[data-apply-shipping-now]");
+assert(!!applyShippingBtn, "a recovery 'Add Shipping & Place Order' button is offered right here too");
+applyShippingBtn.dispatchEvent(new winShrink.Event("click", { bubbles: true }));
+containerShrink = winShrink.document.getElementById("cart-page-content");
+const shrinkDetail = containerShrink.querySelector(".txcc-payment-detail");
+assert(!!shrinkDetail, "clicking it confirms the order immediately, no extra Order Now click needed");
+assert(shrinkDetail.textContent.includes("$20.00 shipping") && shrinkDetail.textContent.includes("$80.00"), "payment detail shows $60 + $20 shipping = $80.00, got: " + shrinkDetail.textContent);
+
 console.log(failed ? "\nSOME TESTS FAILED" : "\nALL TESTS PASSED");
 process.exit(failed ? 1 : 0);

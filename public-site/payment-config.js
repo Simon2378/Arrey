@@ -1,6 +1,11 @@
-// Minimum order total (USD). Customers can't select a payment method below
-// this -- the cart panel shows how much more they need to add instead.
+// Minimum order total (USD) for free shipping. Below this, the customer
+// chooses: add more items to reach it, or pay the flat SHIPPING_FEE below
+// to place the order as-is.
 window.MINIMUM_ORDER_TOTAL = 100;
+
+// Flat shipping fee (USD) charged when the customer opts to place an order
+// under the free-shipping minimum instead of adding more items.
+window.SHIPPING_FEE = 20;
 
 // Shown under every payment method once selected: there's no automated order
 // confirmation, so this email address is how an order actually gets
