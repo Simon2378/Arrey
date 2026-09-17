@@ -47,6 +47,43 @@ function loadPage(relPath, url) {
   return window;
 }
 
+function loadIsolatedPage(relPath, url, initialCart) {
+  const store = { txcc_cart_v1: JSON.stringify(initialCart) };
+  const html = fs.readFileSync(path.join(SITE, relPath), "utf-8");
+  const dom = new JSDOM(html, { url, runScripts: "outside-only" });
+  const { window } = dom;
+  Object.defineProperty(window, "localStorage", {
+    value: {
+      getItem: (k) => (Object.prototype.hasOwnProperty.call(store, k) ? store[k] : null),
+      setItem: (k, v) => { store[k] = String(v); },
+      removeItem: (k) => { delete store[k]; },
+      clear: () => { for (const k in store) delete store[k]; },
+    },
+    configurable: true,
+  });
+  window.eval(paymentConfigSrc);
+  window.eval(cartJsSrc);
+  window.document.dispatchEvent(new window.Event("DOMContentLoaded", { bubbles: true, cancelable: true }));
+  return window;
+}
+
+// ---------- Place Order gate, tested in isolation: blocks below the
+// minimum, and the info form never even shows until that's cleared ----------
+let winGate = loadIsolatedPage("cart/index.html", "http://localhost:8787/cart/index.html", [
+  { id: "999", variant: "", name: "Cheap Test Item", price: 2, image: "", qty: 1, minQty: 1 },
+]);
+let containerGate = winGate.document.getElementById("cart-page-content");
+assert(!!containerGate.querySelector(".txcc-place-order-btn"), "Place Order button shows for a fresh cart with no checkout info yet");
+assert(!containerGate.querySelector(".txcc-payment-btn"), "no payment methods render before Place Order is clicked");
+assert(!containerGate.querySelector(".txcc-checkout-form"), "no info form shown yet before clicking Place Order");
+containerGate.querySelector("[data-place-order]").dispatchEvent(new winGate.Event("click", { bubbles: true }));
+containerGate = winGate.document.getElementById("cart-page-content");
+const gateNotice = containerGate.querySelector(".txcc-min-order-notice");
+assert(!!gateNotice, "clicking Place Order under the minimum pops the minimum-order notice instead of the form");
+assert(gateNotice.textContent.includes("$100") && gateNotice.textContent.includes("$98.00"), "gate notice states the right amounts, got: " + gateNotice.textContent);
+assert(!containerGate.querySelector(".txcc-checkout-form"), "the info form still does NOT show while under the minimum");
+assert(!!containerGate.querySelector(".txcc-place-order-btn"), "Place Order button remains so they can try again");
+
 // ---------- Page 1: a product page ($2.99 item) ----------
 let win1 = loadPage(
   "packwraps-x-twisted-hemp-designer-hemp-wraps-2-pack/index.html",
@@ -107,6 +144,39 @@ let cartContainer = doc2.getElementById("cart-page-content");
 assert(!!cartContainer, "found #cart-page-content on the cart page");
 assert(cartContainer.querySelectorAll(".txcc-cart-row").length === 2, "cart page shows both line items, got: " + cartContainer.querySelectorAll(".txcc-cart-row").length);
 assert(cartContainer.textContent.includes("$203.32"), "cart page total is 68 x $2.99 = $203.32, got: " + cartContainer.textContent.replace(/\s+/g, " ").slice(0, 200));
+
+// ---------- Place Order gate: name/email/phone/shipping info is required
+// before any payment method or Message Us / Call Us option even appears ----------
+assert(!!cartContainer.querySelector(".txcc-place-order-btn"), "Place Order button shows before checkout info is collected");
+assert(!cartContainer.querySelector(".txcc-payment-btn"), "no payment methods render before Place Order is clicked");
+assert(!cartContainer.querySelector(".txcc-message-us-btn"), "no Message Us / Call Us buttons render before Place Order is clicked");
+cartContainer.querySelector("[data-place-order]").dispatchEvent(new win2.Event("click", { bubbles: true }));
+cartContainer = doc2.getElementById("cart-page-content");
+assert(!cartContainer.querySelector(".txcc-min-order-notice"), "cart already meets the minimum, so Place Order goes straight to the form, no notice");
+
+const checkoutForm = cartContainer.querySelector(".txcc-checkout-form");
+assert(!!checkoutForm, "checkout info form appears after clicking Place Order");
+["name", "email", "phone", "street", "city", "state", "zip"].forEach((field) => {
+  const input = checkoutForm.querySelector('[name="' + field + '"]');
+  assert(!!input && input.hasAttribute("required"), "checkout form has a required '" + field + "' field");
+});
+
+// submitting empty must not proceed -- required-field validation blocks it
+checkoutForm.dispatchEvent(new win2.Event("submit", { bubbles: true, cancelable: true }));
+cartContainer = doc2.getElementById("cart-page-content");
+assert(!!cartContainer.querySelector(".txcc-checkout-form"), "submitting the checkout form empty does not proceed past it");
+
+checkoutForm.querySelector('[name="name"]').value = "Jane Doe";
+checkoutForm.querySelector('[name="email"]').value = "jane@example.com";
+checkoutForm.querySelector('[name="phone"]').value = "555-123-4567";
+checkoutForm.querySelector('[name="street"]').value = "123 Main St";
+checkoutForm.querySelector('[name="city"]').value = "Wichita Falls";
+checkoutForm.querySelector('[name="state"]').value = "TX";
+checkoutForm.querySelector('[name="zip"]').value = "76308";
+checkoutForm.dispatchEvent(new win2.Event("submit", { bubbles: true, cancelable: true }));
+cartContainer = doc2.getElementById("cart-page-content");
+assert(!cartContainer.querySelector(".txcc-checkout-form"), "checkout form is gone once a complete submit goes through");
+assert(!cartContainer.querySelector(".txcc-place-order-btn"), "Place Order button is gone too -- info is now on file for this browser");
 
 const methodBtns = cartContainer.querySelectorAll(".txcc-payment-btn");
 assert(methodBtns.length === 4, "4 payment method buttons rendered on cart page, got " + methodBtns.length);
@@ -173,6 +243,7 @@ cartContainer = doc2.getElementById("cart-page-content");
 infoBtn = cartContainer.querySelector(".txcc-info-btn");
 assert(infoBtn.tagName === "A", "info button becomes a real link once the proof email is set");
 assert(infoBtn.getAttribute("href").startsWith("mailto:orders@example.com"), "info button links to the configured email, got: " + infoBtn.getAttribute("href"));
+assert(decodeURIComponent(infoBtn.getAttribute("href")).includes("Jane Doe"), "info button's mailto body includes the collected checkout info, got: " + decodeURIComponent(infoBtn.getAttribute("href")));
 
 // "Message Us Now" button: appears once a proof email is configured, and
 // opens a mailto: link pre-filled with the cart contents
@@ -186,6 +257,7 @@ assert(messageUsHref.startsWith("mailto:orders@example.com"), "Message Us Now li
 assert(messageUsHref.includes("subject=Order inquiry"), "Message Us Now sets a subject line, got: " + messageUsHref);
 assert(messageUsHref.includes("Packwraps"), "Message Us Now pre-fills the order body with the cart's item name, got: " + messageUsHref);
 assert(/Total: \$\d+\.\d{2}/.test(messageUsHref), "Message Us Now pre-fills the order body with the cart total, got: " + messageUsHref);
+assert(messageUsHref.includes("Jane Doe") && messageUsHref.includes("123 Main St"), "Message Us Now includes the checkout info collected at Place Order, got: " + messageUsHref);
 assert(!!cartContainer.querySelector(".txcc-message-us-divider"), "a divider separates Message Us Now from the self-serve payment methods below it");
 
 // "Call or Text Us" button: opens a tel: link built from the configured phone
@@ -232,6 +304,7 @@ cartContainer = doc2.getElementById("cart-page-content");
 assert(!cartContainer.querySelector("[data-order-now]"), "re-clicking an already-confirmed method doesn't hide its detail behind Order Now again");
 const emailLink = cartContainer.querySelector(".txcc-payment-email-link");
 assert(!!emailLink && emailLink.getAttribute("href").startsWith("mailto:orders@example.com"), "mailto link appears once contactEmail is set, got: " + (emailLink && emailLink.getAttribute("href")));
+assert(decodeURIComponent(emailLink.getAttribute("href")).includes("Jane Doe"), "Cash App mailto body includes the collected checkout info, got: " + decodeURIComponent(emailLink.getAttribute("href")));
 
 // remove a line item entirely
 cartContainer.querySelector(".txcc-remove-btn").dispatchEvent(new win2.Event("click", { bubbles: true }));

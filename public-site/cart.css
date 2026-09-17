@@ -206,6 +206,36 @@
   margin-top: 0.625rem;
 }
 
+.txcc-place-order-btn {
+  display: block;
+  width: 100%;
+}
+
+.txcc-checkout-form-heading {
+  font-weight: 600;
+  margin-bottom: 0.625rem;
+}
+
+.txcc-checkout-form .form-field {
+  margin-bottom: 0.625rem;
+}
+
+.txcc-checkout-form-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.txcc-checkout-form-row .form-field {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.txcc-checkout-form-submit {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
 .txcc-payment-paid-note {
   margin-top: 0.625rem;
   padding-top: 0.5rem;

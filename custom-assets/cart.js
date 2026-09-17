@@ -9,6 +9,36 @@
   "use strict";
 
   var CART_KEY = "txcc_cart_v1";
+  var CHECKOUT_INFO_KEY = "txcc_checkout_info_v1";
+
+  function loadCheckoutInfo() {
+    try {
+      var raw = localStorage.getItem(CHECKOUT_INFO_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveCheckoutInfo(info) {
+    try {
+      localStorage.setItem(CHECKOUT_INFO_KEY, JSON.stringify(info));
+    } catch (e) {
+      /* storage unavailable -- info just won't persist across reloads this session */
+    }
+  }
+
+  // Appended to every mailto: body from here on, so however the customer
+  // finishes the order (Message Us, the payment-proof note, or a Cash
+  // App/Chime "email us to pay" link) we always have what's needed to ship it.
+  function checkoutInfoSummaryText(info) {
+    return (
+      "Name: " + info.name + "\n" +
+      "Email: " + info.email + "\n" +
+      "Phone: " + info.phone + "\n" +
+      "Shipping address: " + info.street + ", " + info.city + ", " + info.state + " " + info.zip
+    );
+  }
 
   function loadCart() {
     try {
@@ -168,10 +198,11 @@
   // actually gets completed: the customer emails proof of payment. The "i"
   // button opens the customer's mail client directly (mailto:) rather than
   // making them find/click the email address itself.
-  function renderProofNote() {
+  function renderProofNote(checkoutInfo) {
     var email = window.PAYMENT_PROOF_EMAIL;
+    var body = checkoutInfo ? checkoutInfoSummaryText(checkoutInfo) : "";
     var button = email
-      ? '<a class="txcc-info-btn" href="mailto:' + escapeHtml(email) + "?subject=" + encodeURIComponent("Payment confirmation - order screenshot") + '" aria-label="Email us your payment screenshot" title="Email us your payment screenshot">i</a>'
+      ? '<a class="txcc-info-btn" href="mailto:' + escapeHtml(email) + "?subject=" + encodeURIComponent("Payment confirmation - order screenshot") + "&body=" + encodeURIComponent(body) + '" aria-label="Email us your payment screenshot" title="Email us your payment screenshot">i</a>'
       : '<span class="txcc-info-btn txcc-info-btn--disabled" aria-label="Email coming soon" title="Email coming soon">i</span>';
 
     return (
@@ -180,6 +211,53 @@
         button +
       "</div>"
     );
+  }
+
+  // Shown instead of the payment section until name/email/phone/shipping
+  // address has been collected once (persisted in localStorage, so a
+  // returning customer in the same browser isn't asked again).
+  function renderCheckoutGate(container, total, minTotal, meetsMinimum) {
+    if (container.getAttribute("data-checkout-stage") === "form") {
+      return (
+        '<form class="txcc-checkout-form" data-checkout-form novalidate>' +
+          '<div class="txcc-checkout-form-heading">A few details before you order</div>' +
+          '<fieldset class="form-fieldset">' +
+            '<div class="form-field">' +
+              '<label class="form-label" for="txcc_checkout_name">Full Name</label>' +
+              '<input class="form-input" type="text" id="txcc_checkout_name" name="name" required>' +
+            "</div>" +
+            '<div class="form-field">' +
+              '<label class="form-label" for="txcc_checkout_email">Email</label>' +
+              '<input class="form-input" type="email" id="txcc_checkout_email" name="email" required>' +
+            "</div>" +
+            '<div class="form-field">' +
+              '<label class="form-label" for="txcc_checkout_phone">Phone Number</label>' +
+              '<input class="form-input" type="tel" id="txcc_checkout_phone" name="phone" required>' +
+            "</div>" +
+            '<div class="form-field">' +
+              '<label class="form-label" for="txcc_checkout_street">Shipping Address</label>' +
+              '<input class="form-input" type="text" id="txcc_checkout_street" name="street" placeholder="Street address" required>' +
+            "</div>" +
+            '<div class="txcc-checkout-form-row">' +
+              '<div class="form-field"><label class="form-label" for="txcc_checkout_city">City</label><input class="form-input" type="text" id="txcc_checkout_city" name="city" required></div>' +
+              '<div class="form-field"><label class="form-label" for="txcc_checkout_state">State</label><input class="form-input" type="text" id="txcc_checkout_state" name="state" required></div>' +
+              '<div class="form-field"><label class="form-label" for="txcc_checkout_zip">ZIP</label><input class="form-input" type="text" id="txcc_checkout_zip" name="zip" required></div>' +
+            "</div>" +
+          "</fieldset>" +
+          '<button type="submit" class="button button--primary txcc-checkout-form-submit">Continue</button>' +
+        "</form>"
+      );
+    }
+
+    var notice = "";
+    if (!meetsMinimum && container.getAttribute("data-place-order-blocked") === "1") {
+      var remaining = minTotal - total;
+      notice =
+        '<div class="txcc-min-order-notice">' +
+          "Minimum order is " + money(minTotal) + "+. Add " + money(remaining) + " more to place this order." +
+        "</div>";
+    }
+    return '<button type="button" class="button button--primary txcc-place-order-btn" data-place-order>Place Order</button>' + notice;
   }
 
   function renderCart() {
@@ -218,110 +296,123 @@
     var minTotal = minOrderTotal();
     var meetsMinimum = total >= minTotal;
 
-    // Lets a customer skip the self-serve payment flow entirely and just
-    // email the order in directly -- opens their own email app (mailto:)
-    // with the cart contents pre-filled, same address as everywhere else
-    // orders get finalized (window.PAYMENT_PROOF_EMAIL).
-    var messageUsBtn;
-    if (window.PAYMENT_PROOF_EMAIL) {
-      var orderLines = items.map(function (item) {
-        return "- " + item.qty + " x " + item.name + (item.variant ? " (" + item.variant + ")" : "") + " -- " + money(item.price * item.qty);
-      }).join("\n");
-      var body = "Hi, I'd like to place this order:\n\n" + orderLines + "\n\nTotal: " + money(total);
-      var mailHref =
-        "mailto:" + encodeURIComponent(window.PAYMENT_PROOF_EMAIL) +
-        "?subject=" + encodeURIComponent("Order inquiry") +
-        "&body=" + encodeURIComponent(body);
-      var callBtn = "";
-      if (window.PAYMENT_PROOF_PHONE) {
-        var telHref = "tel:" + window.PAYMENT_PROOF_PHONE.replace(/[^\d+]/g, "");
-        callBtn = '<a class="button button--tertiary txcc-message-us-btn" href="' + telHref + '">Call or Text Us</a>';
-      }
-      messageUsBtn =
-        '<div class="txcc-message-us-row">' +
-          '<a class="button button--primary txcc-message-us-btn" href="' + mailHref + '">Message Us Now</a>' +
-          callBtn +
-        "</div>" +
-        '<div class="txcc-message-us-divider">or pay with</div>';
+    // Name/email/phone/shipping address are collected once, up front, before
+    // any way of finishing the order (Message Us, Call Us, or a payment
+    // method) is even shown -- there's no automated checkout, so this is the
+    // only way we ever find out where to ship an order.
+    var checkoutInfo = loadCheckoutInfo();
+
+    var paymentSection;
+    if (!checkoutInfo) {
+      paymentSection = renderCheckoutGate(container, total, minTotal, meetsMinimum);
     } else {
-      messageUsBtn = "";
-    }
-
-    var LOGO_BY_METHOD = {
-      bitcoin: "payment-logo-bitcoin.svg",
-      cashapp: "payment-logo-cashapp.svg",
-      chime: "payment-logo-chime.svg",
-      usdt: "payment-logo-tether.svg",
-    };
-
-    // Any product can be ordered in any quantity on its own -- the $100
-    // minimum is enforced once, for the whole cart, at the moment the
-    // customer tries to actually order (clicking Order Now), rather than
-    // hiding payment methods or forcing a big per-item quantity up front.
-    var confirmed = meetsMinimum && container.getAttribute("data-order-confirmed") === selected;
-
-    var methodButtons = methods.map(function (m) {
-      var active = m.id === selected ? " txcc-payment-btn--active" : "";
-      var logoFile = LOGO_BY_METHOD[m.id];
-      var logo = logoFile ? '<img class="txcc-payment-btn-logo" src="' + rootRelativeAsset(logoFile) + '" alt="">' : "";
-      return '<button type="button" class="txcc-payment-btn txcc-payment-btn--' + m.id + active + '" data-method="' + m.id + '">' + logo + '<span>' + escapeHtml(m.label) + "</span></button>";
-    }).join("");
-
-    var activeMethod = methods.filter(function (m) { return m.id === selected; })[0];
-    var methodDetail = "";
-    if (activeMethod && confirmed) {
-      methodDetail = '<div class="txcc-payment-detail">';
-      if (Object.prototype.hasOwnProperty.call(activeMethod, "contactEmail")) {
-        if (activeMethod.contactEmail) {
-          var subject = encodeURIComponent("Order inquiry - " + activeMethod.label);
-          methodDetail +=
-            '<a class="txcc-payment-email-link" href="mailto:' + escapeHtml(activeMethod.contactEmail) + "?subject=" + subject + '">' +
-            "Email us to pay with " + escapeHtml(activeMethod.label) +
-            "</a>";
-        } else {
-          methodDetail += "<div>Email contact coming soon. Contact us to complete your order.</div>";
+      // Lets a customer skip the self-serve payment flow entirely and just
+      // email the order in directly -- opens their own email app (mailto:)
+      // with the cart contents pre-filled, same address as everywhere else
+      // orders get finalized (window.PAYMENT_PROOF_EMAIL).
+      var messageUsBtn;
+      if (window.PAYMENT_PROOF_EMAIL) {
+        var orderLines = items.map(function (item) {
+          return "- " + item.qty + " x " + item.name + (item.variant ? " (" + item.variant + ")" : "") + " -- " + money(item.price * item.qty);
+        }).join("\n");
+        var body = "Hi, I'd like to place this order:\n\n" + orderLines + "\n\nTotal: " + money(total) + "\n\n" + checkoutInfoSummaryText(checkoutInfo);
+        var mailHref =
+          "mailto:" + encodeURIComponent(window.PAYMENT_PROOF_EMAIL) +
+          "?subject=" + encodeURIComponent("Order inquiry") +
+          "&body=" + encodeURIComponent(body);
+        var callBtn = "";
+        if (window.PAYMENT_PROOF_PHONE) {
+          var telHref = "tel:" + window.PAYMENT_PROOF_PHONE.replace(/[^\d+]/g, "");
+          callBtn = '<a class="button button--tertiary txcc-message-us-btn" href="' + telHref + '">Call or Text Us</a>';
         }
+        messageUsBtn =
+          '<div class="txcc-message-us-row">' +
+            '<a class="button button--primary txcc-message-us-btn" href="' + mailHref + '">Message Us Now</a>' +
+            callBtn +
+          "</div>" +
+          '<div class="txcc-message-us-divider">or pay with</div>';
       } else {
-        if (activeMethod.address) {
-          methodDetail +=
-            '<div class="txcc-payment-address-row">' +
-              '<span class="txcc-payment-address">' + escapeHtml(activeMethod.address) + "</span>" +
-              '<button type="button" class="txcc-copy-btn" data-copy-address="' + escapeHtml(activeMethod.address) + '">Copy</button>' +
-            "</div>";
-        }
-        methodDetail += "<div>" + escapeHtml(activeMethod.instructions || "") + "</div>";
+        messageUsBtn = "";
       }
-      methodDetail +=
-        '<div class="txcc-payment-paid-note">Once paid, contact us at ' +
-        (window.PAYMENT_PROOF_EMAIL ? escapeHtml(window.PAYMENT_PROOF_EMAIL) : "the email below") +
-        " so we can confirm your order." +
-        "</div>";
-      methodDetail += "</div>";
+
+      var LOGO_BY_METHOD = {
+        bitcoin: "payment-logo-bitcoin.svg",
+        cashapp: "payment-logo-cashapp.svg",
+        chime: "payment-logo-chime.svg",
+        usdt: "payment-logo-tether.svg",
+      };
+
+      // Any product can be ordered in any quantity on its own -- the $100
+      // minimum is enforced once, for the whole cart, at the moment the
+      // customer tries to actually order (clicking Place Order, or Order Now
+      // here as a fallback if the cart shrinks below it again afterward),
+      // rather than hiding payment methods or forcing a big quantity up front.
+      var confirmed = meetsMinimum && container.getAttribute("data-order-confirmed") === selected;
+
+      var methodButtons = methods.map(function (m) {
+        var active = m.id === selected ? " txcc-payment-btn--active" : "";
+        var logoFile = LOGO_BY_METHOD[m.id];
+        var logo = logoFile ? '<img class="txcc-payment-btn-logo" src="' + rootRelativeAsset(logoFile) + '" alt="">' : "";
+        return '<button type="button" class="txcc-payment-btn txcc-payment-btn--' + m.id + active + '" data-method="' + m.id + '">' + logo + '<span>' + escapeHtml(m.label) + "</span></button>";
+      }).join("");
+
+      var activeMethod = methods.filter(function (m) { return m.id === selected; })[0];
+      var methodDetail = "";
+      if (activeMethod && confirmed) {
+        methodDetail = '<div class="txcc-payment-detail">';
+        if (Object.prototype.hasOwnProperty.call(activeMethod, "contactEmail")) {
+          if (activeMethod.contactEmail) {
+            var subject = encodeURIComponent("Order inquiry - " + activeMethod.label);
+            var methodBody = encodeURIComponent(checkoutInfoSummaryText(checkoutInfo));
+            methodDetail +=
+              '<a class="txcc-payment-email-link" href="mailto:' + escapeHtml(activeMethod.contactEmail) + "?subject=" + subject + "&body=" + methodBody + '">' +
+              "Email us to pay with " + escapeHtml(activeMethod.label) +
+              "</a>";
+          } else {
+            methodDetail += "<div>Email contact coming soon. Contact us to complete your order.</div>";
+          }
+        } else {
+          if (activeMethod.address) {
+            methodDetail +=
+              '<div class="txcc-payment-address-row">' +
+                '<span class="txcc-payment-address">' + escapeHtml(activeMethod.address) + "</span>" +
+                '<button type="button" class="txcc-copy-btn" data-copy-address="' + escapeHtml(activeMethod.address) + '">Copy</button>' +
+              "</div>";
+          }
+          methodDetail += "<div>" + escapeHtml(activeMethod.instructions || "") + "</div>";
+        }
+        methodDetail +=
+          '<div class="txcc-payment-paid-note">Once paid, contact us at ' +
+          (window.PAYMENT_PROOF_EMAIL ? escapeHtml(window.PAYMENT_PROOF_EMAIL) : "the email below") +
+          " so we can confirm your order." +
+          "</div>";
+        methodDetail += "</div>";
+      }
+
+      // Clicking Order Now while under the minimum doesn't confirm anything --
+      // it pops this message instead, right where the customer is looking.
+      var belowMinimumNotice = "";
+      if (activeMethod && !meetsMinimum && container.getAttribute("data-order-now-blocked") === activeMethod.id) {
+        var remaining = minTotal - total;
+        belowMinimumNotice =
+          '<div class="txcc-min-order-notice">' +
+            "Minimum order is " + money(minTotal) + "+. Add " + money(remaining) + " more to place this order." +
+          "</div>";
+      }
+
+      var orderNowBtn = (activeMethod && !confirmed)
+        ? '<button type="button" class="button button--primary txcc-order-now-btn" data-order-now="' + escapeHtml(activeMethod.id) + '">Order Now</button>'
+        : "";
+
+      paymentSection =
+        messageUsBtn +
+        '<div class="txcc-payment-label">Pay with</div>' +
+        '<div class="txcc-payment-buttons">' + methodButtons + "</div>" +
+        orderNowBtn +
+        belowMinimumNotice +
+        methodDetail +
+        (activeMethod && confirmed ? renderProofNote(checkoutInfo) : "");
     }
-
-    // Clicking Order Now while under the minimum doesn't confirm anything --
-    // it pops this message instead, right where the customer is looking.
-    var belowMinimumNotice = "";
-    if (activeMethod && !meetsMinimum && container.getAttribute("data-order-now-blocked") === activeMethod.id) {
-      var remaining = minTotal - total;
-      belowMinimumNotice =
-        '<div class="txcc-min-order-notice">' +
-          "Minimum order is " + money(minTotal) + "+. Add " + money(remaining) + " more to place this order." +
-        "</div>";
-    }
-
-    var orderNowBtn = (activeMethod && !confirmed)
-      ? '<button type="button" class="button button--primary txcc-order-now-btn" data-order-now="' + escapeHtml(activeMethod.id) + '">Order Now</button>'
-      : "";
-
-    var paymentSection =
-      messageUsBtn +
-      '<div class="txcc-payment-label">Pay with</div>' +
-      '<div class="txcc-payment-buttons">' + methodButtons + "</div>" +
-      orderNowBtn +
-      belowMinimumNotice +
-      methodDetail +
-      (activeMethod && confirmed ? renderProofNote() : "");
 
     container.innerHTML =
       '<div class="txcc-cart-page">' +
@@ -389,9 +480,49 @@
     addToCart({ id: id, variant: variant, name: name, price: price, image: image, qty: Math.max(1, qty), minQty: 1 });
   }
 
+  function handleCheckoutFormSubmit(event) {
+    var form = event.target;
+    if (!form.matches("[data-checkout-form]")) return;
+    event.preventDefault();
+
+    if (form.checkValidity && !form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    var info = {
+      name: form.querySelector('[name="name"]').value.trim(),
+      email: form.querySelector('[name="email"]').value.trim(),
+      phone: form.querySelector('[name="phone"]').value.trim(),
+      street: form.querySelector('[name="street"]').value.trim(),
+      city: form.querySelector('[name="city"]').value.trim(),
+      state: form.querySelector('[name="state"]').value.trim(),
+      zip: form.querySelector('[name="zip"]').value.trim(),
+    };
+    saveCheckoutInfo(info);
+
+    var container = getCartPageContainer();
+    if (container) {
+      container.removeAttribute("data-checkout-stage");
+      renderCart();
+    }
+  }
+
   function handleCartActionClick(event) {
     var container = getCartPageContainer();
     if (!container) return;
+
+    var placeOrderBtn = event.target.closest("[data-place-order]");
+    if (placeOrderBtn && container.contains(placeOrderBtn)) {
+      if (cartTotal(loadCart()) < minOrderTotal()) {
+        container.setAttribute("data-place-order-blocked", "1");
+      } else {
+        container.removeAttribute("data-place-order-blocked");
+        container.setAttribute("data-checkout-stage", "form");
+      }
+      renderCart();
+      return;
+    }
 
     var actionBtn = event.target.closest("[data-action]");
     if (actionBtn && container.contains(actionBtn)) {
@@ -505,6 +636,7 @@
   };
 
   document.addEventListener("submit", handleAddToCartSubmit, true);
+  document.addEventListener("submit", handleCheckoutFormSubmit, true);
   document.addEventListener("click", handleCartActionClick);
 
   keepAddToCartEnabled();
