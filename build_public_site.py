@@ -263,7 +263,7 @@ def ensure_google_site_verification(soup: BeautifulSoup):
 
 BUSINESS_PHONE_DISPLAY = "+1 (403) 818-5925"
 BUSINESS_PHONE_TEL = "+14038185925"
-BUSINESS_EMAIL = "wfcannabis@gmail.com"
+BUSINESS_EMAIL = "wfcannabisco@gmail.com"
 
 
 def inject_footer_contact_info(soup: BeautifulSoup):

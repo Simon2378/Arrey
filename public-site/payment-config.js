@@ -11,7 +11,7 @@ window.SHIPPING_FEE = 20;
 // confirmation, so this email address is how an order actually gets
 // completed -- the customer sends proof of payment here. Leave "" until you
 // give me the real address -- shows a "coming soon" placeholder until then.
-window.PAYMENT_PROOF_EMAIL = "wfcannabis@gmail.com";
+window.PAYMENT_PROOF_EMAIL = "wfcannabisco@gmail.com";
 
 // Shown next to the email as a "Call or Text Us" option (cart page) and as
 // the business's general contact number (footer, Contact Us page).
@@ -35,13 +35,13 @@ window.PAYMENT_METHODS = [
   {
     id: "cashapp",
     label: "Cash App",
-    contactEmail: "wfcannabis@gmail.com",
+    contactEmail: "wfcannabisco@gmail.com",
     instructions: "Email us to pay with Cash App."
   },
   {
     id: "chime",
     label: "Chime",
-    contactEmail: "wfcannabis@gmail.com",
+    contactEmail: "wfcannabisco@gmail.com",
     instructions: "Email us to pay with Chime."
   },
   {

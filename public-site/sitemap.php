@@ -1417,7 +1417,7 @@ function subscribeOnBodlEvents() {
 <div data-content-region="footer_below_logo--global"></div>
 <ul class="fa-ul">
 <li><i class="fa fa-li fa-map-marker"></i><address>4009 Faith Rd, Wichita Falls, Texas 76308</address></li>
-<li><i class="fa fa-li fa-phone"></i><a href="tel:+14038185925">+1 (403) 818-5925</a></li><li><i class="fa fa-li fa-envelope"></i><a href="mailto:wfcannabis@gmail.com">wfcannabis@gmail.com</a></li></ul>
+<li><i class="fa fa-li fa-phone"></i><a href="tel:+14038185925">+1 (403) 818-5925</a></li><li><i class="fa fa-li fa-envelope"></i><a href="mailto:wfcannabisco@gmail.com">wfcannabisco@gmail.com</a></li></ul>
 <div data-content-region="footer_below_contact--global"></div>
 </article>
 <article class="footer-info-col" data-section-type="footer-webPages">
@@ -1757,5 +1757,5 @@ function subscribeOnBodlEvents() {
 <script src="https://cdn11.bigcommerce.com/shared/js/csrf-protection-header-5eeddd5de78d98d146ef4fd71b2aedce4161903e.js" type="text/javascript"></script>
 <script src="https://bigcommerce.route.com/checkout/routeimg.js"></script><script src="https://bigcommerce.route.com/checkout/listener.js?s=rpcehsuohu"></script>
 <!-- snippet location footer -->
-<script>window.__CF$cv$params={r:'a3556e86e9d74bcb',t:'MTc4ODQ0NTYxMA==',u:'01a067aa529f74d1addafa22916a3f46',ut:'9NwZ6xi97D8xCOrmnfkJCedxaU0aXT9w6y9QMmOSHUk-1788445610-1.2.1.1-8GFGL73pwRBGdueu1g6S5ou_ypuiRDCROLb.NNuHNaK5vqUuvuohiA2XNAZVVfFHA0q1WS7a9yAFsSxhAll0EXivlRSDRYRi4Me3IS74qpY',i:60};(function(){if(!document.body)return;var s=document.createElement('script');s.src='/cdn-cgi/challenge-platform/scripts/precursor/main.js';document.head.appendChild(s);})();</script><script src="payment-config.js?v=1f1b3901"></script><script src="cart.js?v=21116df7"></script><script src="product-display.js?v=faf13b8a"></script></body>
+<script>window.__CF$cv$params={r:'a3556e86e9d74bcb',t:'MTc4ODQ0NTYxMA==',u:'01a067aa529f74d1addafa22916a3f46',ut:'9NwZ6xi97D8xCOrmnfkJCedxaU0aXT9w6y9QMmOSHUk-1788445610-1.2.1.1-8GFGL73pwRBGdueu1g6S5ou_ypuiRDCROLb.NNuHNaK5vqUuvuohiA2XNAZVVfFHA0q1WS7a9yAFsSxhAll0EXivlRSDRYRi4Me3IS74qpY',i:60};(function(){if(!document.body)return;var s=document.createElement('script');s.src='/cdn-cgi/challenge-platform/scripts/precursor/main.js';document.head.appendChild(s);})();</script><script src="payment-config.js?v=734dd720"></script><script src="cart.js?v=21116df7"></script><script src="product-display.js?v=faf13b8a"></script></body>
 </html>
