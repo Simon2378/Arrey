@@ -232,8 +232,16 @@
         "mailto:" + encodeURIComponent(window.PAYMENT_PROOF_EMAIL) +
         "?subject=" + encodeURIComponent("Order inquiry") +
         "&body=" + encodeURIComponent(body);
+      var callBtn = "";
+      if (window.PAYMENT_PROOF_PHONE) {
+        var telHref = "tel:" + window.PAYMENT_PROOF_PHONE.replace(/[^\d+]/g, "");
+        callBtn = '<a class="button button--tertiary txcc-message-us-btn" href="' + telHref + '">Call or Text Us</a>';
+      }
       messageUsBtn =
-        '<a class="button button--primary txcc-message-us-btn" href="' + mailHref + '">Message Us Now</a>' +
+        '<div class="txcc-message-us-row">' +
+          '<a class="button button--primary txcc-message-us-btn" href="' + mailHref + '">Message Us Now</a>' +
+          callBtn +
+        "</div>" +
         '<div class="txcc-message-us-divider">or pay with</div>';
     } else {
       messageUsBtn = "";

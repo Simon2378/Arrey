@@ -149,8 +149,15 @@ cartContainer = doc2.getElementById("cart-page-content");
 cartContainer.querySelector("[data-order-now]").dispatchEvent(new win2.Event("click", { bubbles: true }));
 cartContainer = doc2.getElementById("cart-page-content");
 
-// "Message Us Now" button: hidden entirely when no proof email is set yet
-assert(!cartContainer.querySelector(".txcc-message-us-btn"), "Message Us Now button does not render before a proof email is configured");
+// force the "not configured yet" state (the shipped site now ships with
+// real values, so blank them out here to exercise the placeholder path)
+win2.PAYMENT_PROOF_EMAIL = "";
+win2.PAYMENT_PROOF_PHONE = "";
+Array.from(cartContainer.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "USDT (ERC20)").dispatchEvent(new win2.Event("click", { bubbles: true }));
+cartContainer = doc2.getElementById("cart-page-content");
+
+// "Message Us Now" / "Call or Text Us": hidden entirely with nothing configured
+assert(!cartContainer.querySelector(".txcc-message-us-btn"), "Message Us Now / Call or Text buttons do not render before a proof email or phone is configured");
 
 // payment-proof note + "i" button: disabled placeholder state (no email set yet)
 let infoBtn = cartContainer.querySelector(".txcc-info-btn");
@@ -158,8 +165,9 @@ assert(!!infoBtn, "info button renders under the proof note");
 assert(infoBtn.tagName === "SPAN" && infoBtn.classList.contains("txcc-info-btn--disabled"), "info button is disabled (a <span>, not a link) when no proof email is set yet");
 assert(cartContainer.querySelector(".txcc-proof-note").textContent.includes("screenshot"), "proof note mentions sending a screenshot");
 
-// simulate the real email being set, then re-click USDT (click handler always re-renders)
+// simulate the real email + phone being set, then re-click USDT (click handler always re-renders)
 win2.PAYMENT_PROOF_EMAIL = "orders@example.com";
+win2.PAYMENT_PROOF_PHONE = "+1 (555) 010-2030";
 Array.from(cartContainer.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "USDT (ERC20)").dispatchEvent(new win2.Event("click", { bubbles: true }));
 cartContainer = doc2.getElementById("cart-page-content");
 infoBtn = cartContainer.querySelector(".txcc-info-btn");
@@ -168,7 +176,9 @@ assert(infoBtn.getAttribute("href").startsWith("mailto:orders@example.com"), "in
 
 // "Message Us Now" button: appears once a proof email is configured, and
 // opens a mailto: link pre-filled with the cart contents
-const messageUsBtn = cartContainer.querySelector(".txcc-message-us-btn");
+const messageUsBtns = cartContainer.querySelectorAll(".txcc-message-us-btn");
+const messageUsBtn = messageUsBtns[0];
+assert(messageUsBtns.length === 2, "both Message Us Now and Call or Text Us render once configured, got: " + messageUsBtns.length);
 assert(!!messageUsBtn, "Message Us Now button renders once a proof email is configured");
 assert(messageUsBtn.tagName === "A", "Message Us Now is a real link, got: " + (messageUsBtn && messageUsBtn.tagName));
 const messageUsHref = decodeURIComponent(messageUsBtn.getAttribute("href") || "");
@@ -177,6 +187,12 @@ assert(messageUsHref.includes("subject=Order inquiry"), "Message Us Now sets a s
 assert(messageUsHref.includes("Packwraps"), "Message Us Now pre-fills the order body with the cart's item name, got: " + messageUsHref);
 assert(/Total: \$\d+\.\d{2}/.test(messageUsHref), "Message Us Now pre-fills the order body with the cart total, got: " + messageUsHref);
 assert(!!cartContainer.querySelector(".txcc-message-us-divider"), "a divider separates Message Us Now from the self-serve payment methods below it");
+
+// "Call or Text Us" button: opens a tel: link built from the configured phone
+const callBtn = messageUsBtns[1];
+assert(callBtn.tagName === "A", "Call or Text Us is a real link, got: " + (callBtn && callBtn.tagName));
+assert(callBtn.getAttribute("href") === "tel:+15550102030", "Call or Text Us links to the configured phone as a tel: link, got: " + callBtn.getAttribute("href"));
+assert(callBtn.textContent.trim() === "Call or Text Us", "Call or Text Us button has the expected label, got: " + callBtn.textContent.trim());
 
 let copiedText = null;
 win2.navigator.clipboard = {
@@ -199,7 +215,9 @@ for (let i = 0; i < 3; i++) {
 cartContainer = doc2.getElementById("cart-page-content");
 assert(cartContainer.querySelector(".txcc-qty-value").textContent.trim() === "31", "decrement freely reduces quantity (34 - 3 = 31), no per-item floor, got: " + cartContainer.querySelector(".txcc-qty-value").textContent.trim());
 
-// Cash App: contactEmail placeholder, then simulate the real email being set
+// Cash App: contactEmail placeholder (blanked here since the shipped site
+// now ships with a real address), then simulate the real email being set
+win2.PAYMENT_METHODS.find((m) => m.id === "cashapp").contactEmail = "";
 const cashBtn = Array.from(cartContainer.querySelectorAll(".txcc-payment-btn")).find((b) => b.textContent.trim() === "Cash App");
 cashBtn.dispatchEvent(new win2.Event("click", { bubbles: true }));
 cartContainer.querySelector("[data-order-now]").dispatchEvent(new win2.Event("click", { bubbles: true }));

@@ -261,6 +261,37 @@ def ensure_google_site_verification(soup: BeautifulSoup):
     head.insert(0, meta)
 
 
+BUSINESS_PHONE_DISPLAY = "+1 (403) 818-5925"
+BUSINESS_PHONE_TEL = "+14038185925"
+BUSINESS_EMAIL = "wfcannabis@gmail.com"
+
+
+def inject_footer_contact_info(soup: BeautifulSoup):
+    """Adds a phone + email line next to the existing street address in the
+    footer's About column, matching the fa-ul icon-list style already used
+    there for the address."""
+    about_col = soup.find("article", class_="footer-info-col--about")
+    if not about_col:
+        return
+    fa_ul = about_col.find("ul", class_="fa-ul")
+    if not fa_ul or fa_ul.find("a", href=lambda h: h and h.startswith("tel:")):
+        return
+
+    phone_li = soup.new_tag("li")
+    phone_li.append(soup.new_tag("i", **{"class": "fa fa-li fa-phone"}))
+    phone_link = soup.new_tag("a", href="tel:" + BUSINESS_PHONE_TEL)
+    phone_link.string = BUSINESS_PHONE_DISPLAY
+    phone_li.append(phone_link)
+    fa_ul.append(phone_li)
+
+    email_li = soup.new_tag("li")
+    email_li.append(soup.new_tag("i", **{"class": "fa fa-li fa-envelope"}))
+    email_link = soup.new_tag("a", href="mailto:" + BUSINESS_EMAIL)
+    email_link.string = BUSINESS_EMAIL
+    email_li.append(email_link)
+    fa_ul.append(email_li)
+
+
 PAYMENT_BADGES = [
     ("bitcoin", "Bitcoin", "payment-logo-bitcoin.svg"),
     ("cashapp", "Cash App", "payment-logo-cashapp.svg"),
@@ -343,6 +374,7 @@ def process_page(page_url: str, local_html_path: str, new_rel: str, url_map: dic
 
     ensure_charset_meta(soup)
     ensure_google_site_verification(soup)
+    inject_footer_contact_info(soup)
     strip_login_register(soup)
     strip_empty_concentrate_subcategory_links(soup)
     strip_coupon_badges(soup)

@@ -6,7 +6,11 @@ window.MINIMUM_ORDER_TOTAL = 100;
 // confirmation, so this email address is how an order actually gets
 // completed -- the customer sends proof of payment here. Leave "" until you
 // give me the real address -- shows a "coming soon" placeholder until then.
-window.PAYMENT_PROOF_EMAIL = "";
+window.PAYMENT_PROOF_EMAIL = "wfcannabis@gmail.com";
+
+// Shown next to the email as a "Call or Text Us" option (cart page) and as
+// the business's general contact number (footer, Contact Us page).
+window.PAYMENT_PROOF_PHONE = "+1 (403) 818-5925";
 
 // Edit this file to add real payment details, then re-run build_public_site.py.
 //
@@ -26,13 +30,13 @@ window.PAYMENT_METHODS = [
   {
     id: "cashapp",
     label: "Cash App",
-    contactEmail: "", // e.g. "orders@yourdomain.com" -- customer emails you to complete payment
+    contactEmail: "wfcannabis@gmail.com",
     instructions: "Email us to pay with Cash App."
   },
   {
     id: "chime",
     label: "Chime",
-    contactEmail: "", // e.g. "orders@yourdomain.com" -- customer emails you to complete payment
+    contactEmail: "wfcannabis@gmail.com",
     instructions: "Email us to pay with Chime."
   },
   {
