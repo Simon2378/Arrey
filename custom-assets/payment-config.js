@@ -15,7 +15,7 @@ window.PAYMENT_PROOF_EMAIL = "wfcannabisco@gmail.com";
 
 // Shown next to the email as a "Call or Text Us" option (cart page) and as
 // the business's general contact number (footer, Contact Us page).
-window.PAYMENT_PROOF_PHONE = "+1 (403) 818-5925";
+window.PAYMENT_PROOF_PHONE = "+1 (332) 287-4921";
 
 // Edit this file to add real payment details, then re-run build_public_site.py.
 //

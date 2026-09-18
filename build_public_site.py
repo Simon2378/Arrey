@@ -261,8 +261,8 @@ def ensure_google_site_verification(soup: BeautifulSoup):
     head.insert(0, meta)
 
 
-BUSINESS_PHONE_DISPLAY = "+1 (403) 818-5925"
-BUSINESS_PHONE_TEL = "+14038185925"
+BUSINESS_PHONE_DISPLAY = "+1 (332) 287-4921"
+BUSINESS_PHONE_TEL = "+13322874921"
 BUSINESS_EMAIL = "wfcannabisco@gmail.com"
 
 
